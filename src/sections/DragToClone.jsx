@@ -1,4 +1,4 @@
-import { SectionTitle } from '../components/Shared.jsx';
+import { SectionTitle, Circled } from '../components/Shared.jsx';
 
 const FEATURES = [
   { icon: '🔗', title: 'Drag In Any Ad', text: "Found a scroll-stopper in the wild? Just drag it in. Social Ads Freak instantly analyzes the ad's structure, timing, and persuasion framework." },
@@ -16,7 +16,7 @@ export default function DragToClone() {
         <SectionTitle
           kicker="The Freakiest Feature"
           title="Clone Any Video Ad With"
-          highlight="One Drag"
+          highlight={<Circled><span className="grad-text">One Drag</span></Circled>}
           sub="See a freakishly good ad on TikTok, Instagram, or Facebook? Drag it in. Social Ads Freak reverse-engineers the structure, hook, pacing, and CTA — then rebuilds the entire ad with your product and your face."
         />
         <div className="audience-grid">

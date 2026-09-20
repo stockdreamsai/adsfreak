@@ -1,4 +1,4 @@
-import { SectionTitle } from '../components/Shared.jsx';
+import { SectionTitle, Circled } from '../components/Shared.jsx';
 
 const ROWS = [
   ['Cost per video', '$150 – $500', 'Pennies'],
@@ -16,7 +16,7 @@ export default function RealCosts() {
         <SectionTitle
           kicker="The Shift"
           title="The Math"
-          highlight="Changes."
+          highlight={<Circled><span className="grad-text">Changes.</span></Circled>}
           sub="With Social Ads Freak, creative becomes output. Not overhead. No paying per video, no waiting on creators, no filming required, no creative bottleneck."
         />
         <div className="costs-table">

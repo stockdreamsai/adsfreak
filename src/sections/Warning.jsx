@@ -1,4 +1,4 @@
-import { CTAButton } from '../components/Shared.jsx';
+import { CTAButton, Circled } from '../components/Shared.jsx';
 
 export default function Warning() {
   return (
@@ -23,7 +23,9 @@ export default function Warning() {
           get made, and everyone will be doing it. The people who start now spend that year
           compounding. Everyone else spends it catching up.
         </p>
-        <p className="warning-window grad-text"><strong>That hesitation? That's the window.</strong></p>
+        <p className="warning-window">
+          <strong>That hesitation? <Circled><span className="grad-text">That's the window.</span></Circled></strong>
+        </p>
         <CTAButton large />
       </div>
     </section>
