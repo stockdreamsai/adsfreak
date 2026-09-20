@@ -2,26 +2,14 @@ export default function HeroSection() {
   return (
     <section className={"hero center"} id={"start"} style={{ marginTop: "0px", paddingTop: "20px" }}>
       <div className={"hero-mosaic"} aria-hidden={"true"}></div>
-      <div className={"narrow container"}>
+      <div className={"narrow container"} style={{ marginTop: "40px" }}>
         <p className={"micro-copy upper-label"}>
           
                     THE FREAK IS BACK… NOW WITH AI SUPERPOWERS
                 
         </p>
         <h1 className={"hero-headline"}>
-          <span className={"clone-word"}>
-            Clone
-          </span>
-           Winning Video Ads
-                    
-          <br />
-          
-                    With Your Product —
-                    
-          <br />
-          
-                    Starring 
-          <span className={"typing-text"}>You</span>
+          Skyrocket Your Conversions, Traffic and Customer Engagement With AI Custom Made Video Ads
         </h1>
         <p className={"subheadline hero-sub"}>
           
