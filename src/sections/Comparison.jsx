@@ -5,9 +5,10 @@ export default function Comparison() {
     <section className="comparison">
       <div className="container">
         <SectionTitle
+          kicker="The Difference That Prints Money"
           title="Most AI Generates Random Videos."
-          highlight="What If AI Could Clone What Converts?"
-          sub="Creators are slow and expensive. Generic AI is fast — but over-polished, robotic, and nobody trusts it. The fix isn't more AI. It's AI that clones what converts."
+          highlight="Ours Clones Proven Winners."
+          sub="A perfect-looking clip with a dead hook sells nothing. The money is in the structure — the hook, the pacing, the CTA that already converted. That's what generic AI can't give you, and it's exactly what the Clone Engine does."
         />
         <div className="comparison-grid">
           <div className="comparison-card bad">

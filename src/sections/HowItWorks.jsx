@@ -27,7 +27,7 @@ export default function HowItWorks() {
       <div className="container">
         <SectionTitle
           title={<><Circled>Fire</Circled> Your Video Crew Today!</>}
-          sub="Clone an ad that already won — in 3 ridiculously easy steps. No camera, no studio, no editing."
+          sub="If you can copy-paste, you can do this. Clone an ad that already won — in 3 ridiculously easy steps. No camera, no studio, no editing, no learning curve."
         />
         <div className="steps">
           {STEPS.map((s) => (

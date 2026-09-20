@@ -13,7 +13,12 @@ export default function WhoBenefits() {
   return (
     <section className="who-benefits">
       <div className="container">
-        <SectionTitle kicker="Who It's For" title="Everyone Can Benefit From" highlight="Social Ads Freak" />
+        <SectionTitle
+          kicker="Who It's For"
+          title="If You Sell Anything Online,"
+          highlight="This Was Built For You"
+          sub="Whatever lane you're in, the bottleneck is the same — creative. Here's what removing it looks like:"
+        />
         <div className="audience-grid">
           {AUDIENCES.map((a) => (
             <div className="audience-card" key={a.title}>
