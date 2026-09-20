@@ -7,8 +7,9 @@ export default function Introducing() {
         <p className="intro-kicker">Introducing</p>
         <h2 className="intro-name grad-text">Social Ads Freak</h2>
         <p className="intro-sub">
-          The AI built to <strong>clone winning video ads</strong> — and rebuild them around your
-          product. Starring you, your cloned voice, or any of 100+ avatars.
+          The only AI with a <strong>Clone Engine</strong>: it reverse-engineers video ads that
+          already won and rebuilds them around <strong>your product</strong> — starring you, your
+          cloned voice, or any of 100+ avatars. You skip the guesswork and start from proven.
         </p>
         <img className="intro-boxshot" src="/brand/png/saf-boxshot.png" alt="Social Ads Freak" />
 
@@ -69,10 +70,10 @@ export default function Introducing() {
           <li><strong>STEP 2</strong> — Swap in your product, face &amp; voice</li>
           <li><strong>STEP 3</strong> — Generate, download &amp; launch</li>
         </ol>
-        <CTAButton large />
+        <CTAButton large>Start Cloning Winners — $47</CTAButton>
         <p className="intro-nsn">
-          <strong>No camera. No crew. No editing.</strong> Select, describe, generate — that's all
-          it takes to create video ads that sell.
+          <strong>No camera. No crew. No editing. No monthly fees.</strong> If you can copy-paste,
+          you can launch video ads that sell — tonight.
         </p>
       </div>
     </section>

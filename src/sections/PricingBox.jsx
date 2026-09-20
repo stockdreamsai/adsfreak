@@ -1,4 +1,4 @@
-import { SectionTitle, CHECKOUT_URL, Circled } from '../components/Shared.jsx';
+import { SectionTitle, CHECKOUT_URL, Circled, Countdown } from '../components/Shared.jsx';
 
 const STACK = [
   ['Social Ads Freak — clone winning video ads', '$197'],
@@ -16,8 +16,10 @@ export default function PricingBox() {
     <section className="pricing" id="buy">
       <div className="container narrow">
         <SectionTitle
-          title="Start Generating High-Converting Video Ads"
-          highlight="With The Power of AI"
+          kicker="Your Move"
+          title="Get Everything Below For Less Than"
+          highlight="One-Tenth The Cost Of A Single 'Old Way' Video"
+          sub="One freelance video: $150–$500. One agency testing cycle: $1,000–$5,000. Social Ads Freak: one payment of $47 — for unlimited creatives, forever."
         />
         <div className="pricing-box">
           <span className="pricing-ribbon">76% OFF</span>
@@ -36,21 +38,25 @@ export default function PricingBox() {
             </li>
           </ul>
           <p className="pricing-regular">
-            Regular Price <s>$197</s>
+            Total value <s>$766</s> &nbsp;·&nbsp; Regular price <s>$197</s>
           </p>
           <p className="pricing-launch">No monthly fees — <strong>One Time Payment</strong></p>
           <p className="pricing-price">Today: Just <Circled>$47</Circled></p>
+          <p className="pricing-deadline">⏳ Launch price disappears in:</p>
+          <Countdown />
           <a className="buy-button" href={CHECKOUT_URL}>
-            BUY NOW ›
+            YES! GIVE ME INSTANT ACCESS ›
           </a>
-          <p className="pricing-secure">🛡 30-Day Money-Back Guarantee &nbsp;·&nbsp; 🔒 Secure 256-bit SSL checkout</p>
+          <p className="pricing-secure">🛡 30-Day Money-Back Guarantee &nbsp;·&nbsp; 🔒 Secure 256-bit SSL checkout &nbsp;·&nbsp; ⚡ Instant access</p>
           <div className="payment-badges">
             {['VISA', 'Mastercard', 'PayPal', 'Amex', 'Discover'].map((p) => (
               <span className="payment-badge" key={p}>{p}</span>
             ))}
           </div>
         </div>
-        <p className="pricing-join">JOIN THOUSANDS OF SATISFIED CREATORS.</p>
+        <p className="pricing-join">
+          JOIN 2,400+ CREATORS ALREADY CLONING WINNERS — WHILE YOUR COMPETITORS KEEP PAYING $500 A VIDEO.
+        </p>
       </div>
     </section>
   );

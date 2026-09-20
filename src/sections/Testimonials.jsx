@@ -25,7 +25,11 @@ export default function Testimonials() {
   return (
     <section className="testimonials">
       <div className="container">
-        <SectionTitle title="What our customers have to say about" highlight="Social Ads Freak" />
+        <SectionTitle
+          kicker="Don't Just Take Our Word"
+          title="Freaks Are Already"
+          highlight="Winning With It"
+        />
         <div className="testimonial-grid">
           {TESTIMONIALS.map((t) => (
             <div className="testimonial-card" key={t.name}>

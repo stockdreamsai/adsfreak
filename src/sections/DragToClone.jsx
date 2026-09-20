@@ -17,7 +17,7 @@ export default function DragToClone() {
           kicker="The Freakiest Feature"
           title="Clone Any Video Ad With"
           highlight={<Circled><span className="grad-text">One Drag</span></Circled>}
-          sub="See a freakishly good ad on TikTok, Instagram, or Facebook? Drag it in. Social Ads Freak reverse-engineers the structure, hook, pacing, and CTA — then rebuilds the entire ad with your product and your face."
+          sub="This is the feature competitors will hate you for. See a freakishly good ad on TikTok, Instagram, or Facebook? Drag it in. The Clone Engine reverse-engineers its structure, hook, pacing, and CTA — then rebuilds the entire ad around YOUR product and YOUR face. Their winning ad becomes your winning ad."
         />
         <div className="audience-grid">
           {FEATURES.map((f) => (

@@ -103,6 +103,50 @@ export function CountUp({ value, duration = 1400 }) {
 // TODO: replace with the real JVZoo/checkout link before launch.
 export const CHECKOUT_URL = '#buy';
 
+// TODO: set the real launch-discount end date, e.g. '2026-09-30T23:59:59'.
+// While null, the timer counts down to local midnight (evergreen).
+export const LAUNCH_DEADLINE = null;
+
+function getDeadline() {
+  if (LAUNCH_DEADLINE) return new Date(LAUNCH_DEADLINE);
+  const d = new Date();
+  d.setHours(24, 0, 0, 0);
+  return d;
+}
+
+// Live countdown to the launch deadline. compact renders 00:00:00 inline.
+export function Countdown({ compact = false }) {
+  const [left, setLeft] = useState(() => getDeadline() - Date.now());
+  useEffect(() => {
+    const id = setInterval(() => setLeft(Math.max(getDeadline() - Date.now(), 0)), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const total = Math.floor(left / 1000);
+  const d = Math.floor(total / 86400);
+  const h = Math.floor((total % 86400) / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+  const pad = (n) => String(n).padStart(2, '0');
+  if (compact) {
+    return (
+      <span className="countdown-compact">
+        {d > 0 ? `${d}d ` : ''}{pad(h)}:{pad(m)}:{pad(s)}
+      </span>
+    );
+  }
+  const units = [...(d > 0 ? [[d, 'Days']] : []), [h, 'Hours'], [m, 'Mins'], [s, 'Secs']];
+  return (
+    <div className="countdown" role="timer" aria-label="Launch discount ends in">
+      {units.map(([v, label]) => (
+        <div className="countdown-unit" key={label}>
+          <span className="countdown-num">{pad(v)}</span>
+          <span className="countdown-label">{label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function CTAButton({ children = 'Get Social Ads Freak Now', href = CHECKOUT_URL, large = false }) {
   return (
     <a className={`cta-button${large ? ' cta-large' : ''}`} href={href}>

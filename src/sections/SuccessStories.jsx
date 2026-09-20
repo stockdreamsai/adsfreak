@@ -1,60 +1,43 @@
 import { SectionTitle, CTAButton } from '../components/Shared.jsx';
 
+// The hero story: 2013 discovery → the pattern repeats in 2026.
 export default function SuccessStories() {
   return (
     <section className="founders-story">
       <div className="container narrow">
         <SectionTitle
-          kicker="Built in 2013. Rebuilt for 2026."
-          title="The Original"
-          highlight="FREAK Duo"
+          kicker="A Quick Story — And Why It's Worth $1,000s To You"
+          title="The Last Time We Spotted This Window,"
+          highlight="The People Who Listened Won Big"
         />
         <div className="founders-split">
           <img className="founders-img" src="/images/founders.jpg" alt="Ali G and Marcus Lim" loading="lazy" />
           <div className="founders-copy">
             <p>
-              In 2013, Ali G and Marcus Lim built <strong>Social Lead Freak</strong> during the
-              early Facebook Ads explosion.
+              Back in <strong>2013</strong>, everyone "serious" laughed at Facebook Ads. Too new.
+              Too weird. Not for real businesses.
+            </p>
+            <p>
+              Ali G and Marcus Lim didn't laugh. They built <strong>Social Lead Freak</strong> —
+              and the marketers who grabbed it early rode the cheapest, most profitable traffic
+              window the internet had ever seen. By the time everyone else caught on, the edge was
+              gone and the costs had tripled.
             </p>
             <ul className="check-list">
-              <li><strong>2013 edge:</strong> targeting leverage.</li>
-              <li><strong>2026 edge:</strong> creative velocity.</li>
-              <li><strong>Same philosophy:</strong> find the leverage early and build the tool.</li>
+              <li><strong>2013 edge:</strong> targeting leverage — automated away since.</li>
+              <li><strong>2026 edge:</strong> creative velocity — and it's wide open right now.</li>
+              <li><strong>Same playbook:</strong> spot the leverage early, build the tool, move first.</li>
             </ul>
             <p>
-              Targeting is automated now. <strong>Creative is the battlefield.</strong>
+              Today, targeting is a checkbox. <strong>Creative is the battlefield.</strong> That's
+              why the same duo spent the last year rebuilding the Freak — this time for AI video.
             </p>
             <p className="founders-quote">
-              “We saw the shift early in 2013. We're seeing it again now.”
+              "We saw the shift early in 2013. We're seeing the exact same shape again now. This
+              time, you get to be early."
             </p>
-            <CTAButton>Start Cloning Now</CTAButton>
+            <CTAButton>I Want In Early ›</CTAButton>
           </div>
-        </div>
-
-        <div className="ps-card">
-          <p className="ps-kicker">P.S.</p>
-          <p>
-            If you scrolled straight to the bottom, I respect it. Here's the whole thing in ten
-            seconds: <strong>Social Ads Freak clones video ads that already won</strong> — the
-            hook, the pacing, the structure, the CTA — and rebuilds them around your product,
-            starring your own face or any of 100+ freakishly real AI avatars.
-          </p>
-          <ul className="ps-list">
-            <li><s>$150–$500 a video</s> → <strong>pennies</strong></li>
-            <li><s>7–14 day turnaround</s> → <strong>minutes</strong></li>
-            <li><s>3–5 variations</s> → <strong>as many as you want</strong></li>
-            <li><s>Waiting on a creator</s> → <strong>launching tonight</strong></li>
-            <li><s>One market, one language</s> → <strong>30+ languages</strong></li>
-          </ul>
-          <p>
-            Nothing to install. Works in your browser. One payment, no monthly fees, and a full 30
-            days to change your mind.
-          </p>
-          <p>
-            The people who moved early on Facebook Ads in 2013 got years of advantage out of it.
-            This is the same shape of moment, and the same short window.
-          </p>
-          <p className="ps-sign">— Ali G</p>
         </div>
       </div>
     </section>
