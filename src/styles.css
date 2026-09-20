@@ -1126,3 +1126,104 @@ h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); letter-spacing: -0.02em; }
 .included-list { gap: 40px; }
 .included-row { padding: 34px; }
 .footer { border-top: 1px solid rgba(25, 29, 58, 0.06); }
+
+/* ============================================================
+   Conversion elements: urgency bar, countdown, offer microcopy
+   ============================================================ */
+
+.urgency-bar {
+  background: linear-gradient(90deg, #2b1042, #4a1240, #2b1042);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  padding: 10px clamp(12px, 4vw, 32px);
+  font-size: 0.92rem;
+  text-align: center;
+  position: relative;
+  z-index: 60;
+}
+.urgency-bar p { margin: 0; }
+.urgency-bar s { color: #d9b3ff; }
+.urgency-cta {
+  background: #ffd951;
+  color: #4a3000;
+  font-weight: 900;
+  font-size: 0.82rem;
+  padding: 6px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: transform 0.2s ease;
+}
+.urgency-cta:hover { transform: scale(1.05); }
+
+.countdown-compact {
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  padding: 4px 12px;
+  letter-spacing: 0.06em;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin: 14px 0 20px;
+}
+.countdown-unit {
+  background: rgba(20, 24, 52, 0.85);
+  border: 1px solid rgba(139, 61, 255, 0.45);
+  border-radius: 12px;
+  min-width: 74px;
+  padding: 10px 12px 8px;
+  text-align: center;
+  box-shadow: 0 10px 26px rgba(20, 24, 52, 0.35);
+}
+.countdown-num {
+  display: block;
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.countdown-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #aab0dd;
+}
+/* countdown on light sections (pricing box) */
+.pricing-box .countdown { margin: 10px 0 22px; }
+.pricing-box .countdown-unit {
+  background: #fff;
+  border-color: rgba(240, 67, 193, 0.4);
+  box-shadow: var(--shadow);
+}
+.pricing-box .countdown-num { color: var(--navy); }
+.pricing-box .countdown-label { color: var(--text-light); }
+.pricing-deadline { font-weight: 800; color: var(--bad); margin-top: 6px; }
+
+.offer-urgency { color: #ffd951; font-weight: 800; margin-bottom: 4px; }
+.offer-note-strong { color: #fff; }
+.offer-microcopy { color: #aab0dd; font-size: 0.88rem; margin-top: 14px; }
+.offer-social { color: #fff; font-weight: 700; margin-top: 10px; }
+.offer-social strong { color: #ff8ede; }
+
+.pain-punch { font-size: 1.15rem; color: var(--navy); }
+.ps-cta { text-align: center; margin-top: 24px; }
+
+.warning .countdown .countdown-unit {
+  background: #fff;
+  border-color: rgba(240, 67, 193, 0.4);
+  box-shadow: var(--shadow);
+}
+.warning .countdown .countdown-num { color: var(--navy); }
+.warning .countdown .countdown-label { color: var(--text-light); }
+.warning .countdown { margin-bottom: 26px; }

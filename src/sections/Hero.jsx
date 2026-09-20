@@ -1,4 +1,4 @@
-import { CTAButton, VideoFrame, TypedWords, Circled } from '../components/Shared.jsx';
+import { CTAButton, VideoFrame, TypedWords, Circled, Countdown } from '../components/Shared.jsx';
 
 export default function Hero() {
   return (
@@ -6,15 +6,17 @@ export default function Hero() {
       <div className="container">
         <p className="hero-kicker">THE FREAK IS BACK… NOW WITH AI SUPERPOWERS</p>
         <h1>
-          Skyrocket Your Conversions, Traffic and Customer Engagement{' '}
-          <span className="grad-text-light">With AI Custom Made Video Ads</span> Starring <TypedWords />
+          Skyrocket Your Conversions, Traffic &amp; Sales By{' '}
+          <span className="grad-text-light">Cloning Video Ads That Already Won</span> — Starring{' '}
+          <TypedWords />
         </h1>
         <p className="hero-sub">
-          Social Ads Freak doesn't generate random AI videos. It clones ads that already won — the
-          hook, the pacing, the structure, the CTA — and rebuilds them around{' '}
-          <strong>your product</strong>. The face on camera? Your call:{' '}
-          <strong>your own photo</strong>, or any of <strong>100+ freakishly real AI avatars</strong>{' '}
-          — with voice, music, and captions done, ready for TikTok, Facebook, Instagram, or YouTube.
+          While your competitors burn <strong>$500 per video</strong> and wait{' '}
+          <strong>2 weeks</strong> on editors, you'll clone the exact hook, pacing and structure of
+          proven winners — rebuilt around <strong>your product</strong>, in{' '}
+          <strong>under 10 minutes</strong>. Star in them with your own face and cloned voice, or
+          cast any of <strong>100+ freakishly real AI avatars</strong>. No camera. No crew. No
+          design skills.
         </p>
 
         <div className="hero-showcase">
@@ -43,19 +45,23 @@ export default function Hero() {
         </div>
 
         <div className="hero-offer">
+          <p className="offer-urgency">⏳ Launch discount expires in:</p>
+          <Countdown />
           <p className="offer-regular">
-            Regular Price <s>$197</s>
-          </p>
-          <p className="offer-note">
-            No monthly fees — <strong>One Time Payment</strong>
+            Regular Price <s>$197</s> — <strong className="offer-note-strong">One Time Payment, No Monthly Fees</strong>
           </p>
           <p className="offer-today">
             Today: Just <Circled light><strong>$47</strong></Circled>{' '}
             <span className="offer-discount">(76% Discount)</span>
           </p>
           <CTAButton large>Get Social Ads Freak Now</CTAButton>
-          <p className="offer-guarantee">🛡 30-Day Money-Back Guarantee</p>
-          <p className="offer-secure">🔒 Secure 256-bit SSL checkout</p>
+          <p className="offer-microcopy">
+            ⚡ Instant access &nbsp;·&nbsp; 🛡 30-day money-back guarantee &nbsp;·&nbsp; 🔒 Secure
+            256-bit SSL checkout
+          </p>
+          <p className="offer-social">
+            Join <strong>2,400+ creators</strong> already cloning winning ads
+          </p>
           <div className="payment-badges">
             {['VISA', 'Mastercard', 'PayPal', 'Amex', 'Discover'].map((p) => (
               <span className="payment-badge" key={p}>{p}</span>

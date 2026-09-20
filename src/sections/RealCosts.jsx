@@ -14,10 +14,10 @@ export default function RealCosts() {
     <section className="real-costs">
       <div className="container narrow">
         <SectionTitle
-          kicker="The Shift"
-          title="The Math"
+          kicker="Do The Math With Me"
+          title="Here's What The Old Way Really Costs You — And How The Math"
           highlight={<Circled><span className="grad-text">Changes.</span></Circled>}
-          sub="With Social Ads Freak, creative becomes output. Not overhead. No paying per video, no waiting on creators, no filming required, no creative bottleneck."
+          sub="With Social Ads Freak, creative stops being overhead and becomes output. No paying per video. No waiting on creators. No filming. No bottleneck."
         />
         <div className="costs-table">
           <div className="costs-head">
@@ -38,7 +38,9 @@ export default function RealCosts() {
           Clone. Insert face or avatar. Translate. Launch.{' '}
           <span className="grad-text">Test 5–10 cloned variations tonight. Wake up to data.</span>
         </p>
-        <p className="costs-velocity">Creative velocity is the new unfair advantage.</p>
+        <p className="costs-velocity">
+          Creative velocity is the new unfair advantage — and one $47 payment buys you the engine.
+        </p>
       </div>
     </section>
   );

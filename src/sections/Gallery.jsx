@@ -24,9 +24,9 @@ export default function Gallery() {
     <section className="gallery" id="samples">
       <div className="container">
         <SectionTitle
-          kicker="All Cloned · Zero Cameras"
-          title="Freakishly Real Clones,"
-          highlight="On the Fly"
+          kicker="Seeing Is Believing · All Cloned · Zero Cameras"
+          title="Every Single Video Below Was Made"
+          highlight="Without Touching A Camera"
         />
 
         <div className="founder-callout">
@@ -53,8 +53,9 @@ export default function Gallery() {
         <p className="samples-bridge">
           Freaky, right? <strong>One person. A dozen winning formats. Zero cameras.</strong>
           <br />
-          Now swap me out for <strong>your product</strong> — that's a whole ad account's worth of
+          Now picture <strong>your product</strong> in these videos — a whole ad account's worth of
           proven creatives, with you showing up consistently <em>(or never on camera at all)</em>.
+          That's what you unlock in the next 10 minutes.
         </p>
 
         <div className="avatar-marquee" aria-hidden="false">
