@@ -1,4 +1,4 @@
-import { CTAButton, VideoFrame, TypedWords } from '../components/Shared.jsx';
+import { CTAButton, VideoFrame, TypedWords, Circled } from '../components/Shared.jsx';
 
 export default function Hero() {
   return (
@@ -18,7 +18,7 @@ export default function Hero() {
         </p>
 
         <div className="hero-showcase">
-          <div className="showcase-col">
+          <div className="showcase-col tilt-left">
             <VideoFrame
               src="https://ddufpaulv1kgi.cloudfront.net/videos/rogan-onnit.mp4"
               label="The Original"
@@ -34,7 +34,7 @@ export default function Hero() {
             <img className="showcase-product" src="https://ddufpaulv1kgi.cloudfront.net/thumbnails/focus-factor.jpg" alt="Product" />
             <span className="showcase-arrow" aria-hidden="true">⤳</span>
           </div>
-          <div className="showcase-col">
+          <div className="showcase-col tilt-right">
             <VideoFrame
               src="https://ddufpaulv1kgi.cloudfront.net/videos/ali-focus4.mp4"
               label="✓ The Clone"
@@ -50,7 +50,8 @@ export default function Hero() {
             No monthly fees — <strong>One Time Payment</strong>
           </p>
           <p className="offer-today">
-            Today: Just <strong>$47</strong> <span className="offer-discount">(76% Discount)</span>
+            Today: Just <Circled light><strong>$47</strong></Circled>{' '}
+            <span className="offer-discount">(76% Discount)</span>
           </p>
           <CTAButton large>Get Social Ads Freak Now</CTAButton>
           <p className="offer-guarantee">🛡 30-Day Money-Back Guarantee</p>

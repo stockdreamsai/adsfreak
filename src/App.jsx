@@ -1,5 +1,6 @@
 // Social Ads Freak landing page — StockDreams.ai visual structure filled
 // with the real product content. One component per section (Builder-friendly).
+import { useScrollReveal } from './components/Shared.jsx';
 import Navbar from './sections/Navbar.jsx';
 import Hero from './sections/Hero.jsx';
 import FeatureBullets from './sections/FeatureBullets.jsx';
@@ -31,6 +32,7 @@ import Footer from './sections/Footer.jsx';
 import StickyCta from './sections/StickyCta.jsx';
 
 export default function App() {
+  useScrollReveal();
   return (
     <>
       <Navbar />

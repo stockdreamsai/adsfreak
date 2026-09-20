@@ -57,16 +57,19 @@ export default function Gallery() {
           proven creatives, with you showing up consistently <em>(or never on camera at all)</em>.
         </p>
 
-        <div className="avatar-row">
-          {AVATARS.map((a) => (
-            <img
-              key={a}
-              className="avatar-img"
-              src={`https://ddufpaulv1kgi.cloudfront.net/avatars/${a}.jpg`}
-              alt={a}
-              loading="lazy"
-            />
-          ))}
+        <div className="avatar-marquee" aria-hidden="false">
+          <div className="avatar-track">
+            {[...AVATARS, ...AVATARS].map((a, i) => (
+              <img
+                key={`${a}-${i}`}
+                className="avatar-img"
+                src={`https://ddufpaulv1kgi.cloudfront.net/avatars/${a}.jpg`}
+                alt={i < AVATARS.length ? a : ''}
+                aria-hidden={i >= AVATARS.length}
+                loading="lazy"
+              />
+            ))}
+          </div>
         </div>
         <p className="avatar-copy">
           <strong>Want a different face in your ads? Easy.</strong> Pick from 100+ AI avatars that
