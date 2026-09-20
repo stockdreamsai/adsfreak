@@ -1,69 +1,67 @@
-import SiteHeader from "./components/SiteHeader.jsx";
-import HeroSection from "./components/HeroSection.jsx";
-import ContentSection03 from "./components/ContentSection03.jsx";
-import SamplesSection from "./components/SamplesSection.jsx";
-import ContentSection05 from "./components/ContentSection05.jsx";
-import AvatarLanguagesSection from "./components/AvatarLanguagesSection.jsx";
-import ComparisonSection from "./components/ComparisonSection.jsx";
-import ProductSection from "./components/ProductSection.jsx";
-import DuoSection from "./components/DuoSection.jsx";
-import ProductSection2 from "./components/ProductSection2.jsx";
-import HowItWorksSection from "./components/HowItWorksSection.jsx";
-import DemoSection from "./components/DemoSection.jsx";
-import CaptionsSection from "./components/CaptionsSection.jsx";
-import IncludedSection from "./components/IncludedSection.jsx";
-import ContentSection15 from "./components/ContentSection15.jsx";
-import BenefitSection from "./components/BenefitSection.jsx";
-import BonusSection from "./components/BonusSection.jsx";
-import BonusSection2 from "./components/BonusSection2.jsx";
-import MemoryDividerSection from "./components/MemoryDividerSection.jsx";
-import EdgeSection from "./components/EdgeSection.jsx";
-import WithSection from "./components/WithSection.jsx";
-import PathSection from "./components/PathSection.jsx";
-import ZeroSection from "./components/ZeroSection.jsx";
-import FoundersSection from "./components/FoundersSection.jsx";
-import FaqSection from "./components/FaqSection.jsx";
-import TestimonialsSection from "./components/TestimonialsSection.jsx";
-import PsSection from "./components/PsSection.jsx";
-import OrderSection from "./components/OrderSection.jsx";
-import SiteFooter from "./components/SiteFooter.jsx";
-import StickyCta from "./components/StickyCta.jsx";
-import LegacyRuntime from "./LegacyRuntime.jsx";
+// AdsFreak landing page — section order mirrors the proven StockDreams.ai
+// long-form sales page structure. Each section is its own component so it
+// can be edited independently (e.g. visually via Builder.io).
+import Navbar from './sections/Navbar.jsx';
+import Hero from './sections/Hero.jsx';
+import FeatureBullets from './sections/FeatureBullets.jsx';
+import PlatformsStrip from './sections/PlatformsStrip.jsx';
+import HowItWorks from './sections/HowItWorks.jsx';
+import Testimonials from './sections/Testimonials.jsx';
+import ProblemStory from './sections/ProblemStory.jsx';
+import PainSection from './sections/PainSection.jsx';
+import Comparison from './sections/Comparison.jsx';
+import RealCosts from './sections/RealCosts.jsx';
+import RightAds from './sections/RightAds.jsx';
+import Introducing from './sections/Introducing.jsx';
+import WatchDemo from './sections/WatchDemo.jsx';
+import EverythingIncluded from './sections/EverythingIncluded.jsx';
+import Gallery from './sections/Gallery.jsx';
+import License from './sections/License.jsx';
+import ExportTools from './sections/ExportTools.jsx';
+import WhoBenefits from './sections/WhoBenefits.jsx';
+import EarningPotential from './sections/EarningPotential.jsx';
+import Bonuses from './sections/Bonuses.jsx';
+import StatsBand from './sections/StatsBand.jsx';
+import PricingBox from './sections/PricingBox.jsx';
+import Guarantee from './sections/Guarantee.jsx';
+import Warning from './sections/Warning.jsx';
+import OneClickAway from './sections/OneClickAway.jsx';
+import FAQ from './sections/FAQ.jsx';
+import SuccessStories from './sections/SuccessStories.jsx';
+import Footer from './sections/Footer.jsx';
 
 export default function App() {
   return (
-    <div id="saf-app">
-      <SiteHeader />
-      <HeroSection />
-      <ContentSection03 />
-      <SamplesSection />
-      <ContentSection05 />
-      <AvatarLanguagesSection />
-      <ComparisonSection />
-      <ProductSection />
-      <DuoSection />
-      <ProductSection2 />
-      <HowItWorksSection />
-      <DemoSection />
-      <CaptionsSection />
-      <IncludedSection />
-      <ContentSection15 />
-      <BenefitSection />
-      <BonusSection />
-      <BonusSection2 />
-      <MemoryDividerSection />
-      <EdgeSection />
-      <WithSection />
-      <PathSection />
-      <ZeroSection />
-      <FoundersSection />
-      <FaqSection />
-      <TestimonialsSection />
-      <PsSection />
-      <OrderSection />
-      <SiteFooter />
-      <StickyCta />
-      <LegacyRuntime />
-    </div>
+    <>
+      <Navbar />
+      <Hero />
+      <FeatureBullets />
+      <PlatformsStrip />
+      <HowItWorks />
+      <Testimonials />
+      <ProblemStory />
+      <PainSection />
+      <Comparison />
+      <RealCosts />
+      <RightAds />
+      <Introducing />
+      <WatchDemo />
+      <EverythingIncluded />
+      <Gallery />
+      <License />
+      <ExportTools />
+      <WhoBenefits />
+      <EarningPotential />
+      <Bonuses />
+      <StatsBand title="Tons of AdsFreak Users Can't Be Wrong" />
+      <PricingBox />
+      <Guarantee />
+      <Warning />
+      <OneClickAway />
+      <FAQ />
+      <SuccessStories />
+      <StatsBand />
+      <Footer />
+    </>
   );
 }
