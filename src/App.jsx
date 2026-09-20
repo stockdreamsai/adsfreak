@@ -1,97 +1,68 @@
-// Social Ads Freak landing page.
-// Section order follows the proven StockDreams.ai long-form sales structure:
-// hero + offer → benefit bullets → platforms → proof (founder + samples) →
-// how it works → testimonials → cost/agitation → comparison → introducing →
-// product depth (studios, faces, avatars, captions, demo) → everything
-// included → cloud → audiences → paths → bonuses → pricing → guarantee →
-// origin story → FAQ → P.S. → final CTA.
-import SiteHeader from "./components/SiteHeader.jsx";
-import HeroSection from "./components/HeroSection.jsx";
-import HeroBenefitsSection from "./components/HeroBenefitsSection.jsx";
-import PlatformsStripSection from "./components/PlatformsStripSection.jsx";
-import ContentSection03 from "./components/ContentSection03.jsx";
-import SamplesSection from "./components/SamplesSection.jsx";
-import HowItWorksSection from "./components/HowItWorksSection.jsx";
-import TestimonialsSection from "./components/TestimonialsSection.jsx";
-import WithSection from "./components/WithSection.jsx";
-import ComparisonSection from "./components/ComparisonSection.jsx";
-import ProductSection from "./components/ProductSection.jsx";
-import DuoSection from "./components/DuoSection.jsx";
-import ContentSection05 from "./components/ContentSection05.jsx";
-import AvatarLanguagesSection from "./components/AvatarLanguagesSection.jsx";
-import CaptionsSection from "./components/CaptionsSection.jsx";
-import DemoSection from "./components/DemoSection.jsx";
-import IncludedSection from "./components/IncludedSection.jsx";
-import ContentSection15 from "./components/ContentSection15.jsx";
-import BenefitSection from "./components/BenefitSection.jsx";
-import PathSection from "./components/PathSection.jsx";
-import BonusSection from "./components/BonusSection.jsx";
-import BonusSection2 from "./components/BonusSection2.jsx";
-import ProductSection2 from "./components/ProductSection2.jsx";
-import ZeroSection from "./components/ZeroSection.jsx";
-import MemoryDividerSection from "./components/MemoryDividerSection.jsx";
-import EdgeSection from "./components/EdgeSection.jsx";
-import FoundersSection from "./components/FoundersSection.jsx";
-import FaqSection from "./components/FaqSection.jsx";
-import PsSection from "./components/PsSection.jsx";
-import OrderSection from "./components/OrderSection.jsx";
-import SiteFooter from "./components/SiteFooter.jsx";
-import StickyCta from "./components/StickyCta.jsx";
-import LegacyRuntime from "./LegacyRuntime.jsx";
+// Social Ads Freak landing page — StockDreams.ai visual structure filled
+// with the real product content. One component per section (Builder-friendly).
+import Navbar from './sections/Navbar.jsx';
+import Hero from './sections/Hero.jsx';
+import FeatureBullets from './sections/FeatureBullets.jsx';
+import PlatformsStrip from './sections/PlatformsStrip.jsx';
+import HowItWorks from './sections/HowItWorks.jsx';
+import Testimonials from './sections/Testimonials.jsx';
+import ProblemStory from './sections/ProblemStory.jsx';
+import PainSection from './sections/PainSection.jsx';
+import Comparison from './sections/Comparison.jsx';
+import RealCosts from './sections/RealCosts.jsx';
+import Introducing from './sections/Introducing.jsx';
+import WatchDemo from './sections/WatchDemo.jsx';
+import EverythingIncluded from './sections/EverythingIncluded.jsx';
+import Gallery from './sections/Gallery.jsx';
+import License from './sections/License.jsx';
+import ExportTools from './sections/ExportTools.jsx';
+import WhoBenefits from './sections/WhoBenefits.jsx';
+import EarningPotential from './sections/EarningPotential.jsx';
+import DragToClone from './sections/DragToClone.jsx';
+import Bonuses from './sections/Bonuses.jsx';
+import StatsBand from './sections/StatsBand.jsx';
+import PricingBox from './sections/PricingBox.jsx';
+import Guarantee from './sections/Guarantee.jsx';
+import Warning from './sections/Warning.jsx';
+import OneClickAway from './sections/OneClickAway.jsx';
+import FAQ from './sections/FAQ.jsx';
+import SuccessStories from './sections/SuccessStories.jsx';
+import Footer from './sections/Footer.jsx';
+import StickyCta from './sections/StickyCta.jsx';
 
 export default function App() {
   return (
-    <div id="saf-app">
-      <SiteHeader />
-      {/* 1. Hero: headline, live clone showcase, price + CTA */}
-      <HeroSection />
-      {/* 2. Benefit bullets under the offer */}
-      <HeroBenefitsSection />
-      {/* 3. Works with every major platform */}
-      <PlatformsStripSection />
-      {/* 4. Proof: founder callout + cloned samples wall */}
-      <ContentSection03 />
-      <SamplesSection />
-      {/* 5. How it works — 3 easy steps, two tracks */}
-      <HowItWorksSection />
-      {/* 6. Social proof: stats + customer quotes */}
-      <TestimonialsSection />
-      {/* 7. Agitation: the real costs of video ads */}
-      <WithSection />
-      {/* 8. Comparison: generic AI vs clone AI */}
-      <ComparisonSection />
-      {/* 9. Introducing the product */}
-      <ProductSection />
-      <DuoSection />
-      {/* 10. Product depth: faces, avatars, languages, captions, demo */}
-      <ContentSection05 />
-      <AvatarLanguagesSection />
-      <CaptionsSection />
-      <DemoSection />
-      {/* 11. Everything included + cloud-based */}
-      <IncludedSection />
-      <ContentSection15 />
-      {/* 12. Who benefits + which path fits you */}
-      <BenefitSection />
-      <PathSection />
-      {/* 13. Bonuses */}
-      <BonusSection />
-      <BonusSection2 />
-      {/* 14. Pricing: value stack + order box */}
-      <ProductSection2 />
-      {/* 15. Guarantee */}
-      <ZeroSection />
-      {/* 16. Origin story + scarcity window */}
-      <MemoryDividerSection />
-      <EdgeSection />
-      <FoundersSection />
-      {/* 17. FAQ, P.S., final CTA */}
-      <FaqSection />
-      <PsSection />
-      <OrderSection />
-      <SiteFooter />
+    <>
+      <Navbar />
+      <Hero />
+      <FeatureBullets />
+      <PlatformsStrip />
+      <HowItWorks />
+      <Testimonials />
+      <ProblemStory />
+      <PainSection />
+      <Comparison />
+      <RealCosts />
+      <Introducing />
+      <WatchDemo />
+      <EverythingIncluded />
+      <Gallery />
+      <License />
+      <ExportTools />
+      <WhoBenefits />
+      <EarningPotential />
+      <DragToClone />
+      <Bonuses />
+      <StatsBand title="Freaks Are Already Winning With It" />
+      <PricingBox />
+      <Guarantee />
+      <Warning />
+      <OneClickAway />
+      <FAQ />
+      <SuccessStories />
+      <StatsBand />
+      <Footer />
       <StickyCta />
-      <LegacyRuntime />
-    </div>
+    </>
   );
 }
