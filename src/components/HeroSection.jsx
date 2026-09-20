@@ -1,6 +1,6 @@
 export default function HeroSection() {
   return (
-    <section className={"hero center"} id={"start"}>
+    <section className={"hero center"} id={"start"} style={{ marginTop: "0px" }}>
       <div className={"hero-mosaic"} aria-hidden={"true"}></div>
       <div className={"narrow container"}>
         <p className={"micro-copy upper-label"}>
@@ -21,7 +21,7 @@ export default function HeroSection() {
           <br />
           
                     Starring 
-          <span className={"typing-text"}></span>
+          <span className={"typing-text"}>You</span>
         </h1>
         <p className={"subheadline hero-sub"}>
           
