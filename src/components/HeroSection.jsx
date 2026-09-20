@@ -1,6 +1,6 @@
 export default function HeroSection() {
   return (
-    <section className={"hero center"} id={"start"} style={{ marginTop: "0px" }}>
+    <section className={"hero center"} id={"start"} style={{ marginTop: "0px", paddingTop: "20px" }}>
       <div className={"hero-mosaic"} aria-hidden={"true"}></div>
       <div className={"narrow container"}>
         <p className={"micro-copy upper-label"}>
