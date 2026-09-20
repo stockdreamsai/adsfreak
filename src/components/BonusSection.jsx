@@ -9,9 +9,11 @@ export default function BonusSection() {
           <span className={"clone-word"}>
             Clone
           </span>
+           {' '}
            Any Video Ad
           <br />
           With
+          {' '}
                     
           <span className={"gradient-text"}>
             One Drag

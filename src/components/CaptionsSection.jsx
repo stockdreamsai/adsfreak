@@ -40,6 +40,7 @@ export default function CaptionsSection() {
           <h2>
             
                         Captions That Land On
+            {' '}
                         
             <span className={"gradient-text"}>
               Every Word
@@ -96,6 +97,7 @@ export default function CaptionsSection() {
               <strong>
                 Timed to the voice, not guessed.
               </strong>
+                            {' '}
               
                             Each word lights up as it's spoken.
                         
@@ -104,6 +106,7 @@ export default function CaptionsSection() {
               <strong>
                 Six looks, one click.
               </strong>
+               {' '}
                Switch styles
                             any time after captioning, free.
                         
@@ -112,6 +115,7 @@ export default function CaptionsSection() {
               <strong>
                 Your spelling wins.
               </strong>
+               {' '}
                Brand and
                             product names come from your script, not a best
                             guess.
@@ -121,6 +125,7 @@ export default function CaptionsSection() {
               <strong>
                 Clear of the buttons.
               </strong>
+               {' '}
                Captions sit
                             above where TikTok, Reels and Shorts put their own
                             controls.
@@ -130,6 +135,7 @@ export default function CaptionsSection() {
               <strong>
                 Baked into the download.
               </strong>
+               {' '}
                On quick
                             ads and full Pro Studio videos alike.
                         

@@ -10,6 +10,7 @@ export default function StickyCta() {
             <s>
               $197
             </s>
+             {' '}
              Today $47
           </span>
         </div>

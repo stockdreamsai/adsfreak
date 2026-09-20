@@ -8,6 +8,7 @@ export default function DuoSection() {
         <h2>
           
                     Two Studios. One
+          {' '}
                     
           <span className={"gradient-text"}>
             Freak
@@ -18,9 +19,11 @@ export default function DuoSection() {
         <p className={"subheadline"}>
           
                     Most tools do quick ads 
+          {' '}
           <em>
             or
           </em>
+           {' '}
            full videos. Social Ads
                     Freak ships both — and you flip between them with one
                     switch.

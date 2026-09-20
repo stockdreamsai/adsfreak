@@ -63,6 +63,7 @@ export default function SamplesSection() {
         <p className={"bridge-text"}>
           
                     Freaky, right?
+          {' '}
                     
           <span className={"bridge-emphasis"}>
             One person. A dozen winning formats. Zero
@@ -71,12 +72,15 @@ export default function SamplesSection() {
           <br />
           
                     Now swap me out for 
+          {' '}
           <strong>
             your product
           </strong>
+           {' '}
            — that's a
                     whole ad account's worth of proven creatives, with you
                     showing up consistently
+          {' '}
                     
           <em>
             (or never on camera at all).

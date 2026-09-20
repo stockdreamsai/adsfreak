@@ -9,39 +9,18 @@ export default function HeroSection() {
                 
         </p>
         <h1 className={"hero-headline"}>
-          Skyrocket Your Conversions, Traffic and Customer Engagement With AI Custom Made Video Ads
+          Skyrocket Your Conversions, Traffic and Customer Engagement With AI Custom Made Video Ads Starring{' '}
+          <span className={"typing-text"}>You</span>
         </h1>
         <p className={"subheadline hero-sub"}>
-          
-                    Social Ads Freak doesn't generate random AI videos. It
-                    clones ads that already won — the hook, the pacing, the
-                    structure, the CTA — and rebuilds them around
-                    
-          <strong>
-            your product
-          </strong>
-          .
-                    
+          Social Ads Freak doesn't generate random AI videos. It clones ads
+          that already won — the hook, the pacing, the structure, the CTA —
+          and rebuilds them around <strong>your product</strong>.
           <br />
-          
-                    The face on camera? Your call:
-                    
-          <strong>
-            your own photo
-          </strong>
-          , or any of
-                    
-          <strong>
-            100+ 
-            <u>
-              freakishly
-            </u>
-             real AI avatars
-          </strong>
-          
-                    — with voice, music, and captions done, ready for TikTok,
-                    Facebook, Instagram, or YouTube.
-                
+          The face on camera? Your call: <strong>your own photo</strong>, or
+          any of <strong>100+ <u>freakishly</u> real AI avatars</strong> —
+          with voice, music, and captions done, ready for TikTok, Facebook,
+          Instagram, or YouTube.
         </p>
       </div>
       <div className={"showcase"}>
@@ -96,6 +75,7 @@ export default function HeroSection() {
             <div className={"clone-status"} aria-hidden={"true"}>
               <span className={"cs-a"}>
                 CLONING
+                {' '}
                 <span className={"cs-dots"}></span>
               </span>
               <span className={"cs-b"}>
@@ -137,6 +117,7 @@ export default function HeroSection() {
         <div className={"product-buy-block hero-buy-block"}>
           <p className={"product-price-old"}>
             Regular Price 
+            {' '}
             <s>
               $197
             </s>
@@ -144,6 +125,7 @@ export default function HeroSection() {
           <p className={"product-price-note"}>
             
                         No monthly fees — 
+            {' '}
             <strong>
               One Time Payment
             </strong>
