@@ -47,6 +47,7 @@ export default function ComparisonSection() {
                 <span className={"list-x"}>
                   ✗
                 </span>
+                 {' '}
                  Looks polished
                             
               </li>
@@ -54,6 +55,7 @@ export default function ComparisonSection() {
                 <span className={"list-x"}>
                   ✗
                 </span>
+                 {' '}
                  Feels artificial
                             
               </li>
@@ -61,6 +63,7 @@ export default function ComparisonSection() {
                 <span className={"list-x"}>
                   ✗
                 </span>
+                 {' '}
                  No proven
                                 structure
                             
@@ -69,6 +72,7 @@ export default function ComparisonSection() {
                 <span className={"list-x"}>
                   ✗
                 </span>
+                 {' '}
                  No emotional
                                 pacing
                             
@@ -77,6 +81,7 @@ export default function ComparisonSection() {
                 <span className={"list-x"}>
                   ✗
                 </span>
+                 {' '}
                  Low trust → low
                                 conversions
                             
@@ -113,6 +118,7 @@ export default function ComparisonSection() {
                 <span className={"list-check"}>
                   ✓
                 </span>
+                 {' '}
                  Feels native +
                                 real
                             
@@ -121,6 +127,7 @@ export default function ComparisonSection() {
                 <span className={"list-check"}>
                   ✓
                 </span>
+                 {' '}
                  Built on
                                 proven ad structures
                             
@@ -129,6 +136,7 @@ export default function ComparisonSection() {
                 <span className={"list-check"}>
                   ✓
                 </span>
+                 {' '}
                  Human pacing +
                                 rhythm
                             
@@ -137,6 +145,7 @@ export default function ComparisonSection() {
                 <span className={"list-check"}>
                   ✓
                 </span>
+                 {' '}
                  You or an
                                 avatar as the face
                             
@@ -145,6 +154,7 @@ export default function ComparisonSection() {
                 <span className={"list-check"}>
                   ✓
                 </span>
+                 {' '}
                  Designed to
                                 convert
                             
