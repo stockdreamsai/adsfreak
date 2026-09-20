@@ -274,6 +274,10 @@ strong {
    NAV — Clean top bar
    ============================================================ */
 
+header.nav {
+    display: none;
+}
+
 .nav {
     position: sticky;
     top: 0;
