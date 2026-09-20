@@ -8,6 +8,7 @@ export default function ContentSection03() {
             <h3 className={"founder-name"}>
               
                             Ali G
+              {' '}
                             
               <span className={"founder-title"}>
                 · Founder, Social Ads Freak · Social Lead Freak
@@ -18,21 +19,27 @@ export default function ContentSection03() {
               
                             Every video below is me — and I never picked up a
                             camera. I fed
+              {' '}
                             
               <strong>
                 Social Ads Freak
               </strong>
+               {' '}
                proven formats and
                             let it clone them:
+              {' '}
                             
               <strong>
                 short-form viral
               </strong>
+               {' '}
                ads that stop the
                             scroll, plus 
+              {' '}
               <strong>
                 long-form
               </strong>
+               {' '}
                talking
                             videos that build trust — no crew, no studio, no
                             editing.

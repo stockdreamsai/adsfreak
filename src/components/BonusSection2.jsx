@@ -11,6 +11,7 @@ export default function BonusSection2() {
           <span className={"gradient-text"}>
             31 Days
           </span>
+           {' '}
            Of Video
                     Content
           <br />
@@ -55,6 +56,7 @@ export default function BonusSection2() {
                   <div className={"b31-input"}>
                     
                                         Skincare tips for busy moms
+                    {' '}
                     <span className={"b31-caret"}></span>
                   </div>
                 </div>
@@ -80,6 +82,7 @@ export default function BonusSection2() {
                     <span className={"b31-step-tag"}>
                       Step 2
                     </span>
+                                        {' '}
                     
                                         A full month, planned for you
                                     

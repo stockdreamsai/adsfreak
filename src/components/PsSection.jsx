@@ -17,6 +17,7 @@ export default function PsSection() {
               Social Ads Freak clones video ads that already
                             won
             </strong>
+                        {' '}
             
                         — the hook, the pacing, the structure, the CTA — and
                         rebuilds them around your product, starring your own

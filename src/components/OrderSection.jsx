@@ -8,6 +8,7 @@ export default function OrderSection() {
             <h3 className={"founder-name"}>
               
                             Ali G
+              {' '}
                             
               <span className={"founder-title"}>
                 · Founder, Social Ads Freak
@@ -28,6 +29,7 @@ export default function OrderSection() {
           <span className={"clone-word"}>
             Clone
           </span>
+           {' '}
            freakishly real video
                     ads.
                     
@@ -48,6 +50,7 @@ export default function OrderSection() {
           <img src={"/images/sticker-coin.png"} alt={""} aria-hidden={"true"} className={"mascot-accent mascot-coin"} />
           <p className={"product-price-old"}>
             Regular Price 
+            {' '}
             <s>
               $197
             </s>
@@ -55,6 +58,7 @@ export default function OrderSection() {
           <p className={"product-price-note"}>
             
                         No monthly fees — 
+            {' '}
             <strong>
               One Time Payment
             </strong>
