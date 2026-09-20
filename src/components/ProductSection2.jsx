@@ -157,6 +157,7 @@ export default function ProductSection2() {
         <div className={"product-buy-block reveal"}>
           <p className={"product-price-old"}>
             Regular Price 
+            {' '}
             <s>
               $197
             </s>
@@ -164,6 +165,7 @@ export default function ProductSection2() {
           <p className={"product-price-note"}>
             
                         No monthly fees — 
+            {' '}
             <strong>
               One Time Payment
             </strong>

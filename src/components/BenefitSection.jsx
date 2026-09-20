@@ -10,6 +10,7 @@ export default function BenefitSection() {
         <h2>
           
                     Everyone Can Benefit From
+          {' '}
                     
           <span className={"gradient-text"}>
             Social Ads Freak

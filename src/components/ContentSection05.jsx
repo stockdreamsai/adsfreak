@@ -71,6 +71,7 @@ export default function ContentSection05() {
             <div className={"clone-status"} aria-hidden={"true"}>
               <span className={"cs-a"}>
                 CLONING
+                {' '}
                 <span className={"cs-dots"}></span>
               </span>
               <span className={"cs-b"}>

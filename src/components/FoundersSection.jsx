@@ -35,6 +35,7 @@ export default function FoundersSection() {
                 <strong>
                   2013 edge:
                 </strong>
+                 {' '}
                  targeting
                                 leverage.
               </span>
@@ -45,6 +46,7 @@ export default function FoundersSection() {
                 <strong>
                   2026 edge:
                 </strong>
+                 {' '}
                  creative
                                 velocity.
               </span>
@@ -55,6 +57,7 @@ export default function FoundersSection() {
                 <strong>
                   Same philosophy:
                 </strong>
+                 {' '}
                  find the
                                 leverage early and build the tool.
               </span>

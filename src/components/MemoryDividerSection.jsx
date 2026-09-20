@@ -8,6 +8,7 @@ export default function MemoryDividerSection() {
             <h3 className={"founder-name"}>
               
                             Ali G
+              {' '}
                             
               <span className={"founder-title"}>
                 · Founder, Social Ads Freak

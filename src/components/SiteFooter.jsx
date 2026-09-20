@@ -6,6 +6,7 @@ export default function SiteFooter() {
           <strong>
             Earnings &amp; Results Disclaimer:
           </strong>
+           {' '}
            The
                     results shown on this page are illustrative and are not a
                     promise or guarantee of income or specific outcomes. Video
