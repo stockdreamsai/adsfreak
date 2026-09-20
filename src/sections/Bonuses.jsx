@@ -5,10 +5,10 @@ export default function Bonuses() {
     <section className="bonuses">
       <div className="container narrow">
         <SectionTitle
-          kicker="Fast Action Bonus · $97 Value"
-          title="31 Days Of Video Content"
-          highlight="From One Single Topic"
-          sub="We'll also gift you this exclusive bonus with your one-time investment in Social Ads Freak today."
+          kicker="Fast Action Bonus · $97 Value · Launch Buyers Only"
+          title="Order Today And We'll Also Gift You:"
+          highlight="31 Days Of Video Content From One Single Topic"
+          sub="This bonus is our launch-window 'thank you' for acting fast — it disappears when the timer does."
         />
         <div className="bonus-feature">
           <div className="bonus-copy">

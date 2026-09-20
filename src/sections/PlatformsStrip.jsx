@@ -5,7 +5,7 @@ export default function PlatformsStrip() {
     <section className="platforms">
       <div className="container">
         <p className="platforms-title">
-          Freakishly real video ads — <strong>ready for every major platform</strong>
+          One click. Every format. <strong>Your ads, ready for every platform that prints money:</strong>
         </p>
         <div className="platforms-row">
           {PLATFORMS.map((p) => (

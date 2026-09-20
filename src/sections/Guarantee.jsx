@@ -1,17 +1,23 @@
+import { Circled } from '../components/Shared.jsx';
+
 export default function Guarantee() {
   return (
     <section className="guarantee">
       <div className="container narrow guarantee-inner">
         <div className="guarantee-copy">
           <h2 className="on-dark">
-            Try It For <span className="grad-text-light">30 Days.</span>
+            Launch Faster &amp; Test More In{' '}
+            <Circled light><span className="grad-text-light">30 Days</span></Circled> — Or Pay
+            Nothing.
           </h2>
           <p className="on-dark">
-            If you don't launch faster… test more… and feel the difference… cancel.
+            Here's the deal: get inside, clone your first ads tonight, run them for a full month.
+            If you don't launch faster, test more angles, and feel the difference in your
+            campaigns — email us and every cent comes back to you.
           </p>
           <p className="on-dark">
-            <strong>No hoops. No friction. No risk.</strong> If Social Ads Freak doesn't blow your
-            mind, just reach out and we'll refund you — no questions asked.
+            <strong>No hoops. No friction. No questions. No risk.</strong> Either it works for
+            you, or it's free. All the risk is on us — the only way you lose is by not trying it.
           </p>
         </div>
         <div className="guarantee-badge" aria-hidden="true">

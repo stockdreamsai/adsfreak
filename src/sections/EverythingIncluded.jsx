@@ -56,10 +56,10 @@ export default function EverythingIncluded() {
     <section className="included">
       <div className="container">
         <SectionTitle
-          kicker="What You Get"
+          kicker="What You Get — Worth $766, Yours For $47"
           title="Here's Everything Included With"
           highlight="Social Ads Freak"
-          sub="Unleash the full potential of AI-powered video ads."
+          sub="Nine weapons. One login. Each of these alone would cost more than today's entire price."
         />
         <div className="included-list">
           {FEATURES.map((f, i) => (

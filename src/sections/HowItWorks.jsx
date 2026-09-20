@@ -1,4 +1,4 @@
-import { SectionTitle } from '../components/Shared.jsx';
+import { SectionTitle, Circled } from '../components/Shared.jsx';
 
 const STEPS = [
   {
@@ -26,8 +26,8 @@ export default function HowItWorks() {
     <section className="how-it-works" id="how-it-works">
       <div className="container">
         <SectionTitle
-          title="Fire Your Video Crew Today!"
-          sub="Clone an ad that already won — in 3 ridiculously easy steps. No camera, no studio, no editing."
+          title={<><Circled>Fire</Circled> Your Video Crew Today!</>}
+          sub="If you can copy-paste, you can do this. Clone an ad that already won — in 3 ridiculously easy steps. No camera, no studio, no editing, no learning curve."
         />
         <div className="steps">
           {STEPS.map((s) => (

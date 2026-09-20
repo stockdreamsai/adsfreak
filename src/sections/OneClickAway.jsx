@@ -10,17 +10,23 @@ export default function OneClickAway() {
             <p className="on-dark"><strong>Ali G</strong> · Founder, Social Ads Freak</p>
           </div>
           <h2 className="on-dark">
-            You Missed The First Freak. <span className="grad-text-light">Don't Miss This One.</span>
+            You're Standing At A Fork. <span className="grad-text-light">There Are Only Two Roads.</span>
           </h2>
           <p className="on-dark">
-            Social Lead Freak, back in 2013, changed everything for the people who got in early.
-            This is the same shape of moment — and the same short window.
+            <strong>Road #1:</strong> close this page, keep paying $150–$500 a video, keep waiting
+            two weeks per round, and keep watching competitors out-test you 50 to 1. In twelve
+            months, you'll buy a tool like this anyway — at full price, with the edge gone.
           </p>
           <p className="on-dark">
-            Clone <strong>freakishly real video ads</strong>. Star in them yourself — or cast any
-            of 100+ avatars. Launch across markets. Scale what works.
+            <strong>Road #2:</strong> invest $47 once — less than a single boosted post — and
+            tonight you're cloning <strong>freakishly real video ads</strong>: starring you or any
+            of 100+ avatars, in 30+ languages, launched across every platform. Protected by a full
+            30-day guarantee.
           </p>
-          <CTAButton large>Get Social Ads Freak Now</CTAButton>
+          <p className="on-dark">
+            You missed the first Freak in 2013. <strong>Don't miss this one.</strong>
+          </p>
+          <CTAButton large>Take Road #2 — Get Instant Access</CTAButton>
         </div>
         <img className="one-click-img" src="/BOX-PNG.png" alt="Social Ads Freak box" loading="lazy" />
       </div>
