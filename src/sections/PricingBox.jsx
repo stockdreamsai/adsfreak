@@ -1,4 +1,4 @@
-import { SectionTitle, CHECKOUT_URL } from '../components/Shared.jsx';
+import { SectionTitle, CHECKOUT_URL, Circled } from '../components/Shared.jsx';
 
 const STACK = [
   ['Social Ads Freak — clone winning video ads', '$197'],
@@ -20,6 +20,7 @@ export default function PricingBox() {
           highlight="With The Power of AI"
         />
         <div className="pricing-box">
+          <span className="pricing-ribbon">76% OFF</span>
           <img className="pricing-boxshot" src="/brand/png/saf-boxshot.png" alt="Social Ads Freak" />
           <h3>Here's Everything You Get Today</h3>
           <ul className="pricing-list stack">
@@ -38,7 +39,7 @@ export default function PricingBox() {
             Regular Price <s>$197</s>
           </p>
           <p className="pricing-launch">No monthly fees — <strong>One Time Payment</strong></p>
-          <p className="pricing-price">Today: Just $47</p>
+          <p className="pricing-price">Today: Just <Circled>$47</Circled></p>
           <a className="buy-button" href={CHECKOUT_URL}>
             BUY NOW ›
           </a>
