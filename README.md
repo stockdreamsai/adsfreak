@@ -1,39 +1,54 @@
-# AdsFreak — Landing Page
+# Social Ads Freak — React/Vite landing page
 
-Long-form sales landing page for **AdsFreak**, built as a Vite + React app so it can be
-edited visually with **Builder.io** and maintained through GitHub + Claude Code.
-
-The section order mirrors the proven StockDreams.ai sales page structure.
+Converted from the original `new2.html` + `new2.css` package so the page can live in a normal GitHub codebase and be opened by visual/code tools that support React.
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev      # dev server at http://localhost:5173
-npm run build    # production build to dist/
+npm run dev
 ```
+
+## Build
+
+```bash
+npm run build
+```
+
+Vercel detects Vite automatically. Build command: `npm run build`; output directory: `dist`.
 
 ## Structure
 
-- `src/App.jsx` — page composition (section order lives here)
-- `src/sections/*.jsx` — one component per landing-page section
-- `src/components/Shared.jsx` — CTA button, section title, media placeholder
-- `src/styles.css` — design tokens (colors, gradients) + all section styles
+- `src/components/` — major visual page blocks split into React components for easier visual editing.
+- `src/styles.css` — original stylesheet.
+- `public/images`, `public/videos`, `public/brand`, `public/captions` — original assets.
+- `public/legacy/` — original interactive JavaScript, loaded after React mounts to preserve the existing animations/demos.
+- `public/terms.html`, `privacy.html`, `disclaimer.html` — original legal pages.
 
-## Connect to Builder.io
+## Builder + GitHub workflow
 
-1. In Builder.io, create/open a **Project** (Fusion) and connect this GitHub repo.
-2. Builder will run `npm install` and `npm run dev` to preview the app.
-3. Each section is a small standalone component, so visual edits map to clean diffs.
+1. Push this folder to a GitHub repo.
+2. Connect the React/Vite repo in Builder Projects.
+3. Use GitHub as the source of truth. Commit/push after visual edits before asking Claude Code to change the same files.
+4. Claude Code can work on the same repo; pull/reload Builder after Claude pushes changes.
 
-## Before launch — replace placeholders
+## Same domain as an existing Vercel app
 
-Search the code for `PLACEHOLDER` and `[` brackets:
+No problem. The cleanest setups are either:
 
-- **Videos**: hero VSL + demo video (`Hero.jsx`, `WatchDemo.jsx`)
-- **Images**: every `MediaPlaceholder` → real screenshots/mockups
-- **Testimonials & success stories**: use only real, verifiable customer quotes
-- **Stats** (`StatsBand.jsx`): use your real numbers
-- **Bonuses** (`Bonuses.jsx`): your real bonus stack
-- **Checkout link**: `PricingBox.jsx` buy button + `CTAButton` default `href`
-- **Footer links**: privacy/terms/disclaimer/support pages
+- `example.com` = this landing page and `app.example.com` = the product app; or
+- one primary Vercel project owns `example.com` and rewrites `/app/*` to the separate app project.
+
+If both projects need the exact same hostname, use a routing/rewrite layer rather than attaching the exact same production domain independently to both projects.
+
+Example front-door rewrite (replace the destination):
+
+```json
+{
+  "rewrites": [
+    { "source": "/app/:path*", "destination": "https://YOUR-APP.vercel.app/:path*" }
+  ]
+}
+```
+
+Do not add that rewrite until the app's production URL and desired public route are known.

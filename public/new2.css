@@ -274,10 +274,6 @@ strong {
    NAV — Clean top bar
    ============================================================ */
 
-header.nav {
-    display: none;
-}
-
 .nav {
     position: sticky;
     top: 0;
@@ -5784,58 +5780,4 @@ button:focus-visible {
         border-right: none;
         padding-right: 0;
     }
-}
-
-/* --- Hero benefits (StockDreams-style bullets under the offer) --- */
-
-.hero-benefits-section {
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
-
-.feature-list-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px 36px;
-    text-align: left;
-    margin-top: 0;
-}
-
-.feature-list-grid .feature-item {
-    align-items: flex-start;
-}
-
-@media (max-width: 760px) {
-    .feature-list-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* --- Platforms strip --- */
-
-.platforms-strip-section {
-    padding-top: 24px;
-    padding-bottom: 56px;
-}
-
-.platforms-strip-title {
-    font-size: 17px;
-    color: rgba(255, 255, 255, 0.75);
-    margin-bottom: 20px;
-}
-
-.platforms-strip-title strong {
-    color: var(--white, #fff);
-}
-
-.platforms-strip-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
-}
-
-.platform-strip-badge {
-    font-size: 14px;
-    padding: 10px 22px;
 }
