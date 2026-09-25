@@ -1,4 +1,5 @@
 import { Circled } from '../components/Shared.jsx';
+import { DarkDecor } from '../components/Decor.jsx';
 
 function Seal() {
   return (
@@ -25,6 +26,7 @@ function Seal() {
 export default function Guarantee() {
   return (
     <section className="guarantee">
+      <DarkDecor />
       <div className="container narrow guarantee-inner">
         <div className="guarantee-copy">
           <h2 className="on-dark">

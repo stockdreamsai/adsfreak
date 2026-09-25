@@ -1,4 +1,5 @@
 import { CTAButton, TypedWords, Circled, Countdown } from '../components/Shared.jsx';
+import { DarkDecor } from '../components/Decor.jsx';
 
 // TODO: paste the sales video embed URL (YouTube / Vimeo / Wistia "embed"
 // link) when it's ready. While null, a styled placeholder is shown.
@@ -6,7 +7,8 @@ const VSL_EMBED_URL = null;
 
 function SalesVideo() {
   return (
-    <div className="vsl-frame">
+    <div className="glow-frame">
+      <div className="vsl-frame">
       {VSL_EMBED_URL ? (
         <iframe
           src={VSL_EMBED_URL}
@@ -20,6 +22,7 @@ function SalesVideo() {
           <span className="vsl-label">Sales video coming soon</span>
         </div>
       )}
+      </div>
     </div>
   );
 }
@@ -27,6 +30,7 @@ function SalesVideo() {
 export default function Hero() {
   return (
     <section className="hero" id="top">
+      <DarkDecor floor />
       <div className="container">
         <p className="hero-kicker">THE FREAK IS BACK… NOW WITH AI SUPERPOWERS</p>
         <h1>

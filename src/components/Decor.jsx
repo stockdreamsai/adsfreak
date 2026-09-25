@@ -38,3 +38,39 @@ export default function Doodles() {
     </div>
   );
 }
+
+// --- Dark-section decor: twinkling stars, neon sparkles, perspective grid floor ---
+
+// Seeded star field: positions stay identical across renders.
+function makeStars(count, seed) {
+  let s = seed;
+  const rand = () => {
+    s = (s * 9301 + 49297) % 233280;
+    return s / 233280;
+  };
+  return Array.from({ length: count }, () => ({
+    left: `${(rand() * 100).toFixed(2)}%`,
+    top: `${(rand() * 100).toFixed(2)}%`,
+    size: 1 + Math.round(rand() * 2),
+    delay: `${(rand() * 4).toFixed(2)}s`,
+  }));
+}
+const STARS = makeStars(26, 7);
+
+export function DarkDecor({ floor = false }) {
+  return (
+    <div className="dark-decor" aria-hidden="true">
+      {STARS.map((st, i) => (
+        <span
+          key={i}
+          className="dd-star"
+          style={{ left: st.left, top: st.top, width: st.size, height: st.size, animationDelay: st.delay }}
+        />
+      ))}
+      <Star className="dd-sparkle dd-sparkle-a" />
+      <Star className="dd-sparkle dd-sparkle-b" />
+      <Star className="dd-sparkle dd-sparkle-c" />
+      {floor && <div className="dd-floor" />}
+    </div>
+  );
+}

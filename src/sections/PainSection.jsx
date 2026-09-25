@@ -1,3 +1,5 @@
+import { DarkDecor } from '../components/Decor.jsx';
+
 const ROADS = [
   {
     icon: '🏢',
@@ -51,13 +53,18 @@ export default function PainSection() {
         </div>
 
         <div className="pain-fix">
+          <DarkDecor />
           <div className="pain-fix-copy">
             <p className="pain-fix-kicker">The way out</p>
             <p className="pain-fix-title">
               The fix isn't more AI. It's AI that <span className="grad-text-light">clones what already converts</span>.
             </p>
           </div>
-          <img className="pain-fix-img" src="/images/recreated-ad.jpg" alt="A cloned ad starring Ali G" loading="lazy" />
+          <div className="pain-fix-media">
+            <img className="pain-fix-img" src="/images/recreated-ad.jpg" alt="A cloned ad starring Ali G" loading="lazy" />
+            <span className="float-chip chip-good pf-chip-a">✓ Hook cloned</span>
+            <span className="float-chip chip-good pf-chip-b">⚡ Ready in minutes</span>
+          </div>
         </div>
       </div>
     </section>
