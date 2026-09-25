@@ -1,35 +1,63 @@
+const ROADS = [
+  {
+    icon: '🏢',
+    title: 'Hire an agency?',
+    cost: '$1,000–$5,000 / cycle',
+    text: 'Monthly retainers — and they get paid whether the ads convert or not.',
+  },
+  {
+    icon: '🎥',
+    title: 'Hire freelance creators?',
+    cost: '$150–$500 / video',
+    text: '7–14 days of back-and-forth, 3–5 variations if you’re lucky. By the time it lands, the trend is dead.',
+  },
+  {
+    icon: '🎬',
+    title: 'Film it yourself?',
+    cost: 'Your whole week',
+    text: 'Gear, scripts, retakes, editing software — all for one clip.',
+  },
+  {
+    icon: '🤖',
+    title: 'Generic AI video?',
+    cost: 'Zero trust',
+    text: 'Fast, sure. But over-polished, robotic, dead behind the eyes. People scroll past it.',
+  },
+];
+
 export default function PainSection() {
   return (
-    <section className="pain">
-      <div className="container narrow">
-        <h2>
-          Every Road To "More Video Ads" Is{' '}
-          <span className="grad-text">Rigged Against You</span>
-        </h2>
-        <div className="pain-split">
-          <img className="pain-img" src="/images/recreated-ad.jpg" alt="Producing a video ad" loading="lazy" />
-          <div className="pain-copy">
-            <p>
-              <strong>Hire an agency?</strong> $1,000–$5,000 per testing cycle, monthly retainers,
-              and they get paid whether the ads convert or not.
-            </p>
-            <p>
-              <strong>Hire freelance creators?</strong> $150–$500 <em>per video</em>, 7–14 days of
-              back-and-forth, and 3–5 variations if you're lucky. By the time the ad lands, the
-              trend it was chasing is dead.
-            </p>
-            <p>
-              <strong>Film it yourself?</strong> Gear, scripts, retakes, editing software — and
-              your whole week gone for one clip.
-            </p>
-            <p>
-              <strong>Generic AI video?</strong> Fast, sure. But over-polished, robotic, dead
-              behind the eyes. People scroll past it because nobody trusts it.
-            </p>
-            <p className="pain-punch">
-              The fix isn't more AI. It's AI that <strong>clones what already converts</strong>.
+    <section className="pain bg-grid">
+      <div className="container">
+        <div className="section-title">
+          <h2>
+            Every Road To "More Video Ads" Is{' '}
+            <span className="grad-text">Rigged Against You</span>
+          </h2>
+        </div>
+
+        <div className="roads-grid">
+          {ROADS.map((r) => (
+            <div className="road-card" key={r.title}>
+              <div className="road-head">
+                <span className="road-icon" aria-hidden="true">{r.icon}</span>
+                <span className="road-blocked" aria-hidden="true">✕</span>
+              </div>
+              <h3>{r.title}</h3>
+              <span className="road-cost">{r.cost}</span>
+              <p>{r.text}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="pain-fix">
+          <div className="pain-fix-copy">
+            <p className="pain-fix-kicker">The way out</p>
+            <p className="pain-fix-title">
+              The fix isn't more AI. It's AI that <span className="grad-text-light">clones what already converts</span>.
             </p>
           </div>
+          <img className="pain-fix-img" src="/images/recreated-ad.jpg" alt="A cloned ad starring Ali G" loading="lazy" />
         </div>
       </div>
     </section>
