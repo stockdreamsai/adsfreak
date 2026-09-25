@@ -12,7 +12,7 @@ export default function StatsBand({ title }) {
     <section className="stats-band">
       <div className="container">
         {title && <h2 className="stats-title">{title}</h2>}
-        <div className="stats-grid">
+        <div className="stats-panel">
           {STATS.map((s) => (
             <div className="stat" key={s.label}>
               <span className="stat-icon" aria-hidden="true">{s.icon}</span>

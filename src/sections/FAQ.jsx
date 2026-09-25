@@ -47,9 +47,21 @@ const FAQS = [
 export default function FAQ() {
   const [open, setOpen] = useState(0);
   return (
-    <section className="faq">
-      <div className="container narrow">
-        <SectionTitle kicker="Support" title="Frequently Asked" highlight="Questions" />
+    <section className="faq bg-grid">
+      <div className="container faq-layout">
+        <aside className="faq-side">
+          <SectionTitle kicker="Support" title="Frequently Asked" highlight="Questions" />
+          <div className="faq-help">
+            <img className="avatar-img" src="https://ddufpaulv1kgi.cloudfront.net/avatars/ali.JPG" alt="Ali G" loading="lazy" />
+            <div>
+              <strong>Still on the fence?</strong>
+              <p>
+                You get a full 30 days to try everything. If it's not for you, one email gets
+                you a full refund.
+              </p>
+            </div>
+          </div>
+        </aside>
         <div className="faq-list">
           {FAQS.map((f, i) => (
             <div className={`faq-item${open === i ? ' open' : ''}`} key={f.q}>

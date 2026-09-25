@@ -28,7 +28,7 @@ const RECEIPT = [
 
 export default function Comparison() {
   return (
-    <section className="comparison vs-section">
+    <section className="comparison vs-section bg-grid">
       <Doodles />
       <div className="container">
         <div className="section-title">

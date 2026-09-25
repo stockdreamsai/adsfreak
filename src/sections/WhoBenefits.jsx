@@ -12,7 +12,7 @@ const AUDIENCES = [
 
 export default function WhoBenefits() {
   return (
-    <section className="who-benefits">
+    <section className="who-benefits bg-grid">
       <Doodles />
       <div className="container">
         <SectionTitle

@@ -65,23 +65,26 @@ export default function EverythingIncluded() {
           {FEATURES.map((f, i) => (
             <div className={`included-row${i % 2 ? ' reverse' : ''}`} key={f.title}>
               <div className="included-copy">
+                <span className="included-index">{String(i + 1).padStart(2, '0')}</span>
                 <h3>{f.title}</h3>
                 <p>{f.text}</p>
               </div>
-              {f.video ? (
-                <video
-                  className="included-media"
-                  src={f.video}
-                  poster={f.poster}
-                  muted
-                  autoPlay
-                  loop
-                  playsInline
-                  preload="metadata"
-                ></video>
-              ) : (
-                <img className="included-media" src={f.img} alt={f.title} loading="lazy" />
-              )}
+              <div className="included-media-wrap">
+                {f.video ? (
+                  <video
+                    className="included-media"
+                    src={f.video}
+                    poster={f.poster}
+                    muted
+                    autoPlay
+                    loop
+                    playsInline
+                    preload="metadata"
+                  ></video>
+                ) : (
+                  <img className="included-media" src={f.img} alt={f.title} loading="lazy" />
+                )}
+              </div>
             </div>
           ))}
         </div>

@@ -18,6 +18,9 @@ const REVEAL_SELECTORS = [
   '.warning p', '.warning .cta-button', '.one-click-copy', '.one-click-img',
   '.founders-img', '.founders-copy', '.ps-card', '.footer-top', '.footer-cols',
   '.export-note', '.center > .cta-button',
+  '.bullets-card', '.stats-panel', '.alert-list li', '.problem-media', '.road-card', '.pain-fix',
+  '.timeline-node', '.timeline-line', '.founders-photo', '.bonus-gift', '.faq-side', '.seal',
+  '.vs-card', '.bonus-caption',
 ].join(',');
 
 export function useScrollReveal() {
@@ -46,7 +49,19 @@ export function useScrollReveal() {
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+          if (!e.isIntersecting) return;
+          const el = e.target;
+          el.classList.add('in-view');
+          io.unobserve(el);
+          // Once the entrance finishes, hand the element back to its own
+          // transform/transition rules so hover effects work again.
+          if (el.classList.contains('rv')) {
+            const delay = parseInt(el.style.transitionDelay, 10) || 0;
+            setTimeout(() => {
+              el.classList.remove('rv');
+              el.style.transitionDelay = '';
+            }, delay + 800);
+          }
         });
       },
       { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }

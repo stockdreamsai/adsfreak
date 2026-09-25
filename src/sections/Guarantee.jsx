@@ -1,5 +1,27 @@
 import { Circled } from '../components/Shared.jsx';
 
+function Seal() {
+  return (
+    <div className="seal" aria-hidden="true">
+      <svg className="seal-ring" viewBox="0 0 200 200">
+        <defs>
+          <path id="seal-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
+        </defs>
+        <text>
+          {/* textLength = circumference of r=78 (2πr ≈ 490) so the ring closes exactly */}
+          <textPath href="#seal-circle" textLength="486" lengthAdjust="spacing">
+            30-DAY MONEY-BACK GUARANTEE • RISK FREE •
+          </textPath>
+        </text>
+      </svg>
+      <div className="seal-core">
+        <span className="seal-num">30</span>
+        <span className="seal-label">DAYS<br />RISK-FREE</span>
+      </div>
+    </div>
+  );
+}
+
 export default function Guarantee() {
   return (
     <section className="guarantee">
@@ -20,9 +42,7 @@ export default function Guarantee() {
             you, or it's free. All the risk is on us — the only way you lose is by not trying it.
           </p>
         </div>
-        <div className="guarantee-badge" aria-hidden="true">
-          <span>30-DAY<br />MONEY<br />BACK</span>
-        </div>
+        <Seal />
       </div>
     </section>
   );
