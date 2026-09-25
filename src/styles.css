@@ -2061,3 +2061,99 @@ h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); letter-spacing: -0.02em; }
 @media (max-width: 760px) {
   .hero-sub { font-size: 1rem; }
 }
+
+/* ============================================================
+   Layout change: no top nav, VSL in hero, urgency bar at bottom
+   ============================================================ */
+
+section { scroll-margin-top: 0; }
+.faq-side { top: 32px; }
+.hero { padding-top: 64px; }
+
+/* short hero punchline (replaces the long subheadline) */
+.hero-punch {
+  font-size: clamp(1.3rem, 2.6vw, 1.75rem);
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin: 4px 0 34px;
+}
+
+/* sales video frame */
+.vsl-frame {
+  position: relative;
+  max-width: 840px;
+  aspect-ratio: 16 / 9;
+  margin: 0 auto 46px;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #0f1228;
+  box-shadow: 0 34px 80px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(183, 139, 255, 0.45);
+}
+.vsl-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.vsl-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background:
+    radial-gradient(500px 280px at 50% 40%, rgba(139, 61, 255, 0.35), transparent 70%),
+    radial-gradient(400px 220px at 80% 100%, rgba(240, 67, 193, 0.25), transparent 70%),
+    #0f1228;
+}
+.vsl-play {
+  width: 92px; height: 92px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--grad);
+  color: #fff;
+  font-size: 2rem;
+  padding-left: 6px;
+  box-shadow: 0 0 0 12px rgba(240, 67, 193, 0.15), 0 18px 40px rgba(240, 67, 193, 0.45);
+  animation: vsl-pulse 2.2s ease-in-out infinite;
+}
+@keyframes vsl-pulse {
+  0%, 100% { box-shadow: 0 0 0 10px rgba(240, 67, 193, 0.15), 0 18px 40px rgba(240, 67, 193, 0.45); }
+  50% { box-shadow: 0 0 0 22px rgba(240, 67, 193, 0.06), 0 18px 40px rgba(240, 67, 193, 0.6); }
+}
+.vsl-label { color: #aab0dd; font-weight: 800; letter-spacing: 0.06em; font-size: 0.9rem; }
+
+/* original → clone showcase, now its own dark band */
+.clone-showcase {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(700px 360px at 15% 0%, rgba(139, 61, 255, 0.35), transparent 65%),
+    radial-gradient(700px 360px at 90% 100%, rgba(240, 67, 193, 0.25), transparent 65%),
+    var(--navy);
+  border-radius: 32px;
+  margin: 10px 0;
+}
+.clone-showcase .section-title h2 { color: #fff; }
+.clone-showcase .section-sub { color: #aab0dd; }
+.clone-showcase .hero-showcase { margin-bottom: 0; }
+
+/* launch bar, pinned to the bottom of the screen */
+.urgency-bar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 100;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.3);
+  padding: 12px clamp(12px, 4vw, 32px);
+  animation: sticky-in 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+body { padding-bottom: 64px; }
+@media (max-width: 760px) {
+  .urgency-long { display: none; }
+  .urgency-bar { flex-wrap: nowrap; gap: 8px; font-size: 0.8rem; padding: 10px 12px; justify-content: space-between; }
+  .urgency-bar p { text-align: left; }
+  .urgency-cta { font-size: 0.75rem; padding: 6px 11px; }
+  .countdown-compact { padding: 3px 8px; font-size: 0.8rem; }
+  body { padding-bottom: 58px; }
+  .vsl-play { width: 68px; height: 68px; font-size: 1.5rem; }
+}
+
+.hero-punch .grad-text-light { white-space: nowrap; }

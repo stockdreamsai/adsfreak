@@ -1,4 +1,28 @@
-import { CTAButton, VideoFrame, TypedWords, Circled, Countdown } from '../components/Shared.jsx';
+import { CTAButton, TypedWords, Circled, Countdown } from '../components/Shared.jsx';
+
+// TODO: paste the sales video embed URL (YouTube / Vimeo / Wistia "embed"
+// link) when it's ready. While null, a styled placeholder is shown.
+const VSL_EMBED_URL = null;
+
+function SalesVideo() {
+  return (
+    <div className="vsl-frame">
+      {VSL_EMBED_URL ? (
+        <iframe
+          src={VSL_EMBED_URL}
+          title="Social Ads Freak sales video"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <div className="vsl-placeholder">
+          <span className="vsl-play" aria-hidden="true">▶</span>
+          <span className="vsl-label">Sales video coming soon</span>
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
@@ -10,39 +34,11 @@ export default function Hero() {
           <span className="grad-text-light">Cloning Video Ads That Already Won</span> — Starring{' '}
           <TypedWords />
         </h1>
-        <p className="hero-sub">
-          While your competitors burn <strong>$500 per video</strong> and wait{' '}
-          <strong>2 weeks</strong> on editors, you'll clone the exact hook, pacing and structure of
-          proven winners — rebuilt around <strong>your product</strong>, in{' '}
-          <strong>under 10 minutes</strong>. Star in them with your own face and cloned voice, or
-          cast any of <strong>100+ freakishly real AI avatars</strong>. No camera. No crew. No
-          design skills.
+        <p className="hero-punch">
+          Zero Cameras. <span className="grad-text-light">Proven Winners.</span>
         </p>
 
-        <div className="hero-showcase">
-          <div className="showcase-col tilt-left">
-            <VideoFrame
-              src="https://ddufpaulv1kgi.cloudfront.net/videos/rogan-onnit.mp4"
-              label="The Original"
-            />
-          </div>
-          <div className="showcase-middle">
-            <div className="showcase-avatars">
-              <img src="https://ddufpaulv1kgi.cloudfront.net/avatars/Freya.jpg" alt="" aria-hidden="true" />
-              <img src="https://ddufpaulv1kgi.cloudfront.net/avatars/Marcus.jpg" alt="" aria-hidden="true" />
-              <img className="showcase-avatar-main" src="https://ddufpaulv1kgi.cloudfront.net/avatars/ali.JPG" alt="Avatar" />
-            </div>
-            <p className="showcase-caption">your face — or 100+ others</p>
-            <img className="showcase-product" src="https://ddufpaulv1kgi.cloudfront.net/thumbnails/focus-factor.jpg" alt="Product" />
-            <span className="showcase-arrow" aria-hidden="true">⤳</span>
-          </div>
-          <div className="showcase-col tilt-right">
-            <VideoFrame
-              src="https://ddufpaulv1kgi.cloudfront.net/videos/ali-focus4.mp4"
-              label="✓ The Clone"
-            />
-          </div>
-        </div>
+        <SalesVideo />
 
         <div className="hero-offer">
           <p className="offer-urgency">⏳ Launch discount expires in:</p>
