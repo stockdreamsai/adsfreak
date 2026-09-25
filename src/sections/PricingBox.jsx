@@ -1,4 +1,5 @@
 import { SectionTitle, CHECKOUT_URL, Circled, Countdown } from '../components/Shared.jsx';
+import Doodles from '../components/Decor.jsx';
 
 const STACK = [
   ['Social Ads Freak — clone winning video ads', '$197'],
@@ -14,6 +15,7 @@ const STACK = [
 export default function PricingBox() {
   return (
     <section className="pricing" id="buy">
+      <Doodles />
       <div className="container narrow">
         <SectionTitle
           kicker="Your Move"
