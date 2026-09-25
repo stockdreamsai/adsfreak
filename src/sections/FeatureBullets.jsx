@@ -11,13 +11,16 @@ export default function FeatureBullets() {
   return (
     <section className="feature-bullets">
       <div className="container">
-        <ul className="bullets-grid">
-          {BULLETS.map((b, i) => (
-            <li key={i}>
-              <span className="bullet-num">✓</span> <span>{b}</span>
-            </li>
-          ))}
-        </ul>
+        <div className="bullets-card">
+          <p className="bullets-card-kicker">What you walk away with</p>
+          <ul className="bullets-grid">
+            {BULLETS.map((b, i) => (
+              <li key={i}>
+                <span className="bullet-num">✓</span> <span>{b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </section>
   );
