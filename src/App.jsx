@@ -5,10 +5,10 @@
 // reversal → scarcity → crossroads close → FAQ → P.S.
 import { useScrollReveal } from './components/Shared.jsx';
 import UrgencyBar from './sections/UrgencyBar.jsx';
-import Navbar from './sections/Navbar.jsx';
 import Hero from './sections/Hero.jsx';
 import FeatureBullets from './sections/FeatureBullets.jsx';
 import PlatformsStrip from './sections/PlatformsStrip.jsx';
+import CloneShowcase from './sections/CloneShowcase.jsx';
 import Gallery from './sections/Gallery.jsx';
 import HowItWorks from './sections/HowItWorks.jsx';
 import Testimonials from './sections/Testimonials.jsx';
@@ -34,20 +34,17 @@ import OneClickAway from './sections/OneClickAway.jsx';
 import FAQ from './sections/FAQ.jsx';
 import PsClose from './sections/PsClose.jsx';
 import Footer from './sections/Footer.jsx';
-import StickyCta from './sections/StickyCta.jsx';
 
 export default function App() {
   useScrollReveal();
   return (
     <>
-      {/* URGENCY: launch discount countdown, visible from second one */}
-      <UrgencyBar />
-      <Navbar />
-      {/* HOOK: big promise + live proof + offer for hot traffic */}
+      {/* HOOK: big promise + sales video + offer for hot traffic */}
       <Hero />
       <FeatureBullets />
       <PlatformsStrip />
-      {/* PROOF FIRST: real cloned videos, zero cameras */}
+      {/* PROOF FIRST: original → clone demo, then real cloned videos */}
+      <CloneShowcase />
       <Gallery />
       {/* EASE: 3 steps anyone can do */}
       <HowItWorks />
@@ -81,7 +78,8 @@ export default function App() {
       <FAQ />
       <PsClose />
       <Footer />
-      <StickyCta />
+      {/* URGENCY: sticky bottom bar with the launch countdown */}
+      <UrgencyBar />
     </>
   );
 }
