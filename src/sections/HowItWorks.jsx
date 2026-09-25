@@ -1,4 +1,5 @@
 import { SectionTitle, Circled } from '../components/Shared.jsx';
+import Doodles from '../components/Decor.jsx';
 
 const STEPS = [
   {
@@ -24,6 +25,7 @@ const STEPS = [
 export default function HowItWorks() {
   return (
     <section className="how-it-works" id="how-it-works">
+      <Doodles />
       <div className="container">
         <SectionTitle
           title={<><Circled>Fire</Circled> Your Video Crew Today!</>}
