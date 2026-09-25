@@ -2157,3 +2157,174 @@ body { padding-bottom: 64px; }
 }
 
 .hero-punch .grad-text-light { white-space: nowrap; }
+
+/* ============================================================
+   Dark-section signature: stars, neon sparkles, grid floor,
+   rotating glow frames, cloning scan
+   ============================================================ */
+
+.dark-decor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+.dark-decor ~ .container { position: relative; z-index: 2; }
+
+/* twinkling stars */
+.dd-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
+  opacity: 0.25;
+  animation: twinkle 3.2s ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+  0% { opacity: 0.12; transform: scale(0.8); }
+  100% { opacity: 0.85; transform: scale(1.25); }
+}
+
+/* neon sparkles */
+.dd-sparkle { position: absolute; }
+.dd-sparkle path { fill: #d9b3ff; }
+.dd-sparkle { filter: drop-shadow(0 0 6px rgba(183, 139, 255, 0.9)) drop-shadow(0 0 14px rgba(240, 67, 193, 0.5)); }
+.dd-sparkle-a { width: 30px; top: 14%; left: 6%; animation: sparkle-spin 8s linear infinite; }
+.dd-sparkle-b { width: 18px; top: 26%; right: 8%; animation: sparkle-spin 6s linear infinite reverse; }
+.dd-sparkle-b path { fill: #ff9ee3; }
+.dd-sparkle-c { width: 22px; bottom: 22%; left: 12%; animation: sparkle-spin 10s linear infinite; }
+
+/* retro perspective grid floor that scrolls toward the viewer */
+.dd-floor {
+  position: absolute;
+  left: -30%; right: -30%;
+  bottom: -2px;
+  height: 42%;
+  background-image:
+    linear-gradient(rgba(183, 139, 255, 0.5) 1.5px, transparent 1.5px),
+    linear-gradient(90deg, rgba(183, 139, 255, 0.5) 1.5px, transparent 1.5px);
+  background-size: 64px 64px;
+  transform: perspective(360px) rotateX(64deg);
+  transform-origin: 50% 100%;
+  -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 85%);
+  mask-image: linear-gradient(to top, #000 10%, transparent 85%);
+  animation: floor-scroll 2.6s linear infinite;
+  opacity: 0.7;
+}
+@keyframes floor-scroll { to { background-position: 0 64px; } }
+
+/* rotating gradient ring around videos */
+@property --ring-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+.glow-frame {
+  position: relative;
+  max-width: 840px;
+  margin: 0 auto 46px;
+  padding: 3px;
+  border-radius: 25px;
+  background: conic-gradient(from var(--ring-angle), #8b3dff, #f043c1, #6d7cff, #b78bff, #8b3dff);
+  animation: ring-spin 6s linear infinite;
+  isolation: isolate;
+}
+.glow-frame::after {
+  content: '';
+  position: absolute;
+  inset: 6%;
+  z-index: -1;
+  border-radius: 40px;
+  background: conic-gradient(from var(--ring-angle), #8b3dff, #f043c1, #6d7cff, #8b3dff);
+  filter: blur(48px);
+  opacity: 0.55;
+  animation: ring-spin 6s linear infinite;
+}
+@keyframes ring-spin { to { --ring-angle: 360deg; } }
+.glow-frame .vsl-frame { margin: 0; box-shadow: none; }
+/* demo video already has its own frame: halo only, no visible ring */
+.glow-frame.glow-soft { background: none; padding: 0; max-width: none; margin: 0; }
+.glow-frame.glow-soft::after { inset: 4%; opacity: 0.45; }
+
+/* clone showcase: animated flow line between the two videos */
+.clone-showcase .hero-showcase { position: relative; }
+.clone-showcase .hero-showcase::before {
+  content: '';
+  position: absolute;
+  left: 18%; right: 18%;
+  top: 50%;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, rgba(240, 67, 193, 0.7) 0 12px, transparent 12px 22px);
+  background-size: 44px 3px;
+  animation: dash-flow 0.9s linear infinite;
+  z-index: 0;
+}
+.clone-showcase .showcase-col, .clone-showcase .showcase-middle { position: relative; z-index: 1; }
+@keyframes dash-flow { to { background-position: 44px 0; } }
+
+/* cloning scan line sweeping over the clone video */
+.is-clone .video-frame { overflow: hidden; }
+.scan-line {
+  position: absolute;
+  left: 4%; right: 4%;
+  top: 0;
+  height: 70px;
+  border-radius: 18px;
+  background: linear-gradient(to bottom, transparent, rgba(240, 67, 193, 0.28) 70%, rgba(255, 158, 227, 0.95) 98%, transparent);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: scan 3.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  transform: rotate(3deg);
+  z-index: 2;
+}
+@keyframes scan {
+  0% { top: 2%; opacity: 0; }
+  10% { opacity: 1; }
+  85% { opacity: 1; }
+  100% { top: 88%; opacity: 0; }
+}
+.clone-chips {
+  position: absolute;
+  right: -34px;
+  top: 22%;
+  display: grid;
+  gap: 10px;
+  z-index: 3;
+}
+.clone-chips li {
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--purple);
+  font-weight: 900;
+  font-size: 0.8rem;
+  padding: 7px 13px;
+  border-radius: 999px;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+  white-space: nowrap;
+  animation: chip-float 4.5s ease-in-out infinite;
+}
+.clone-chips li:nth-child(2) { animation-delay: -1.5s; margin-left: 18px; }
+.clone-chips li:nth-child(3) { animation-delay: -3s; }
+
+/* pain "way out" banner */
+.pain-fix { position: relative; }
+.pain-fix > *:not(.dark-decor) { position: relative; z-index: 1; }
+.pain-fix-media { position: relative; justify-self: end; }
+.pf-chip-a { top: 18px; left: -40px; }
+.pf-chip-b { bottom: 30px; right: -14px; animation-delay: -2s; }
+
+/* keep content above the decor layer */
+.guarantee .seal, .one-click-img { position: relative; z-index: 1; }
+
+@media (max-width: 760px) {
+  .clone-chips { right: 6px; top: auto; bottom: 18%; }
+  .clone-chips li:nth-child(2) { margin-left: 0; }
+  .clone-showcase .hero-showcase::before { display: none; }
+  .pf-chip-a { left: -10px; }
+  .pf-chip-b { right: -6px; }
+  .dd-floor { height: 30%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dd-star, .dd-sparkle, .dd-floor, .glow-frame, .glow-frame::after, .scan-line,
+  .clone-showcase .hero-showcase::before { animation: none; }
+}

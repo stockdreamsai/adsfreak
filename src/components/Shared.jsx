@@ -4,7 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 // Tags key elements with .rv, staggers siblings, and adds .in-view when they
 // enter the viewport. CSS (guarded by html.js) does the animating.
 const REVEAL_SELECTORS = [
-  '.hero-kicker', '.hero h1', '.hero-punch', '.vsl-frame', '.hero-showcase > *', '.hero-offer',
+  '.hero-kicker', '.hero h1', '.hero-punch', '.glow-frame', '.hero-showcase > *', '.hero-offer',
   '.section-title', '.bullets-grid li', '.platforms-title', '.platform-pill', '.tool-pill',
   '.step', '.testimonial-card', '.comparison-card', '.audience-card', '.earning-card',
   '.dna-card', '.dna-swap', '.duo-card', '.included-row', '.stat', '.faq-item',
@@ -12,7 +12,7 @@ const REVEAL_SELECTORS = [
   '.costs-table', '.costs-tagline', '.costs-chant', '.costs-velocity',
   '.intro-boxshot', '.intro-dna-title', '.intro-duo-title', '.dna-tagline', '.duo-tagline',
   '.intro-steps li', '.intro-nsn', '.problem-copy', '.problem-img', '.problem-bridge',
-  '.pain-img', '.pain-copy', '.demo-embed', '.license-badge', '.license p',
+  '.pain-img', '.pain-copy', '.license-badge', '.license p',
   '.samples-bridge', '.avatar-marquee', '.avatar-copy', '.avatar-pills',
   '.earning-tagline', '.pricing-join', '.guarantee-copy', '.guarantee-badge',
   '.warning p', '.warning .cta-button', '.one-click-copy', '.one-click-img',
