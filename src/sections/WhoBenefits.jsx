@@ -1,4 +1,5 @@
 import { SectionTitle } from '../components/Shared.jsx';
+import Doodles from '../components/Decor.jsx';
 
 const AUDIENCES = [
   { icon: '📢', title: 'Marketing Agencies', text: 'Scale your creative output 10x overnight — test every angle of every campaign without hiring videographers.' },
@@ -12,6 +13,7 @@ const AUDIENCES = [
 export default function WhoBenefits() {
   return (
     <section className="who-benefits">
+      <Doodles />
       <div className="container">
         <SectionTitle
           kicker="Who It's For"

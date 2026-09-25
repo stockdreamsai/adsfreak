@@ -1,8 +1,10 @@
 import { CTAButton } from '../components/Shared.jsx';
+import Doodles from '../components/Decor.jsx';
 
 export default function Introducing() {
   return (
     <section className="introducing" id="introducing">
+      <Doodles />
       <div className="container narrow center">
         <p className="intro-kicker">Introducing</p>
         <h2 className="intro-name grad-text">Social Ads Freak</h2>

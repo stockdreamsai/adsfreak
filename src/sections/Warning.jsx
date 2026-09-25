@@ -1,8 +1,10 @@
 import { CTAButton, Circled, Countdown } from '../components/Shared.jsx';
+import Doodles from '../components/Decor.jsx';
 
 export default function Warning() {
   return (
     <section className="warning">
+      <Doodles />
       <div className="container narrow center">
         <h2>
           <span className="warning-tag">BE WARNED:</span> This Window Closes{' '}
