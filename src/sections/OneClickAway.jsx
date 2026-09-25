@@ -1,8 +1,10 @@
 import { CTAButton } from '../components/Shared.jsx';
+import { DarkDecor } from '../components/Decor.jsx';
 
 export default function OneClickAway() {
   return (
     <section className="one-click">
+      <DarkDecor floor />
       <div className="container narrow one-click-inner">
         <div className="one-click-copy">
           <div className="founder-line">
@@ -28,7 +30,7 @@ export default function OneClickAway() {
           </p>
           <CTAButton large>Take Road #2 — Get Instant Access</CTAButton>
         </div>
-        <img className="one-click-img" src="/BOX-PNG.png" alt="Social Ads Freak box" loading="lazy" />
+        <img className="one-click-img" src="/brand/png/saf-boxshot.png" alt="Social Ads Freak" loading="lazy" />
       </div>
     </section>
   );
