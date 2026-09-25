@@ -75,7 +75,6 @@ export default function Comparison() {
           <div className="vs-mark" aria-hidden="true">VS</div>
 
           <div className="vs-card vs-new">
-            <img className="vs-mascot" src="/images/mascot-retro.png" alt="" aria-hidden="true" />
             <h3>
               AI Clones with <span className="logo-freak">Social Ads FREAK</span>
             </h3>
