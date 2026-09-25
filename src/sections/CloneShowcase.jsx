@@ -1,9 +1,11 @@
 import { SectionTitle, VideoFrame } from '../components/Shared.jsx';
+import { DarkDecor } from '../components/Decor.jsx';
 
 // The Original → The Clone demo (moved out of the hero to make room for the VSL).
 export default function CloneShowcase() {
   return (
     <section className="clone-showcase">
+      <DarkDecor />
       <div className="container">
         <SectionTitle
           kicker="The Original → The Clone"
@@ -28,11 +30,17 @@ export default function CloneShowcase() {
             <img className="showcase-product" src="https://ddufpaulv1kgi.cloudfront.net/thumbnails/focus-factor.jpg" alt="Product" />
             <span className="showcase-arrow" aria-hidden="true">⤳</span>
           </div>
-          <div className="showcase-col tilt-right">
+          <div className="showcase-col tilt-right is-clone">
             <VideoFrame
               src="https://ddufpaulv1kgi.cloudfront.net/videos/ali-focus4.mp4"
               label="✓ The Clone"
             />
+            <span className="scan-line" aria-hidden="true"></span>
+            <ul className="clone-chips" aria-label="What got cloned">
+              <li>✓ Hook cloned</li>
+              <li>✓ Pacing cloned</li>
+              <li>✓ CTA cloned</li>
+            </ul>
           </div>
         </div>
       </div>
