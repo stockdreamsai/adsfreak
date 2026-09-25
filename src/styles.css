@@ -1227,3 +1227,193 @@ h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); letter-spacing: -0.02em; }
 .warning .countdown .countdown-num { color: var(--navy); }
 .warning .countdown .countdown-label { color: var(--text-light); }
 .warning .countdown { margin-bottom: 26px; }
+
+/* ============================================================
+   Visual signature: doodles, paper grid, VS section
+   ============================================================ */
+
+/* sections that host doodles need a positioning context */
+.gallery, .how-it-works, .comparison, .who-benefits, .pricing, .warning {
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- doodles: sparkles, squares, squiggle --- */
+.doodles { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.doodles ~ .container { position: relative; z-index: 1; }
+.doodle { position: absolute; }
+.doodle path, .doodle rect { fill: rgba(139, 61, 255, 0.22); stroke: none; }
+.doodle-squiggle path { fill: none !important; stroke: rgba(240, 67, 193, 0.3); }
+.doodle-star-a {
+  width: 46px; top: 70px; left: 4%;
+  animation: sparkle-spin 9s linear infinite;
+}
+.doodle-star-b {
+  width: 26px; top: 150px; right: 7%;
+  animation: sparkle-spin 7s linear infinite reverse;
+}
+.doodle-star-b path { fill: rgba(240, 67, 193, 0.28); }
+.doodle-squares { width: 64px; bottom: 90px; right: 4%; }
+.doodle-squiggle { width: 120px; bottom: 60px; left: 5%; transform: rotate(-6deg); }
+@keyframes sparkle-spin {
+  0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.8; }
+  50% { transform: rotate(22deg) scale(1.18); opacity: 1; }
+}
+/* doodles on dark sections */
+.warning .doodle path, .warning .doodle rect { fill: rgba(139, 61, 255, 0.2); }
+
+/* --- graph-paper grid behind light sections --- */
+.comparison, .who-benefits {
+  background-image:
+    linear-gradient(rgba(139, 61, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 61, 255, 0.05) 1px, transparent 1px);
+  background-size: 34px 34px;
+  -webkit-mask-image: radial-gradient(120% 90% at 50% 40%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(120% 90% at 50% 40%, #000 55%, transparent 100%);
+}
+/* corner glow blob (like the reference page, in brand colors) */
+.comparison::after {
+  content: '';
+  position: absolute;
+  right: -180px; top: 30%;
+  width: 520px; height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(240, 67, 193, 0.16), rgba(139, 61, 255, 0.1) 45%, transparent 70%);
+  filter: blur(30px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- VS section --- */
+.vs-inline {
+  font-size: 0.6em;
+  font-style: italic;
+  font-weight: 900;
+  color: var(--text-light);
+  margin: 0 2px;
+}
+.vs-pill {
+  display: inline-block;
+  background: var(--grad);
+  color: #fff;
+  border-radius: 16px;
+  padding: 2px 20px 6px;
+  box-shadow: 0 10px 26px rgba(240, 67, 193, 0.35);
+  transform: rotate(-1.5deg);
+}
+.vs-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 26px;
+  align-items: stretch;
+  max-width: 1020px;
+  margin: 0 auto;
+}
+.vs-card {
+  border-radius: 26px;
+  padding: 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.vs-card h3 { text-align: center; font-size: 1.35rem; }
+.vs-card ul { display: grid; gap: 12px; }
+.vs-card li { display: flex; gap: 10px; align-items: flex-start; font-weight: 600; line-height: 1.45; }
+
+.vs-old {
+  background: #f6f5fa;
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+.vs-old h3 { color: var(--text-light); }
+.vs-old li { color: var(--bad); }
+.vs-old li::first-letter { margin-right: 2px; }
+
+.vs-new {
+  position: relative;
+  background: radial-gradient(600px 400px at 80% -10%, #2c3260 0%, var(--navy) 55%, var(--navy-deep) 100%);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 30px 60px rgba(25, 29, 58, 0.35), 0 0 0 2px rgba(139, 61, 255, 0.5);
+  color: rgba(255, 255, 255, 0.92);
+}
+.vs-new h3 { color: #fff; }
+.vs-new li strong { color: #ff8ede; }
+.vs-check {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px;
+  flex: none;
+  margin-top: 2px;
+  border-radius: 50%;
+  background: var(--grad);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+.vs-video { max-width: 190px; margin: 0 auto; }
+.vs-mark {
+  align-self: center;
+  font-size: 2.1rem;
+  font-weight: 900;
+  font-style: italic;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transform: rotate(-8deg);
+  text-shadow: none;
+}
+
+/* --- the "old way" receipt --- */
+.receipt {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 6px 6px 14px 14px;
+  padding: 18px 18px 52px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.83rem;
+  color: #4a4d63;
+  box-shadow: var(--shadow);
+  transform: rotate(-1.2deg);
+}
+.receipt-head {
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-bottom: 1px dashed #c9c6d8;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+}
+.receipt-row { display: flex; align-items: baseline; gap: 6px; padding: 3px 0; }
+.receipt-dots { flex: 1; border-bottom: 1px dotted #b9b6cc; }
+.receipt-total { font-weight: 900; color: var(--bad); border-top: 1px dashed #c9c6d8; margin-top: 8px; padding-top: 8px; }
+.receipt-stamp {
+  position: absolute;
+  right: 16px; bottom: 12px;
+  border: 3px solid rgba(229, 72, 77, 0.55);
+  color: rgba(229, 72, 77, 0.65);
+  font-weight: 900;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  padding: 2px 10px;
+  border-radius: 6px;
+  transform: rotate(-12deg);
+}
+
+@media (max-width: 900px) {
+  .vs-grid { grid-template-columns: 1fr; }
+  .vs-mark { transform: rotate(-8deg); padding: 4px 0; }
+}
+
+.vs-old-verdict {
+  margin-top: auto;
+  background: #fff;
+  border: 1px dashed #d8d5e6;
+  border-radius: 14px;
+  padding: 16px 18px;
+  color: var(--text-light);
+  font-weight: 600;
+  text-align: center;
+}
+.vs-old-verdict strong { color: var(--bad); }

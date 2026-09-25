@@ -1,4 +1,5 @@
 import { SectionTitle, VideoFrame } from '../components/Shared.jsx';
+import Doodles from '../components/Decor.jsx';
 
 const SAMPLES = [
   {
@@ -22,6 +23,7 @@ const AVATARS = ['Aria', 'Marcus', 'Anisa', 'Lian', 'Betania', 'Arnav', 'Freya',
 export default function Gallery() {
   return (
     <section className="gallery" id="samples">
+      <Doodles />
       <div className="container">
         <SectionTitle
           kicker="Seeing Is Believing · All Cloned · Zero Cameras"
