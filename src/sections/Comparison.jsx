@@ -67,6 +67,9 @@ export default function Comparison() {
                 <li key={i}>✕ {item}</li>
               ))}
             </ul>
+            <p className="vs-old-verdict">
+              And after all that? <strong>You still don't know if it'll convert.</strong>
+            </p>
           </div>
 
           <div className="vs-mark" aria-hidden="true">VS</div>
