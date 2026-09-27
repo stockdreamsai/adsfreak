@@ -33,19 +33,18 @@ export default function Hero() {
       <DarkDecor floor />
       <div className="container">
         <p className="hero-kicker">THE FREAK IS BACK… NOW WITH AI SUPERPOWERS</p>
-        <h1 className="hero-title">
-          <span className="hero-lead">Skyrocket Your Conversions, Traffic &amp; Sales By</span>
-          <span className="hero-main grad-text-light">Cloning Video Ads That Already Won</span>
-          <span className="hero-starring-box">
-            <span className="hsb-icon" aria-hidden="true">🎬</span>
-            <span className="hsb-label">Starring</span>
-            <TypedWords />
+        <h1>
+          Skyrocket Your Conversions, Traffic &amp; Sales By{' '}
+          <span className="grad-text-light">Cloning Video Ads That Already Won</span>
+          <span className="hero-starring">
+            <span className="hero-starring-box">
+              Starring <TypedWords />
+            </span>
           </span>
         </h1>
-        <ul className="hero-proof-chips">
-          <li><span className="hpc-check" aria-hidden="true">✓</span> Zero Cameras</li>
-          <li><span className="hpc-check" aria-hidden="true">✓</span> Proven Winners</li>
-        </ul>
+        <p className="hero-punch">
+          Zero Cameras. <span className="grad-text-light">Proven Winners.</span>
+        </p>
 
         <SalesVideo />
 
