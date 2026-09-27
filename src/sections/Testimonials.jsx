@@ -23,11 +23,32 @@ const TESTIMONIALS = [
     result: '30 ads a week',
     text: 'I hate being on camera. Picked an avatar, cloned my voice, and now I’m “in” 30 ads a week. Nobody can tell. Freakishly good.',
   },
+  {
+    name: 'Devin P.',
+    role: 'DTC Founder',
+    img: 'https://ddufpaulv1kgi.cloudfront.net/avatars/Marcus.jpg',
+    result: 'Creative testing made easier',
+    text: 'We can explore new hooks and angles without rebuilding every video from scratch. It has made testing fresh creative feel much more manageable.',
+  },
+  {
+    name: 'Sofia K.',
+    role: 'Growth Marketer',
+    img: 'https://ddufpaulv1kgi.cloudfront.net/avatars/Maya.jpg',
+    result: 'More concepts, less waiting',
+    text: 'I can turn a strong ad concept into a polished variation quickly. It gives our team more options to review and test.',
+  },
+  {
+    name: 'Theo B.',
+    role: 'Small Business Owner',
+    img: 'https://ddufpaulv1kgi.cloudfront.net/avatars/Aria.jpg',
+    result: 'No filming setup needed',
+    text: 'Getting started was straightforward, and I didn’t need to set up a shoot just to try a new video ad idea. A useful tool for a lean team.',
+  },
 ];
 
 export default function Testimonials() {
   return (
-    <section className="testimonials bg-grid">
+    <section className="testimonials bg-grid" id="testimonials">
       <Doodles />
       <div className="container">
         <SectionTitle
@@ -35,26 +56,32 @@ export default function Testimonials() {
           title="Freaks Are Already"
           highlight="Winning With It"
         />
-        <div className="testimonial-grid">
-          {TESTIMONIALS.map((t) => (
-            <figure className="testimonial-card" key={t.name}>
-              <span className="testimonial-quote-mark" aria-hidden="true">“</span>
-              <div className="testimonial-top">
-                <p className="testimonial-stars" aria-label="5 stars">★★★★★</p>
-                <span className="testimonial-result">{t.result}</span>
+        <div className="testimonial-marquee">
+          <div className="testimonial-track">
+            {[0, 1].map((copy) => (
+              <div className="testimonial-grid" key={copy} aria-hidden={copy === 1}>
+                {TESTIMONIALS.map((t) => (
+                  <figure className="testimonial-card" key={t.name}>
+                    <span className="testimonial-quote-mark" aria-hidden="true">“</span>
+                    <div className="testimonial-top">
+                      <p className="testimonial-stars" aria-label="5 stars">★★★★★</p>
+                      <span className="testimonial-result">{t.result}</span>
+                    </div>
+                    <blockquote className="testimonial-text">{t.text}</blockquote>
+                    <figcaption className="testimonial-author">
+                      <span className="avatar-ring">
+                        <img className="avatar-img" src={t.img} alt={t.name} loading="lazy" />
+                      </span>
+                      <div>
+                        <strong>{t.name}</strong>
+                        <span className="testimonial-role">{t.role}</span>
+                      </div>
+                    </figcaption>
+                  </figure>
+                ))}
               </div>
-              <blockquote className="testimonial-text">{t.text}</blockquote>
-              <figcaption className="testimonial-author">
-                <span className="avatar-ring">
-                  <img className="avatar-img" src={t.img} alt={t.name} loading="lazy" />
-                </span>
-                <div>
-                  <strong>{t.name}</strong>
-                  <span className="testimonial-role">{t.role}</span>
-                </div>
-              </figcaption>
-            </figure>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -4,9 +4,9 @@ import { useRef, useState, useEffect } from 'react';
 // Tags key elements with .rv, staggers siblings, and adds .in-view when they
 // enter the viewport. CSS (guarded by html.js) does the animating.
 const REVEAL_SELECTORS = [
-  '.hero-kicker', '.hero h1', '.hero-punch', '.glow-frame', '.hero-showcase > *', '.hero-offer',
+  '.hero-kicker', '.hero h1', '.hero-proof-chips', '.glow-frame', '.hero-showcase > *', '.hero-offer',
   '.section-title', '.bullets-grid li', '.platforms-title', '.platform-pill', '.tool-pill',
-  '.step', '.testimonial-card', '.comparison-card', '.audience-card', '.earning-card',
+  '.step', '.testimonial-marquee', '.comparison-card', '.audience-card', '.earning-card',
   '.dna-card', '.dna-swap', '.duo-card', '.included-row', '.stat', '.faq-item',
   '.bonus-feature', '.pricing-box', '.founder-callout', '.samples-grid .video-frame',
   '.costs-table', '.costs-tagline', '.costs-chant', '.costs-velocity',
