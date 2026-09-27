@@ -37,22 +37,18 @@ export default function SuccessStories() {
           </div>
           <div className="founders-copy">
             <p>
-              Back in <strong>2013</strong>, everyone "serious" laughed at Facebook Ads. Too new.
-              Too weird. Not for real businesses.
+              In <strong>2013</strong>, everyone "serious" laughed at Facebook Ads. Ali G and Marcus
+              Lim didn't — they built <strong>Social Lead Freak</strong>, and the marketers who
+              grabbed it early rode the <em className="hl">most profitable traffic window</em> the
+              internet had ever seen. Then the edge was gone and the costs tripled.
             </p>
             <p>
-              Ali G and Marcus Lim didn't laugh. They built <strong>Social Lead Freak</strong> —
-              and the marketers who grabbed it early rode the cheapest, most profitable traffic
-              window the internet had ever seen. By the time everyone else caught on, the edge was
-              gone and the costs had tripled.
-            </p>
-            <p>
-              Today, targeting is a checkbox. <strong>Creative is the battlefield.</strong> That's
-              why the same duo spent the last year rebuilding the Freak — this time for AI video.
+              Today targeting is a checkbox. <em className="hl">Creative is the battlefield.</em>{' '}
+              That's why the same duo rebuilt the Freak — this time for AI video.
             </p>
             <p className="founders-quote">
-              "We saw the shift early in 2013. We're seeing the exact same shape again now. This
-              time, you get to be early."
+              "We saw the shift early in 2013. We're seeing the exact same shape again. This time,
+              you get to be early."
             </p>
             <CTAButton>I Want In Early</CTAButton>
           </div>

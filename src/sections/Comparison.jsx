@@ -38,8 +38,8 @@ export default function Comparison() {
             <span className="vs-pill">Social Ads Freak</span>
           </h2>
           <p className="section-sub">
-            Social Ads Freak isn't just a cheaper way to get video ads —
-            it's a <strong>faster, scalable, fully controllable evolution</strong> of the whole process.
+            Not a cheaper way to get video ads — a{' '}
+            <em className="hl">faster, scalable, fully controllable</em> way.
           </p>
         </div>
 
