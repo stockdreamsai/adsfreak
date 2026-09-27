@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Section, Title, Panel } from '../ui.jsx';
+import { Section, Title, Label } from '../ui.jsx';
 
 const FAQS = [
   ['Is this TRUE A.I. technology or is it just templates?', 'Social Ads Freak uses cutting-edge AI to generate original video ads. It is not a template library — the AI analyzes winning ad structures, clones the hook and pacing, then rebuilds the entire video with your product, your avatar and your voice. Every output is unique.'],
@@ -17,8 +17,9 @@ const FAQS = [
 export default function FAQ() {
   const [open, setOpen] = useState(-1);
   return (
-    <Section className="faq">
-      <Panel tone="dark">
+    <Section tone="dark" className="faq">
+      <div className="center">
+        <Label>Support</Label>
         <Title><b>Frequently Asked Questions</b></Title>
         <span className="title-rule" aria-hidden="true" />
         <div className="faq-grid">
@@ -31,7 +32,7 @@ export default function FAQ() {
             </div>
           ))}
         </div>
-      </Panel>
+      </div>
     </Section>
   );
 }

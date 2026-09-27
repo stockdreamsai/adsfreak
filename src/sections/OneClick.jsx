@@ -2,7 +2,7 @@ import { Section, Title, CTA } from '../ui.jsx';
 
 export default function OneClick() {
   return (
-    <Section narrow className="oneclick">
+    <Section tone="tint" narrow className="oneclick">
       <Title>You're Just <b>One Click Away</b> From Getting Unlimited High-Converting Video Ads for Any Business.</Title>
       <div className="split">
         <div>

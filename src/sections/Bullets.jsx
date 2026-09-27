@@ -1,4 +1,4 @@
-import { Section, Title } from '../ui.jsx';
+import { Section, Title, FounderCallout } from '../ui.jsx';
 
 const BULLETS = [
   <>Unlock Winning Ads with a <b>One-Time Investment</b></>,
@@ -13,7 +13,7 @@ const PLATFORMS = ['TikTok', 'Facebook', 'Instagram', 'YouTube', 'Reels', 'Short
 
 export default function Bullets() {
   return (
-    <Section className="bullets">
+    <Section tone="dark" className="bullets">
       <p className="kicker">2,400+ People can't be wrong.</p>
       <Title>Let Our AI Do The Magic For You.</Title>
       <ul className="bullet-grid">
@@ -25,6 +25,9 @@ export default function Bullets() {
       <div className="platforms">
         {PLATFORMS.map((p) => <span key={p}>{p}</span>)}
       </div>
+      <FounderCallout>
+        Every video on this page is me — and <b>I never picked up a camera</b>. I fed Social Ads Freak proven formats and let it clone them: short-form viral ads that stop the scroll, plus long-form talking videos that build trust — no crew, no studio, no editing.
+      </FounderCallout>
     </Section>
   );
 }

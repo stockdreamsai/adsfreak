@@ -11,7 +11,7 @@ const BONUSES = [
 
 export default function Bonuses() {
   return (
-    <Section className="bonuses">
+    <Section tone="tint" className="bonuses">
       <Title>We'll Also Gift You These <b className="grad">EXCLUSIVE Bonuses</b> With Your One-Time Investment In Social Ads Freak Today</Title>
       <Panel className="bonus-panel">
         <img src="/brand/png/saf-boxshot.png" alt="Social Ads Freak bonuses" loading="lazy" />

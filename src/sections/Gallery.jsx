@@ -1,10 +1,7 @@
-import { Section, Title, VideoTile } from '../ui.jsx';
+import { Section, Title, Label, Showcase, VideoTile, AvatarMarquee } from '../ui.jsx';
 
 const CDN = 'https://ddufpaulv1kgi.cloudfront.net/videos/';
-const TILES = [
-  { src: CDN + 'rogan-onnit.mp4', label: 'The Original Ad' },
-  { src: CDN + 'ali-focus4.mp4', label: 'The Clone — New Product, Your Face' },
-  { src: CDN + 'amelia-terminal-velocity.mp4', label: 'Same Ad — Any Avatar' },
+const UGC = [
   { src: CDN + 'ali-volcano.mp4', label: 'Shoes • Volcano Resistant', track: '/captions/sample-2.vtt' },
   { src: CDN + 'ali-terminal-velocity.mp4', label: 'Gummies • Free-Fall', track: '/captions/sample-1.vtt' },
   { src: CDN + 'ali-real-estate.mp4', label: 'Real Estate • Walkthrough Story' },
@@ -12,13 +9,22 @@ const TILES = [
 
 export default function Gallery() {
   return (
-    <Section className="gallery" id="samples">
-      <Title>Unique Cloned Ads on the Fly</Title>
-      <p className="lead">Each Unique And Distinct Every Time — every video below was made without touching a camera</p>
+    <Section tone="dark" className="gallery" id="samples">
+      <Label>The Original → The Clone</Label>
+      <Title>Unique Cloned Ads <b>on the Fly</b></Title>
+      <p className="lead">Same hook. Same pacing. Same structure that already converted — rebuilt with a new face and a new product.</p>
+      <Showcase />
+
+      <Label>All Cloned · Zero Cameras</Label>
       <div className="tiles">
-        {TILES.map((t) => <VideoTile key={t.src} {...t} />)}
+        {UGC.map((t) => <VideoTile key={t.src} {...t} />)}
       </div>
-      <p className="lead center">All just one click of the button away.</p>
+      <p className="lead center">One person. A dozen winning formats. Zero cameras. Now picture <b>your product</b> in these videos.</p>
+
+      <Label>Go Global</Label>
+      <Title>100+ AI Avatars. <b>30+ Languages.</b></Title>
+      <p className="lead">Pick any face. Pick any language. Done. Your ad goes global in minutes.</p>
+      <AvatarMarquee />
     </Section>
   );
 }

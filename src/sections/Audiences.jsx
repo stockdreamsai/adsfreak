@@ -1,4 +1,4 @@
-import { Section, Title, Panel } from '../ui.jsx';
+import { Section, Title, Panel, Label } from '../ui.jsx';
 
 const AUDIENCES = [
   { icon: '📢', title: 'Marketing Agencies', text: 'Scale your creative output 10x overnight — test every angle of every campaign without hiring videographers.' },
@@ -11,8 +11,9 @@ const AUDIENCES = [
 
 export default function Audiences() {
   return (
-    <Section className="audiences">
-      <Panel>
+    <Section tone="dark" className="audiences">
+      <Panel tone="none">
+        <Label>Who It's For</Label>
         <Title><b>Everyone can Benefit from Social Ads Freak</b></Title>
         <div className="audience-grid">
           {AUDIENCES.map((a) => (

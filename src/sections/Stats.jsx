@@ -9,7 +9,7 @@ const STATS = [
 
 export default function Stats({ title }) {
   return (
-    <Section className="stats">
+    <Section tone="dark" className="stats">
       {title && <Title>{title}</Title>}
       <div className="stat-grid">
         {STATS.map((s) => (

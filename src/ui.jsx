@@ -127,3 +127,103 @@ export function useReveal() {
     return () => io.disconnect();
   }, []);
 }
+
+// ---- design elements carried over from the original Social Ads Freak page ----
+
+// Small uppercase label above a section title.
+export function Label({ children }) {
+  return <p className="label">{children}</p>;
+}
+
+// Founder speech-bubble callout.
+export function FounderCallout({ children }) {
+  return (
+    <div className="founder">
+      <img className="founder-avatar" src="https://ddufpaulv1kgi.cloudfront.net/avatars/ali.JPG" alt="Ali G — Social Ads Freak founder" loading="lazy" />
+      <div className="bubble">
+        <p className="bubble-name">Ali G <span>· Founder, Social Ads Freak · Social Lead Freak (2013)</span></p>
+        <p>{children}</p>
+      </div>
+    </div>
+  );
+}
+
+// The Original → The Clone showcase.
+function ShowVideo({ src, badge, accent, status }) {
+  const ref = useRef(null);
+  const [muted, setMuted] = useState(true);
+  return (
+    <div className={`show-card${accent ? ' is-clone' : ''}`}>
+      <span className={`show-badge${accent ? ' accent' : ''}`}>{badge}</span>
+      {status && <span className="clone-status" aria-hidden="true"><i className="cs-a">CLONING<b className="cs-dots" /></i><i className="cs-b">✓ CLONE READY</i></span>}
+      <video ref={ref} src={src} muted={muted} autoPlay loop playsInline preload="metadata" />
+      <button className="vtile-mute" aria-label={muted ? 'Unmute' : 'Mute'} onClick={() => { setMuted(!muted); if (ref.current) ref.current.muted = !muted; }}>{muted ? '🔇' : '🔊'}</button>
+    </div>
+  );
+}
+
+export function Showcase() {
+  const CDN = 'https://ddufpaulv1kgi.cloudfront.net/';
+  return (
+    <div className="showcase">
+      <ShowVideo src={CDN + 'videos/rogan-onnit.mp4'} badge="The Original" />
+      <div className="show-center">
+        <div className="avatar-stack">
+          <img src={CDN + 'avatars/Freya.jpg'} alt="" aria-hidden="true" />
+          <img src={CDN + 'avatars/Marcus.jpg'} alt="" aria-hidden="true" />
+          <img className="main" src={CDN + 'avatars/ali.JPG'} alt="Avatar" />
+        </div>
+        <p className="show-caption">your face — or 100+ others</p>
+        <img className="show-product" src={CDN + 'thumbnails/focus-factor.jpg'} alt="Product" />
+        <svg className="show-arrow" viewBox="0 0 160 60" aria-hidden="true">
+          <defs><marker id="ah" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0,1 L9,5 L0,9" fill="none" stroke="rgba(200,210,230,0.7)" strokeWidth="1.8" strokeLinecap="round" /></marker></defs>
+          <path d="M15 12 C50 58, 110 58, 145 12" fill="none" stroke="rgba(200,210,230,0.7)" strokeWidth="3" strokeLinecap="round" markerEnd="url(#ah)" />
+        </svg>
+      </div>
+      <ShowVideo src={CDN + 'videos/ali-focus4.mp4'} badge="The Clone" accent status />
+    </div>
+  );
+}
+
+// Avatar marquee (two rows, opposite directions) + language row.
+const AVATARS = ['Aria', 'Marcus', 'Anisa', 'Lian', 'Betania', 'Arnav', 'Freya', 'Maya', 'Kaison', 'Luciana', 'Jibran', 'Rumi', 'Aiden', 'Rina', 'Leonard', 'Colton', 'Valeria', 'Shaun', 'Journey', 'Kumar'];
+const LANGS = ['English', 'Español', 'Português', 'Italiano', 'Deutsch', 'Français', '한국어', 'हिन्दी', 'ไทย', 'Tiếng Việt', 'Polski', 'Русский', 'Bahasa', '日本語', '中文', 'العربية'];
+export function AvatarMarquee() {
+  const row = (list, cls) => (
+    <div className={`marquee ${cls}`}>
+      <div className="marquee-track">
+        {[...list, ...list].map((a, i) => (
+          <span className="avatar-face" key={i} aria-hidden={i >= list.length}>
+            <img src={`https://ddufpaulv1kgi.cloudfront.net/avatars/${a}.jpg`} alt={i < list.length ? a : ''} loading="lazy" />
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+  return (
+    <div className="avatar-marquee">
+      {row(AVATARS.slice(0, 10), 'left')}
+      {row(AVATARS.slice(10), 'right')}
+      <div className="lang-row">{LANGS.map((l) => <span key={l}>{l}</span>)}</div>
+      <div className="pills"><span>100+ Avatars</span><span>30+ Languages</span><span>50+ Accents</span></div>
+    </div>
+  );
+}
+
+// Sticky bottom CTA, shown after the hero scrolls away.
+export function StickyCta() {
+  const [on, setOn] = useState(false);
+  useEffect(() => {
+    const f = () => setOn(window.scrollY > 900);
+    window.addEventListener('scroll', f, { passive: true });
+    return () => window.removeEventListener('scroll', f);
+  }, []);
+  return (
+    <div className={`sticky${on ? ' on' : ''}`}>
+      <div className="wrap sticky-inner">
+        <div><b>Social Ads Freak</b><span><s>${PRICE.regular}</s> Today ${PRICE.today}</span></div>
+        <a className="cta" href={CHECKOUT_URL}>Get Social Ads Freak Now <span aria-hidden="true">›</span></a>
+      </div>
+    </div>
+  );
+}

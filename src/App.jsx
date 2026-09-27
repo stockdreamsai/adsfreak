@@ -1,6 +1,6 @@
 // Social Ads Freak — sales page rebuilt on the stockdreams.ai blueprint,
 // block for block, with a clean white layout and a single purple→pink accent.
-import { useReveal } from './ui.jsx';
+import { useReveal, StickyCta } from './ui.jsx';
 import Header from './sections/Header.jsx';
 import Hero from './sections/Hero.jsx';
 import Bullets from './sections/Bullets.jsx';
@@ -59,6 +59,7 @@ export default function App() {
       <Stories />
       <Stats />
       <Footer />
+      <StickyCta />
     </>
   );
 }

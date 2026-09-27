@@ -2,7 +2,7 @@ import { Section, Title } from '../ui.jsx';
 
 export default function Challenge() {
   return (
-    <Section narrow className="challenge">
+    <Section tone="tint" narrow className="challenge">
       <p className="lead center muted">but...there's just one problem...</p>
       <Title>Creating the Perfect Video Ads for Your Brand Can Be <b>Costly</b>, <b>Time-Consuming</b>, &amp; <b>Extremely Challenging</b>!</Title>
       <div className="split">

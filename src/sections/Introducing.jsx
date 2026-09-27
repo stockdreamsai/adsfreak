@@ -3,7 +3,7 @@ import { STEPS } from './Steps.jsx';
 
 export default function Introducing() {
   return (
-    <Section narrow className="introducing" id="introducing">
+    <Section tone="tint" narrow className="introducing" id="introducing">
       <Title><b>Introducing Social Ads Freak</b></Title>
       <p className="lead">Your Ultimate A<b>rtificial Intelligence</b> Solution for High-Converting Video Ads</p>
       <img className="boxshot" src="/brand/png/saf-boxshot.png" alt="Social Ads Freak" />

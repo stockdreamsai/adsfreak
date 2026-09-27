@@ -20,7 +20,7 @@ export const REVIEWS = [
 
 export default function Reviews() {
   return (
-    <Section className="reviews">
+    <Section tone="dark" className="reviews">
       <Title>What our customers have to say about <b>Social Ads Freak</b></Title>
       <div className="review-grid">
         {REVIEWS.map((r) => (

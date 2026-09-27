@@ -1,10 +1,13 @@
-import { Section, Title } from '../ui.jsx';
+import { Section, Title, Label } from '../ui.jsx';
 
 // StockDreams gives a free commercial license here; Social Ads Freak's
 // equivalent over-delivery is Pro Studio, a second product included free.
 export default function ProStudio() {
   return (
     <Section narrow className="prostudio">
+      <Label>One Login. Two Engines.</Label>
+      <div className="duo-toggle" aria-hidden="true"><span className="on">⚡ VIRAL</span><span>🎬 PRO</span></div>
+      <p className="duo-note">↑ the actual switch from inside the app — flip it</p>
       <Title>You'll Also Receive <b>Pro Studio — A Second Product</b> FREE Today!</Title>
       <p className="lead">Use This To Build <b>Full Multi-Scene Video Stories</b> — Not Just Quick Ads.</p>
       <div className="split">

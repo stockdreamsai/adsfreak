@@ -4,7 +4,7 @@ const PLATFORMS = ['TikTok', 'Facebook', 'Instagram', 'YouTube', 'Reels', 'Short
 
 export default function Export() {
   return (
-    <Section narrow className="export">
+    <Section tone="tint" narrow className="export">
       <Title>Export Your Social Ads Freak Videos Quickly To <b>ANY</b> of The Following Platforms!</Title>
       <div className="platform-grid">
         {PLATFORMS.map((p) => <span key={p}>{p}</span>)}

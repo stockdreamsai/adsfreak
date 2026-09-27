@@ -1,4 +1,4 @@
-import { Section, Title, Panel } from '../ui.jsx';
+import { Section, Title, Panel, Label } from '../ui.jsx';
 
 export const STEPS = [
   { n: 1, title: 'PICK AN AD TO CLONE', text: 'Drop in a winner you found in the wild — or start from 274 proven templates.', img: '/images/step-templates-poster.jpg' },
@@ -10,6 +10,7 @@ export default function Steps() {
   return (
     <Section className="steps">
       <Panel>
+        <Label>How It Works</Label>
         <Title><b>Fire Your Video Crew Today!</b></Title>
         <p className="lead">Generate AI High-Converting Video Ads Today!</p>
         <p className="lead-strong">Ready to use - no learning or filming needed!</p>

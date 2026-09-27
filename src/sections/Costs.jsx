@@ -9,7 +9,7 @@ const COSTS = [
 
 export default function Costs() {
   return (
-    <Section className="costs">
+    <Section tone="dark" className="costs">
       <Title>What Are the Real Costs of Video Ads?</Title>
       <p className="lead">You can expect to <b>spend a lot of money</b> on things like TikTok ads, Reels, product demos and testimonial videos</p>
       <p className="tiny grad">Sadly, the more ads you need to test, the more it will cost!</p>
