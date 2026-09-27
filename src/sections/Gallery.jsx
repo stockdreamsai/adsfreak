@@ -22,7 +22,7 @@ const AVATARS = ['Aria', 'Marcus', 'Anisa', 'Lian', 'Betania', 'Arnav', 'Freya',
 
 export default function Gallery() {
   return (
-    <section className="gallery" id="samples">
+    <section className="gallery band-tint" id="samples">
       <Doodles />
       <div className="container">
         <SectionTitle

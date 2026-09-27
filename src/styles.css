@@ -2584,3 +2584,32 @@ h3 { font-size: 1.3rem; }
 .vs-check { font-size: 0.85rem; width: 24px; height: 24px; }
 .stat-label { font-size: 1rem; }
 .offer-guarantee, .offer-secure { font-size: 0.98rem; }
+
+/* ============================================================
+   Section rhythm: strict alternation white / tinted / dark
+   ============================================================ */
+/* tinted grid bands get a visible lavender base */
+.bg-grid { background-color: #f6f2fd; }
+/* soft gradient bands */
+.band-tint, .introducing {
+  background: linear-gradient(180deg, #f7f3ff 0%, #fdf1fa 100%);
+  border-radius: 0;
+}
+/* sections that must read as plain white */
+.how-it-works, .problem-story, .bonuses, .founders-story, .included, .warning, .feature-bullets {
+  background: #fdfcff;
+  border-radius: 0;
+}
+/* gentle top edge on tinted bands so the switch from white is unmistakable */
+.bg-grid, .band-tint, .introducing { position: relative; }
+.bg-grid::after, .band-tint::after, .introducing::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(139, 61, 255, 0.25), transparent);
+  pointer-events: none;
+}
+/* dark bands keep their rounded corners, and breathe from neighbours */
+.clone-showcase, .watch-demo, .guarantee, .one-click { border-radius: 32px; margin: 0 12px; }
+@media (max-width: 760px) { .clone-showcase, .watch-demo, .guarantee, .one-click { border-radius: 22px; margin: 0 8px; } }
