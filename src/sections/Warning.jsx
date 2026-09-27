@@ -1,29 +1,19 @@
-import { CTAButton, Circled, Countdown } from '../components/Shared.jsx';
-import Doodles from '../components/Decor.jsx';
+import { Section, Title } from '../ui.jsx';
 
 export default function Warning() {
   return (
-    <section className="warning">
-      <Doodles />
-      <div className="container narrow center">
-        <h2>
-          <span className="warning-tag">Be Warned:</span> This Window Closes{' '}
-          <span className="grad-text">The Same Way It Did In 2013</span>
-        </h2>
-        <p>
-          Most of your competitors still think "AI video" means typing a prompt and hoping.
-          That's your head start — and <em className="hl">it's the only part of this you can't buy back later</em>.
-        </p>
-        <p>
-          When this launch window closes, the price returns to <strong>$197</strong> and the
-          fast-action bonus disappears.
-        </p>
-        <p className="warning-window">
-          <strong>That hesitation you're feeling? <Circled><span className="grad-text">That's the window.</span></Circled></strong>
-        </p>
-        <Countdown />
-        <CTAButton large>Lock In $47 Before It's Gone</CTAButton>
+    <Section narrow className="warning">
+      <Title><span className="red">WARNING!</span><br />The <b>Discount</b> For Social Ads Freak Is Only Available For <b>A VERY SHORT</b> Limited Time.</Title>
+      <div className="split">
+        <img className="split-img" src="/brand/png/saf-boxshot.png" alt="Social Ads Freak" loading="lazy" />
+        <div>
+          <p>The good news is that <b>Social Ads Freak is being discounted</b> so that it's in the reach of anyone that needs it to power their business to new heights.</p>
+          <p>You won't find any other software that clones high-converting video ads specifically tailored for <b>all types of businesses</b>. And especially not for this price.</p>
+          <p>But the bad news is that the discount that's being offered for Social Ads Freak is only <b>available for a limited time</b>. That means you only have mere moments to get access to all the amazing features in Social Ads Freak for a low one time investment.</p>
+          <p>As a matter of fact, <b>the price returns to $197</b> once the launch is over. And once the special launch is over? You'll be forced to pay a higher amount or even a monthly recurring fee.</p>
+          <p>Make <b>the smart decision</b> and get access today…while you still can.</p>
+        </div>
       </div>
-    </section>
+    </Section>
   );
 }
