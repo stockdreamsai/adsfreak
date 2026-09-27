@@ -6,7 +6,7 @@ import { useRef, useState, useEffect } from 'react';
 const REVEAL_SELECTORS = [
   '.hero-kicker', '.hero h1', '.hero-proof-chips', '.glow-frame', '.hero-showcase > *', '.hero-offer',
   '.section-title', '.bullets-grid li', '.platforms-title', '.platform-pill', '.tool-pill',
-  '.step', '.testimonial-card', '.comparison-card', '.audience-card', '.earning-card',
+  '.step', '.testimonial-marquee', '.comparison-card', '.audience-card', '.earning-card',
   '.dna-card', '.dna-swap', '.duo-card', '.included-row', '.stat', '.faq-item',
   '.bonus-feature', '.pricing-box', '.founder-callout', '.samples-grid .video-frame',
   '.costs-table', '.costs-tagline', '.costs-chant', '.costs-velocity',
