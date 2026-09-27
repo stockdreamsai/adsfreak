@@ -35,7 +35,7 @@ export default function Hero() {
         <p className="hero-kicker">THE FREAK IS BACK… NOW WITH AI SUPERPOWERS</p>
         <h1>
           Skyrocket Your Conversions, Traffic &amp; Sales By{' '}
-          <span className="grad-text-light">Cloning Video Ads That Already Won</span> — Starring{' '}
+          <span className="grad-text-light">Cloning Video Ads That Already Won</span>Starring{' '}
           <TypedWords />
         </h1>
         <p className="hero-punch">
