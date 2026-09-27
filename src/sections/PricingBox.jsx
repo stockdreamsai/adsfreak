@@ -14,7 +14,7 @@ const STACK = [
 
 export default function PricingBox() {
   return (
-    <section className="pricing" id="buy">
+    <section className="pricing band-tint" id="buy">
       <Doodles />
       <div className="container narrow">
         <SectionTitle
