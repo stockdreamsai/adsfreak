@@ -9,7 +9,6 @@ function Seal() {
           <path id="seal-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
         </defs>
         <text>
-          {/* textLength = circumference of r=78 (2πr ≈ 490) so the ring closes exactly */}
           <textPath href="#seal-circle" textLength="486" lengthAdjust="spacing">
             30-DAY MONEY-BACK GUARANTEE • RISK FREE •
           </textPath>
@@ -31,17 +30,12 @@ export default function Guarantee() {
         <div className="guarantee-copy">
           <h2 className="on-dark">
             Launch Faster &amp; Test More In{' '}
-            <Circled light><span className="grad-text-light">30 Days</span></Circled> — Or Pay
-            Nothing.
+            <Circled light><span className="grad-text-light">30 Days</span></Circled> — Or Pay Nothing.
           </h2>
           <p className="on-dark">
-            Here's the deal: get inside, clone your first ads tonight, run them for a full month.
-            If you don't launch faster, test more angles, and feel the difference in your
-            campaigns — email us and every cent comes back to you.
-          </p>
-          <p className="on-dark">
-            <strong>No hoops. No friction. No questions. No risk.</strong> Either it works for
-            you, or it's free. All the risk is on us — the only way you lose is by not trying it.
+            Get inside, clone your first ads tonight, run them for a full month. If you don't feel
+            the difference in your campaigns, one email gets you <em className="hl hl-dark">every cent back</em>.
+            No hoops. No questions. All the risk is on us.
           </p>
         </div>
         <Seal />

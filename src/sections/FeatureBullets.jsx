@@ -1,11 +1,11 @@
 const BULLETS = [
-  <>Steal the DNA of winning ads — <strong>hook, pacing &amp; CTA cloned</strong> from creatives that already convert</>,
-  <>Launch tonight, not in 2 weeks — test <strong>10 angles</strong> before your competitor tests one</>,
-  <>Never pay <strong>$500 per video</strong> again — unlimited creatives for one flat payment</>,
-  <>Be in every ad <strong>without ever filming</strong> — your face &amp; cloned voice, or 100+ real-looking avatars</>,
-  <>Sell in <strong>30+ languages</strong> overnight — open new markets without a reshoot</>,
-  <>Never run out of winners — <strong>Trend Radar</strong> hands you what's going viral in your niche</>,
+  <>Clone the <em className="hl">hook, pacing &amp; CTA</em> of ads that already sell</>,
+  <>Launch <em className="hl">tonight</em> — not in 2 weeks</>,
+  <>Star in every ad <em className="hl">without filming</em> — you, or 100+ AI avatars</>,
+  <>One payment. <em className="hl">Unlimited ads.</em> No monthly fees</>,
 ];
+
+const PLATFORMS = ['TikTok', 'Instagram', 'Facebook', 'YouTube', 'Reels', 'Shorts'];
 
 export default function FeatureBullets() {
   return (
@@ -20,6 +20,15 @@ export default function FeatureBullets() {
               </li>
             ))}
           </ul>
+          <p className="bullets-platforms">
+            Ready for{' '}
+            {PLATFORMS.map((p, i) => (
+              <span key={p}>
+                <strong>{p}</strong>
+                {i < PLATFORMS.length - 1 ? ' · ' : ''}
+              </span>
+            ))}
+          </p>
         </div>
       </div>
     </section>

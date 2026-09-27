@@ -20,7 +20,7 @@ const REVEAL_SELECTORS = [
   '.export-note', '.center > .cta-button',
   '.bullets-card', '.stats-panel', '.alert-list li', '.problem-media', '.road-card', '.pain-fix',
   '.timeline-node', '.timeline-line', '.founders-photo', '.bonus-gift', '.faq-side', '.seal',
-  '.vs-card', '.bonus-caption',
+  '.vs-card', '.bonus-caption', '.roads-title', '.included-hero', '.close-ps', '.bullets-platforms',
 ].join(',');
 
 export function useScrollReveal() {

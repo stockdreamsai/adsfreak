@@ -1,84 +1,66 @@
-// Social Ads Freak landing page — direct-response structure:
-// hook + offer → proof → how it works → social proof → problem/agitation →
-// cost math → failed alternatives → hero story → mechanism/solution →
-// demo → value stack → audiences → bonuses → price (anchored) → risk
-// reversal → scarcity → crossroads close → FAQ → P.S.
+// Social Ads Freak landing page — direct-response flow, trimmed to what
+// moves a visitor from "curious" to "buying":
+// hook + offer → proof → problem → old way vs new → story → the mechanism →
+// how it works → demo → what you get → social proof → who it's for →
+// bonus → price → guarantee → scarcity → FAQ → final close.
 import { useScrollReveal } from './components/Shared.jsx';
 import UrgencyBar from './sections/UrgencyBar.jsx';
 import Hero from './sections/Hero.jsx';
 import FeatureBullets from './sections/FeatureBullets.jsx';
-import PlatformsStrip from './sections/PlatformsStrip.jsx';
 import CloneShowcase from './sections/CloneShowcase.jsx';
 import Gallery from './sections/Gallery.jsx';
-import HowItWorks from './sections/HowItWorks.jsx';
-import Testimonials from './sections/Testimonials.jsx';
-import StatsBand from './sections/StatsBand.jsx';
 import ProblemStory from './sections/ProblemStory.jsx';
-import PainSection from './sections/PainSection.jsx';
-import RealCosts from './sections/RealCosts.jsx';
 import Comparison from './sections/Comparison.jsx';
 import SuccessStories from './sections/SuccessStories.jsx';
 import Introducing from './sections/Introducing.jsx';
+import HowItWorks from './sections/HowItWorks.jsx';
 import WatchDemo from './sections/WatchDemo.jsx';
 import EverythingIncluded from './sections/EverythingIncluded.jsx';
-import DragToClone from './sections/DragToClone.jsx';
-import License from './sections/License.jsx';
-import ExportTools from './sections/ExportTools.jsx';
+import Testimonials from './sections/Testimonials.jsx';
+import StatsBand from './sections/StatsBand.jsx';
 import WhoBenefits from './sections/WhoBenefits.jsx';
-import EarningPotential from './sections/EarningPotential.jsx';
 import Bonuses from './sections/Bonuses.jsx';
 import PricingBox from './sections/PricingBox.jsx';
 import Guarantee from './sections/Guarantee.jsx';
 import Warning from './sections/Warning.jsx';
 import OneClickAway from './sections/OneClickAway.jsx';
 import FAQ from './sections/FAQ.jsx';
-import PsClose from './sections/PsClose.jsx';
 import Footer from './sections/Footer.jsx';
 
 export default function App() {
   useScrollReveal();
   return (
     <>
-      {/* HOOK: big promise + sales video + offer for hot traffic */}
+      {/* 1. HOOK — promise, sales video, offer */}
       <Hero />
       <FeatureBullets />
-      <PlatformsStrip />
-      {/* PROOF FIRST: original → clone demo, then real cloned videos */}
+      {/* 2. PROOF — see it work before we explain anything */}
       <CloneShowcase />
       <Gallery />
-      {/* EASE: 3 steps anyone can do */}
+      {/* 3. PROBLEM — why the old ways are rigged against you */}
+      <ProblemStory />
+      <Comparison />
+      {/* 4. STORY — we've seen this window before */}
+      <SuccessStories />
+      {/* 5. SOLUTION — the Clone Engine, in 3 steps, on video */}
+      <Introducing />
       <HowItWorks />
-      {/* SOCIAL PROOF: quotes + numbers */}
+      <WatchDemo />
+      {/* 6. VALUE — everything included */}
+      <EverythingIncluded />
+      {/* 7. SOCIAL PROOF */}
       <Testimonials />
       <StatsBand />
-      {/* PROBLEM → AGITATION: dying creatives, rigged alternatives, the math */}
-      <ProblemStory />
-      <PainSection />
-      <RealCosts />
-      <Comparison />
-      {/* STORY: 2013 window → 2026 window */}
-      <SuccessStories />
-      {/* SOLUTION: the Clone Engine mechanism */}
-      <Introducing />
-      <WatchDemo />
-      {/* VALUE STACK: everything included + the freakiest feature */}
-      <EverythingIncluded />
-      <DragToClone />
-      <License />
-      <ExportTools />
-      {/* IDENTIFICATION: who it's for, which path */}
       <WhoBenefits />
-      <EarningPotential />
-      {/* BONUSES → PRICE (anchored) → RISK REVERSAL → SCARCITY → CLOSE */}
+      {/* 8. OFFER — bonus, price, guarantee, scarcity */}
       <Bonuses />
       <PricingBox />
       <Guarantee />
       <Warning />
-      <OneClickAway />
+      {/* 9. OBJECTIONS + CLOSE */}
       <FAQ />
-      <PsClose />
+      <OneClickAway />
       <Footer />
-      {/* URGENCY: sticky bottom bar with the launch countdown */}
       <UrgencyBar />
     </>
   );
