@@ -19,9 +19,9 @@ export default function PricingBox() {
       <div className="container narrow">
         <SectionTitle
           kicker="Your Move"
-          title="Get Everything Below For Less Than"
-          highlight="One-Tenth The Cost Of A Single 'Old Way' Video"
-          sub="One freelance video: $150–$500. One agency testing cycle: $1,000–$5,000. Social Ads Freak: one payment of $47 — for unlimited creatives, forever."
+          title="Everything Above, For Less Than"
+          highlight="One Freelance Video"
+          sub="One creator video: $150–$500. One agency cycle: $1,000–$5,000. Social Ads Freak: $47 once — unlimited ads, forever."
         />
         <div className="pricing-box">
           <span className="pricing-ribbon">76% OFF</span>
