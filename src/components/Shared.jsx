@@ -220,21 +220,24 @@ export function VideoFrame({ src, poster, label, ratio = '9/16', track }) {
 }
 
 // Rotating typed word with gradient + blinking caret (Typed.js-style).
-export function TypedWords({ words = ['You', 'Any Of 100+ Avatars', 'Your Custom Avatar'] }) {
+export function TypedWords({
+  words = ['You', 'Your Client', 'Anyone', 'Everybody', 'Your Team', '100+ AI Avatars'],
+}) {
   const [text, setText] = useState(words[0]);
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    let word = 0, len = words[0].length, deleting = false, timer;
+    // Starts fully typed on the first word, so the first move is to erase it.
+    let word = 0, len = words[0].length, deleting = true, timer;
     const tick = () => {
       const current = words[word];
       len += deleting ? -1 : 1;
       setText(current.slice(0, len));
-      let delay = deleting ? 35 : 50;
-      if (!deleting && len === current.length) { deleting = true; delay = 1600; }
-      else if (deleting && len === 0) { deleting = false; word = (word + 1) % words.length; delay = 350; }
+      let delay = deleting ? 45 : 75;
+      if (!deleting && len === current.length) { deleting = true; delay = 1800; }
+      else if (deleting && len === 0) { deleting = false; word = (word + 1) % words.length; delay = 400; }
       timer = setTimeout(tick, delay);
     };
-    timer = setTimeout(tick, 1600);
+    timer = setTimeout(tick, 1800);
     return () => clearTimeout(timer);
   }, []);
   return <span className="typing-text">{text}</span>;
