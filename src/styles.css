@@ -2356,3 +2356,16 @@ body { padding-bottom: 64px; }
   .dd-star, .dd-sparkle, .dd-floor, .glow-frame, .glow-frame::after, .scan-line,
   .clone-showcase .hero-showcase::before { animation: none; }
 }
+
+/* hero: "Starring ___" on its own line, height reserved so the typing never shifts the page */
+.hero-starring {
+  display: block;
+  margin-top: 0.12em;
+  min-height: 1.25em;
+  white-space: nowrap;
+}
+.hero-starring .typing-text { min-width: 0.5ch; }
+@media (max-width: 760px) {
+  .hero-starring { white-space: normal; min-height: 2.5em; }
+}
+.hero h1 > .grad-text-light { display: block; }
