@@ -417,3 +417,6 @@ body { padding-bottom: 0; }
   .sticky-inner { justify-content: center; }
   .avatar-face { width: 72px; height: 72px; }
 }
+
+/* the offer glow must not widen the page on small screens */
+.hero { overflow: hidden; }
