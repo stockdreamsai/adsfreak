@@ -2357,15 +2357,115 @@ body { padding-bottom: 64px; }
   .clone-showcase .hero-showcase::before { animation: none; }
 }
 
-/* hero: "Starring ___" on its own line, height reserved so the typing never shifts the page */
-.hero-starring {
+.hero h1 > .grad-text-light { display: block; }
+
+/* ============================================================
+   Hero headline hierarchy: lead-in -> big promise -> starring box -> chips
+   ============================================================ */
+.hero-title { margin: 0 auto 22px; max-width: 1040px; }
+.hero-lead {
   display: block;
-  margin-top: 0.12em;
-  min-height: 1.25em;
+  font-size: clamp(1.05rem, 2vw, 1.45rem);
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.72);
+  letter-spacing: 0.01em;
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+.hero-main {
+  display: block;
+  font-size: clamp(2.3rem, 5.6vw, 4.1rem);
+  font-weight: 900;
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  padding-bottom: 0.08em;
+}
+
+/* the "Starring ___" pill with a rotating gradient border */
+.hero-starring-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 26px;
+  padding: 10px 26px 10px 10px;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background:
+    linear-gradient(rgba(22, 24, 52, 0.92), rgba(22, 24, 52, 0.92)) padding-box,
+    conic-gradient(from var(--ring-angle), #8b3dff, #f043c1, #6d7cff, #b78bff, #8b3dff) border-box;
+  animation: ring-spin 6s linear infinite;
+  box-shadow: 0 18px 44px rgba(139, 61, 255, 0.35), 0 0 0 8px rgba(139, 61, 255, 0.07);
+  font-size: clamp(1.35rem, 2.9vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.2;
   white-space: nowrap;
 }
-.hero-starring .typing-text { min-width: 0.5ch; }
-@media (max-width: 760px) {
-  .hero-starring { white-space: normal; min-height: 2.5em; }
+.hsb-icon {
+  width: 1.9em; height: 1.9em;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--grad);
+  font-size: 0.8em;
+  box-shadow: 0 8px 20px rgba(240, 67, 193, 0.45);
+  flex: none;
 }
-.hero h1 > .grad-text-light { display: block; }
+.hsb-label { color: rgba(255, 255, 255, 0.82); }
+/* fixed width sized for the longest word, so the pill never resizes while typing */
+.hero-starring-box .typing-text {
+  display: inline-block;
+  min-width: 13.4ch;
+  text-align: left;
+  border-right: none;
+  padding-right: 0;
+  animation: none;
+}
+/* caret that follows the text instead of sitting at the far edge */
+.hero-starring-box .typing-text::after {
+  content: '';
+  display: inline-block;
+  width: 3px;
+  height: 0.95em;
+  margin-left: 4px;
+  vertical-align: -0.1em;
+  background: #ff8ede;
+  border-radius: 2px;
+  animation: caret-blink 1s step-end infinite;
+}
+
+/* proof chips under the headline */
+.hero-proof-chips {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 36px;
+}
+.hero-proof-chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px 8px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+.hpc-check {
+  width: 22px; height: 22px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--grad);
+  font-size: 0.72rem;
+  font-weight: 900;
+}
+
+@media (max-width: 760px) {
+  .hero-lead { font-size: 1rem; }
+  .hero-starring-box { gap: 10px; padding: 8px 18px 8px 8px; font-size: 1.2rem; }
+  .hero-starring-box .typing-text { min-width: 0; }
+  .hero-proof-chips { gap: 8px; }
+  .hero-proof-chips li { font-size: 0.82rem; padding: 6px 12px 6px 7px; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-starring-box { animation: none; } }
