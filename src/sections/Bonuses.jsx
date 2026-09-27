@@ -15,7 +15,7 @@ const ACTIVE_DAY = 7;
 
 export default function Bonuses() {
   return (
-    <section className="bonuses bg-grid">
+    <section className="bonuses">
       <Doodles />
       <div className="container">
         <SectionTitle

@@ -15,7 +15,7 @@ const ROADS = [
 
 export default function ProblemStory() {
   return (
-    <section className="problem-story bg-grid">
+    <section className="problem-story">
       <Doodles />
       <div className="container">
         <div className="section-title">
