@@ -1,53 +1,37 @@
-import { SectionTitle, CHECKOUT_URL, Circled, Countdown } from '../components/Shared.jsx';
-import Doodles from '../components/Decor.jsx';
+import { SectionTitle, CHECKOUT_URL } from '../components/Shared.jsx';
 
 const STACK = [
-  ['Social Ads Freak — clone winning video ads', '$197'],
-  ['100+ AI Avatars', '$97'],
-  ['Voice Cloning Engine', '$67'],
-  ['30+ Language & 50+ Accent Pack', '$67'],
-  ['Proven Ad Template Library', '$47'],
-  ['Pro Studio — Multi-Scene Story Builder', '$97'],
-  ['"Drag-to-Clone" Any Ad', '$97'],
-  ['BONUS: 31 Days of Video Content', '$97'],
+  'Social Ads Freak — clone winning video ads',
+  '100+ AI Avatars',
+  'Voice Cloning Engine',
+  '30+ Language & 50+ Accent Pack',
+  'Proven Ad Template Library',
+  'Pro Studio — Multi-Scene Story Builder',
+  '"Drag-to-Clone" Any Ad',
+  'BONUS: 31 Days of Video Content',
 ];
 
 export default function PricingBox() {
   return (
     <section className="pricing band-tint" id="buy">
-      <Doodles />
       <div className="container narrow">
         <SectionTitle
-          kicker="Your Move"
-          title="Everything Above, For Less Than"
-          highlight="One Freelance Video"
-          sub="One creator video: $150–$500. One agency cycle: $1,000–$5,000. Social Ads Freak: $47 once — unlimited ads, forever."
+          kicker="Simple pricing"
+          title="Everything you need to make your next ad"
+          sub="Get the full toolkit for a one-time payment. No monthly subscription."
         />
         <div className="pricing-box">
           <span className="pricing-ribbon">76% OFF</span>
           <img className="pricing-boxshot" src="/brand/png/saf-boxshot.png" alt="Social Ads Freak" />
-          <h3>Here's Everything You Get Today</h3>
+          <h3>Everything included</h3>
           <ul className="pricing-list stack">
-            {STACK.map(([item, value]) => (
-              <li key={item}>
-                <span>✓ {item}</span>
-                <span className="stack-value">{value}</span>
-              </li>
+            {STACK.map((item) => (
+              <li key={item}>✓ {item}</li>
             ))}
-            <li className="stack-total">
-              <span>Total Value</span>
-              <span className="stack-value">$766</span>
-            </li>
           </ul>
-          <p className="pricing-regular">
-            Total value <s>$766</s> &nbsp;·&nbsp; Regular price <s>$197</s>
-          </p>
-          <p className="pricing-launch">No monthly fees — <strong>One Time Payment</strong></p>
-          <p className="pricing-price">Today: Just <Circled>$47</Circled></p>
-          <p className="pricing-deadline">⏳ Launch price disappears in:</p>
-          <Countdown />
+          <p className="pricing-price">$47 <small>one time</small></p>
           <a className="buy-button" href={CHECKOUT_URL}>
-            YES! GIVE ME INSTANT ACCESS ›
+            Get instant access
           </a>
           <p className="pricing-secure">🛡 30-Day Money-Back Guarantee &nbsp;·&nbsp; 🔒 Secure 256-bit SSL checkout &nbsp;·&nbsp; ⚡ Instant access</p>
           <div className="payment-badges">
@@ -56,9 +40,6 @@ export default function PricingBox() {
             ))}
           </div>
         </div>
-        <p className="pricing-join">
-          JOIN 2,400+ CREATORS ALREADY CLONING WINNERS — WHILE YOUR COMPETITORS KEEP PAYING $500 A VIDEO.
-        </p>
       </div>
     </section>
   );

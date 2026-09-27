@@ -1,5 +1,4 @@
-import { SectionTitle, Circled } from '../components/Shared.jsx';
-import Doodles from '../components/Decor.jsx';
+import { SectionTitle } from '../components/Shared.jsx';
 
 const STEPS = [
   {
@@ -25,12 +24,11 @@ const STEPS = [
 export default function HowItWorks() {
   return (
     <section className="how-it-works" id="how-it-works">
-      <Doodles />
       <div className="container">
         <SectionTitle
-          kicker="3 Simple Steps"
-          title={<><Circled>Fire</Circled> Your Video Crew Today</>}
-          sub="If you can copy-paste, you can do this. No camera, no studio, no learning curve."
+          kicker="How it works"
+          title="Create your next video ad in three steps"
+          sub="Choose an ad, tailor it to your product, and generate a video ready to post."
         />
         <div className="steps">
           {STEPS.map((s) => (

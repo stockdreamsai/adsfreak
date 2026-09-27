@@ -45,9 +45,9 @@ const FAQS = [
 ];
 
 export default function FAQ() {
-  const [open, setOpen] = useState(0);
+  const [open, setOpen] = useState(-1);
   return (
-    <section className="faq bg-grid">
+    <section className="faq bg-grid" id="faq">
       <div className="container faq-layout">
         <aside className="faq-side">
           <SectionTitle kicker="Support" title="Frequently Asked" highlight="Questions" />

@@ -1,5 +1,4 @@
-import { CTAButton, TypedWords, Circled, Countdown } from '../components/Shared.jsx';
-import { DarkDecor } from '../components/Decor.jsx';
+import { CTAButton } from '../components/Shared.jsx';
 
 // TODO: paste the sales video embed URL (YouTube / Vimeo / Wistia "embed"
 // link) when it's ready. While null, a styled placeholder is shown.
@@ -30,47 +29,22 @@ function SalesVideo() {
 export default function Hero() {
   return (
     <section className="hero" id="top">
-      <DarkDecor floor />
-      <div className="container">
-        <p className="hero-kicker">THE FREAK IS BACK… NOW WITH AI SUPERPOWERS</p>
-        <h1>
-          Skyrocket Your Conversions, Traffic &amp; Sales By{' '}
-          <span className="grad-text-light">Cloning Video Ads That Already Won</span>
-          <span className="hero-starring">
-            <span className="hero-starring-box">
-              Starring <TypedWords />
-            </span>
-          </span>
-        </h1>
-        <p className="hero-punch">
-          Zero Cameras. <span className="grad-text-light">Proven Winners.</span>
-        </p>
-
-        <SalesVideo />
-
-        <div className="hero-offer">
-          <p className="offer-urgency">⏳ Launch discount expires in:</p>
-          <Countdown />
-          <p className="offer-regular">
-            Regular Price <s>$197</s> — <strong className="offer-note-strong">One Time Payment, No Monthly Fees</strong>
+      <div className="container hero-grid">
+        <div className="hero-copy">
+          <p className="hero-kicker">AI video ads, made simple</p>
+          <h1>Make more video ads from the ideas that already work.</h1>
+          <p className="hero-punch">
+            Adapt proven ad formats for your product—with AI avatars, voice, and editing in one place.
           </p>
-          <p className="offer-today">
-            Today: Just <Circled light><strong>$47</strong></Circled>{' '}
-            <span className="offer-discount">(76% Discount)</span>
-          </p>
-          <CTAButton large>Get Social Ads Freak Now</CTAButton>
-          <p className="offer-microcopy">
-            ⚡ Instant access &nbsp;·&nbsp; 🛡 30-day money-back guarantee &nbsp;·&nbsp; 🔒 Secure
-            256-bit SSL checkout
-          </p>
-          <p className="offer-social">
-            Join <strong>2,400+ creators</strong> already cloning winning ads
-          </p>
-          <div className="payment-badges">
-            {['VISA', 'Mastercard', 'PayPal', 'Amex', 'Discover'].map((p) => (
-              <span className="payment-badge" key={p}>{p}</span>
-            ))}
+          <div className="hero-actions">
+            <CTAButton large>Get started for $47</CTAButton>
+            <span>One-time payment · 30-day guarantee</span>
           </div>
+          <p className="hero-social">Join 2,400+ creators making video ads without a camera crew.</p>
+        </div>
+        <div className="hero-media">
+          <SalesVideo />
+          <p className="hero-media-caption">See how a winning ad becomes your next creative.</p>
         </div>
       </div>
     </section>

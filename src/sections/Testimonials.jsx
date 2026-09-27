@@ -1,5 +1,4 @@
 import { SectionTitle } from '../components/Shared.jsx';
-import Doodles from '../components/Decor.jsx';
 
 const TESTIMONIALS = [
   {
@@ -49,12 +48,11 @@ const TESTIMONIALS = [
 export default function Testimonials() {
   return (
     <section className="testimonials bg-grid" id="testimonials">
-      <Doodles />
       <div className="container">
         <SectionTitle
-          kicker="Don't Just Take Our Word"
-          title="Freaks Are Already"
-          highlight="Winning With It"
+          kicker="Customer stories"
+          title="More creative, with"
+          highlight="less production time"
         />
         <div className="testimonial-marquee">
           <div className="testimonial-track">
