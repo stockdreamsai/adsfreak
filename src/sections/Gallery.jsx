@@ -22,7 +22,7 @@ const AVATARS = ['Aria', 'Marcus', 'Anisa', 'Lian', 'Betania', 'Arnav', 'Freya',
 
 export default function Gallery() {
   return (
-    <section className="gallery band-tint" id="samples">
+    <section className="gallery" id="samples">
       <Doodles />
       <div className="container">
         <SectionTitle
@@ -38,8 +38,10 @@ export default function Gallery() {
               Ali G <span className="founder-title">· Founder, Social Ads Freak · Social Lead Freak (2013)</span>
             </p>
             <p>
-              Every video below is me — and <em className="hl">I never picked up a camera</em>.
-              No crew, no studio, no editing.
+              Every video below is me — and I never picked up a camera. I fed{' '}
+              <strong>Social Ads Freak</strong> proven formats and let it clone them:{' '}
+              <strong>short-form viral</strong> ads that stop the scroll, plus{' '}
+              <strong>long-form</strong> talking videos that build trust — no crew, no studio, no editing.
             </p>
           </div>
         </div>
@@ -51,8 +53,11 @@ export default function Gallery() {
         </div>
 
         <p className="samples-bridge">
-          One person. A dozen winning formats. Zero cameras. Now picture{' '}
-          <em className="hl">your product</em> in these videos.
+          Freaky, right? <strong>One person. A dozen winning formats. Zero cameras.</strong>
+          <br />
+          Now picture <strong>your product</strong> in these videos — a whole ad account's worth of
+          proven creatives, with you showing up consistently <em>(or never on camera at all)</em>.
+          That's what you unlock in the next 10 minutes.
         </p>
 
         <div className="avatar-marquee" aria-hidden="false">
@@ -70,8 +75,9 @@ export default function Gallery() {
           </div>
         </div>
         <p className="avatar-copy">
-          Don't want your face on camera? Pick from <em className="hl">100+ avatars that don't look AI</em>{' '}
-          — or upload one photo and become your own.
+          <strong>Want a different face in your ads? Easy.</strong> Pick from 100+ AI avatars that
+          don't look AI — or upload one photo of yourself and become your own avatar. Same goes for
+          the voice — clone your own, or pick from the library.
         </p>
         <div className="avatar-pills">
           <span>100+ Avatars</span>

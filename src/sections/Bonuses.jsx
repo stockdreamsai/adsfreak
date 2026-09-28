@@ -15,14 +15,14 @@ const ACTIVE_DAY = 7;
 
 export default function Bonuses() {
   return (
-    <section className="bonuses">
+    <section className="bonuses bg-grid">
       <Doodles />
       <div className="container">
         <SectionTitle
           kicker="Fast Action Bonus · $97 Value · Launch Buyers Only"
-          title="Order Today And We'll Also Gift You"
-          highlight="31 Days Of Video Content From One Topic"
-          sub="Our launch-window thank-you for acting fast. It disappears when the timer does."
+          title="Order Today And We'll Also Gift You:"
+          highlight="31 Days Of Video Content From One Single Topic"
+          sub="This bonus is our launch-window 'thank you' for acting fast — it disappears when the timer does."
         />
 
         <div className="bonus-gift">
@@ -75,8 +75,9 @@ export default function Bonuses() {
           </div>
 
           <p className="bonus-caption">
-            Type a topic → pick any day → get a <em className="hl">ready-to-shoot script</em>. Then
-            turn it into a finished video with Social Ads Freak.
+            Never stare at a blank content calendar again. Type a topic → pick any day → get a
+            ready-to-shoot script. Then drop it straight into Social Ads Freak and turn it into a
+            finished video.
           </p>
         </div>
       </div>

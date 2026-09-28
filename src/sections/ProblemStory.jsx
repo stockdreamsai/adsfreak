@@ -1,44 +1,44 @@
-import Doodles, { DarkDecor } from '../components/Decor.jsx';
+import Doodles from '../components/Decor.jsx';
 
 const ALERTS = [
-  { icon: '📣', text: <><strong>10 million businesses</strong> fight for the same 1.7 seconds of attention on Meta alone</> },
-  { icon: '📉', text: <>Ad fatigue kills a winning creative <strong>within days</strong> — then your CPA climbs</> },
-  { icon: '🏎️', text: <>The brands winning right now simply <strong>out-produce you 50 to 1</strong></> },
-];
-
-const ROADS = [
-  { icon: '🏢', title: 'Hire an agency', cost: '$1,000–$5,000 / cycle', text: 'Paid whether the ads convert or not.' },
-  { icon: '🎥', title: 'Hire creators', cost: '$150–$500 / video', text: '7–14 days per round. The trend is dead by launch.' },
-  { icon: '🎬', title: 'Film it yourself', cost: 'Your whole week', text: 'Gear, scripts, retakes, editing — for one clip.' },
-  { icon: '🤖', title: 'Generic AI video', cost: 'Zero trust', text: 'Polished, robotic, dead behind the eyes. People scroll.' },
+  { icon: '📣', text: <>Over <strong>10 million businesses</strong> advertise on Meta alone — all fighting for the same 1.7 seconds of attention</> },
+  { icon: '📉', text: <>Ad fatigue kills even a winning creative <strong>within days</strong> — then your CPA starts climbing</> },
+  { icon: '💸', text: <>Platforms reward fresh creatives with <strong>cheaper clicks</strong> — and punish stale ones with dying reach</> },
+  { icon: '🙈', text: <>Tired templates and stock footage make your brand <strong>invisible</strong> — people smell "ad" and scroll</> },
+  { icon: '🏎️', text: <>The brands winning right now aren't smarter — they just <strong>out-produce you 50 to 1</strong></> },
 ];
 
 export default function ProblemStory() {
   return (
     <section className="problem-story">
       <Doodles />
-      <div className="container">
-        <div className="section-title">
-          <p className="section-kicker">Let's Be Honest</p>
-          <h2>
-            Your Ads Are Dying{' '}
-            <span className="grad-text">Faster Than You Can Replace Them</span>
-          </h2>
-          <p className="section-sub">
-            Platforms killed targeting hacks years ago. Today{' '}
-            <em className="hl">the creative IS the campaign</em> — and the math is brutal:
-          </p>
-        </div>
+      <div className="container narrow">
+        <h2>
+          Let's Be Brutally Honest:{' '}
+          <span className="grad-text">Your Ads Are Dying Faster Than You Can Replace Them.</span>
+        </h2>
+        <p className="problem-kicker">And every day without a fresh winner, you're paying for it.</p>
 
         <div className="problem-split">
-          <ul className="alert-list">
-            {ALERTS.map((a, i) => (
-              <li key={i}>
-                <span className="alert-icon" aria-hidden="true">{a.icon}</span>
-                <span>{a.text}</span>
-              </li>
-            ))}
-          </ul>
+          <div className="problem-copy">
+            <p>
+              It's not your product. It's not your targeting. Platforms killed targeting hacks
+              years ago — today <strong>the creative IS the campaign</strong>. And the math is
+              brutal:
+            </p>
+            <ul className="alert-list">
+              {ALERTS.map((a, i) => (
+                <li key={i}>
+                  <span className="alert-icon" aria-hidden="true">{a.icon}</span>
+                  <span>{a.text}</span>
+                </li>
+              ))}
+            </ul>
+            <p>
+              So you know you need a constant stream of fresh video ads. And that's exactly where
+              the trap snaps shut…
+            </p>
+          </div>
           <div className="problem-media">
             <img className="problem-img" src="/images/reference-ad.jpg" alt="A winning reference ad" loading="lazy" />
             <span className="float-chip chip-bad">📉 Ad fatigue sets in</span>
@@ -46,39 +46,7 @@ export default function ProblemStory() {
           </div>
         </div>
 
-        <h3 className="roads-title">
-          So you need a constant stream of fresh video ads. But every road to get them is{' '}
-          <em className="hl">rigged against you:</em>
-        </h3>
-        <div className="roads-grid">
-          {ROADS.map((r) => (
-            <div className="road-card" key={r.title}>
-              <div className="road-head">
-                <span className="road-icon" aria-hidden="true">{r.icon}</span>
-                <span className="road-blocked" aria-hidden="true">✕</span>
-              </div>
-              <h3>{r.title}</h3>
-              <span className="road-cost">{r.cost}</span>
-              <p>{r.text}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="pain-fix">
-          <DarkDecor />
-          <div className="pain-fix-copy">
-            <p className="pain-fix-kicker">The way out</p>
-            <p className="pain-fix-title">
-              The fix isn't more AI. It's AI that{' '}
-              <span className="grad-text-light">clones what already converts.</span>
-            </p>
-          </div>
-          <div className="pain-fix-media">
-            <img className="pain-fix-img" src="/images/recreated-ad.jpg" alt="A cloned ad starring Ali G" loading="lazy" />
-            <span className="float-chip chip-good pf-chip-a">✓ Hook cloned</span>
-            <span className="float-chip chip-good pf-chip-b">⚡ Ready in minutes</span>
-          </div>
-        </div>
+        <p className="problem-bridge">because here's what nobody tells you about getting them made…</p>
       </div>
     </section>
   );

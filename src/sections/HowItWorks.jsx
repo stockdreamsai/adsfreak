@@ -5,19 +5,19 @@ const STEPS = [
   {
     n: '1',
     title: 'PICK AN AD TO CLONE',
-    text: <>Drop in a winner you found in the wild — or start from <em className="hl">274 proven templates</em>.</>,
+    text: 'Drop in a winner you found in the wild — or start from 274 proven, scroll-stopping templates.',
     img: '/images/step-templates-poster.jpg',
   },
   {
     n: '2',
     title: 'SWAP IN YOUR DETAILS',
-    text: <>Your product, your face (or an avatar), your cloned voice — in <em className="hl">30+ languages</em>.</>,
+    text: 'Your product, your face (or 100+ avatars), your cloned voice — in 30+ languages.',
     img: '/images/step-upload.jpg',
   },
   {
     n: '3',
     title: 'GENERATE & LAUNCH',
-    text: <>One scroll-stopping vertical ad, <em className="hl">ready to post tonight</em>.</>,
+    text: 'One scroll-stopping vertical clip, ready to post tonight.',
     img: '/images/step-generated-poster.jpg',
   },
 ];
@@ -28,9 +28,8 @@ export default function HowItWorks() {
       <Doodles />
       <div className="container">
         <SectionTitle
-          kicker="3 Simple Steps"
-          title={<><Circled>Fire</Circled> Your Video Crew Today</>}
-          sub="If you can copy-paste, you can do this. No camera, no studio, no learning curve."
+          title={<><Circled>Fire</Circled> Your Video Crew Today!</>}
+          sub="If you can copy-paste, you can do this. Clone an ad that already won — in 3 ridiculously easy steps. No camera, no studio, no editing, no learning curve."
         />
         <div className="steps">
           {STEPS.map((s) => (
