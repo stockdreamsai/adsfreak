@@ -1,19 +1,33 @@
-import { Section, Title } from '../ui.jsx';
+import { CTAButton, Circled, Countdown } from '../components/Shared.jsx';
+import Doodles from '../components/Decor.jsx';
 
 export default function Warning() {
   return (
-    <Section narrow className="warning">
-      <Title><span className="red">WARNING!</span><br />The <b>Discount</b> For Social Ads Freak Is Only Available For <b>A VERY SHORT</b> Limited Time.</Title>
-      <div className="split">
-        <img className="split-img" src="/brand/png/saf-boxshot.png" alt="Social Ads Freak" loading="lazy" />
-        <div>
-          <p>The good news is that <b>Social Ads Freak is being discounted</b> so that it's in the reach of anyone that needs it to power their business to new heights.</p>
-          <p>You won't find any other software that clones high-converting video ads specifically tailored for <b>all types of businesses</b>. And especially not for this price.</p>
-          <p>But the bad news is that the discount that's being offered for Social Ads Freak is only <b>available for a limited time</b>. That means you only have mere moments to get access to all the amazing features in Social Ads Freak for a low one time investment.</p>
-          <p>As a matter of fact, <b>the price returns to $197</b> once the launch is over. And once the special launch is over? You'll be forced to pay a higher amount or even a monthly recurring fee.</p>
-          <p>Make <b>the smart decision</b> and get access today…while you still can.</p>
-        </div>
+    <section className="warning">
+      <Doodles />
+      <div className="container narrow center">
+        <h2>
+          <span className="warning-tag">BE WARNED:</span> This Window Closes{' '}
+          <span className="grad-text">The Same Way It Did In 2013</span>
+        </h2>
+        <p>
+          Right now, most of your competitors still think "AI video" means typing a prompt and
+          hoping. They're posting slop, watching it flop, and concluding it doesn't work.{' '}
+          <strong>That's your head start — and it's the only part of this you can't buy back
+          later.</strong>
+        </p>
+        <p>
+          Give it twelve months. Cloning proven ads won't be an edge anymore — it'll just be how
+          ads get made. The people who start now spend that year compounding winners. Everyone
+          else spends it catching up. On top of that, when this launch window closes, the price
+          returns to <strong>$197</strong> and the fast-action bonus disappears.
+        </p>
+        <p className="warning-window">
+          <strong>That hesitation you're feeling? <Circled><span className="grad-text">That's the window.</span></Circled></strong>
+        </p>
+        <Countdown />
+        <CTAButton large>Lock In $47 Before It's Gone</CTAButton>
       </div>
-    </Section>
+    </section>
   );
 }
