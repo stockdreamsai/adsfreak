@@ -2245,22 +2245,26 @@ body { padding-bottom: 64px; }
   height: 150px;
   overflow: hidden;
   pointer-events: none;
-  -webkit-mask-image: linear-gradient(to top, #000 0, #000 18%, transparent 62%);
-  mask-image: linear-gradient(to top, #000 0, #000 18%, transparent 62%);
+  /* fade out before the perspective squeezes the grid below ~12px spacing */
+  -webkit-mask-image: linear-gradient(to top, #000 0, #000 14%, transparent 56%);
+  mask-image: linear-gradient(to top, #000 0, #000 14%, transparent 56%);
 }
 .dd-floor {
   position: absolute;
   left: -30%; right: -30%;
   bottom: -2px;
   height: 640px;
+  /* 2px lines with a 1px soft edge: survive minification without twinkling */
   background-image:
-    linear-gradient(rgba(183, 139, 255, 0.5) 1.5px, transparent 1.5px),
-    linear-gradient(90deg, rgba(183, 139, 255, 0.5) 1.5px, transparent 1.5px);
+    linear-gradient(to top, rgba(183, 139, 255, 0.55) 0, rgba(183, 139, 255, 0.55) 2px, rgba(183, 139, 255, 0) 3px, rgba(183, 139, 255, 0) 64px),
+    linear-gradient(to right, rgba(183, 139, 255, 0.55) 0, rgba(183, 139, 255, 0.55) 2px, rgba(183, 139, 255, 0) 3px, rgba(183, 139, 255, 0) 64px);
   background-size: 64px 64px;
-  transform: perspective(360px) rotateX(64deg);
+  /* gentler perspective: far rows stay wider apart, so they don't alias */
+  transform: perspective(480px) rotateX(62deg) translateZ(0);
   transform-origin: 50% 100%;
   backface-visibility: hidden;
-  animation: floor-scroll 2.6s linear infinite;
+  will-change: background-position;
+  animation: floor-scroll 3.2s linear infinite;
   opacity: 0.7;
 }
 @keyframes floor-scroll { to { background-position: 0 64px; } }
