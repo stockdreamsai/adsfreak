@@ -1,17 +1,51 @@
-import { Section, Title } from '../ui.jsx';
+import { Circled } from '../components/Shared.jsx';
+import { DarkDecor } from '../components/Decor.jsx';
+
+function Seal() {
+  return (
+    <div className="seal" aria-hidden="true">
+      <svg className="seal-ring" viewBox="0 0 200 200">
+        <defs>
+          <path id="seal-circle" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0" />
+        </defs>
+        <text>
+          {/* textLength = circumference of r=78 (2πr ≈ 490) so the ring closes exactly */}
+          <textPath href="#seal-circle" textLength="486" lengthAdjust="spacing">
+            30-DAY MONEY-BACK GUARANTEE • RISK FREE •
+          </textPath>
+        </text>
+      </svg>
+      <div className="seal-core">
+        <span className="seal-num">30</span>
+        <span className="seal-label">DAYS<br />RISK-FREE</span>
+      </div>
+    </div>
+  );
+}
 
 export default function Guarantee() {
   return (
-    <Section tone="dark" className="guarantee">
-      <Title className="grad join"><b>JOIN THOUSANDS SATISFIED CUSTOMERS.</b></Title>
-      <div className="guarantee-panel">
-        <div>
-          <p>We are <b>100% confident</b> in its ability to do what we're promising you, that we're gonna make this an Easy No-Brainer!</p>
-          <p>If you use Social Ads Freak for a month and you don't like it, we will <u>refund all your money</u> and let you keep all the ads that you created, <b>no questions asked!</b></p>
-          <p>We're going to make this a complete <b>RISK FREE DECISION</b> for you!</p>
+    <section className="guarantee">
+      <DarkDecor />
+      <div className="container narrow guarantee-inner">
+        <div className="guarantee-copy">
+          <h2 className="on-dark">
+            Launch Faster &amp; Test More In{' '}
+            <Circled light><span className="grad-text-light">30 Days</span></Circled> — Or Pay
+            Nothing.
+          </h2>
+          <p className="on-dark">
+            Here's the deal: get inside, clone your first ads tonight, run them for a full month.
+            If you don't launch faster, test more angles, and feel the difference in your
+            campaigns — email us and every cent comes back to you.
+          </p>
+          <p className="on-dark">
+            <strong>No hoops. No friction. No questions. No risk.</strong> Either it works for
+            you, or it's free. All the risk is on us — the only way you lose is by not trying it.
+          </p>
         </div>
-        <div className="seal" aria-hidden="true"><span>30</span>DAYS<br />MONEY BACK</div>
+        <Seal />
       </div>
-    </Section>
+    </section>
   );
 }

@@ -1,65 +1,85 @@
-// Social Ads Freak — sales page rebuilt on the stockdreams.ai blueprint,
-// block for block, with a clean white layout and a single purple→pink accent.
-import { useReveal, StickyCta } from './ui.jsx';
-import Header from './sections/Header.jsx';
+// Social Ads Freak landing page — direct-response structure:
+// hook + offer → proof → how it works → social proof → problem/agitation →
+// cost math → failed alternatives → hero story → mechanism/solution →
+// demo → value stack → audiences → bonuses → price (anchored) → risk
+// reversal → scarcity → crossroads close → FAQ → P.S.
+import { useScrollReveal } from './components/Shared.jsx';
+import UrgencyBar from './sections/UrgencyBar.jsx';
 import Hero from './sections/Hero.jsx';
-import Bullets from './sections/Bullets.jsx';
-import Steps from './sections/Steps.jsx';
-import Reviews from './sections/Reviews.jsx';
-import Problem from './sections/Problem.jsx';
-import Challenge from './sections/Challenge.jsx';
-import Costs from './sections/Costs.jsx';
-import Story from './sections/Story.jsx';
-import Introducing from './sections/Introducing.jsx';
-import Demo from './sections/Demo.jsx';
-import Included from './sections/Included.jsx';
+import FeatureBullets from './sections/FeatureBullets.jsx';
+import PlatformsStrip from './sections/PlatformsStrip.jsx';
+import CloneShowcase from './sections/CloneShowcase.jsx';
 import Gallery from './sections/Gallery.jsx';
-import ProStudio from './sections/ProStudio.jsx';
-import Export from './sections/Export.jsx';
-import Audiences from './sections/Audiences.jsx';
-import Earning from './sections/Earning.jsx';
+import HowItWorks from './sections/HowItWorks.jsx';
+import Testimonials from './sections/Testimonials.jsx';
+import StatsBand from './sections/StatsBand.jsx';
+import ProblemStory from './sections/ProblemStory.jsx';
+import PainSection from './sections/PainSection.jsx';
+import RealCosts from './sections/RealCosts.jsx';
+import Comparison from './sections/Comparison.jsx';
+import SuccessStories from './sections/SuccessStories.jsx';
+import Introducing from './sections/Introducing.jsx';
+import WatchDemo from './sections/WatchDemo.jsx';
+import EverythingIncluded from './sections/EverythingIncluded.jsx';
+import DragToClone from './sections/DragToClone.jsx';
+import License from './sections/License.jsx';
+import ExportTools from './sections/ExportTools.jsx';
+import WhoBenefits from './sections/WhoBenefits.jsx';
+import EarningPotential from './sections/EarningPotential.jsx';
 import Bonuses from './sections/Bonuses.jsx';
-import Stats from './sections/Stats.jsx';
-import Pricing from './sections/Pricing.jsx';
+import PricingBox from './sections/PricingBox.jsx';
 import Guarantee from './sections/Guarantee.jsx';
 import Warning from './sections/Warning.jsx';
-import OneClick from './sections/OneClick.jsx';
+import OneClickAway from './sections/OneClickAway.jsx';
 import FAQ from './sections/FAQ.jsx';
-import Stories from './sections/Stories.jsx';
+import PsClose from './sections/PsClose.jsx';
 import Footer from './sections/Footer.jsx';
 
 export default function App() {
-  useReveal();
+  useScrollReveal();
   return (
     <>
-      <Header />
+      {/* HOOK: big promise + sales video + offer for hot traffic */}
       <Hero />
-      <Bullets />
-      <Steps />
-      <Reviews />
-      <Problem />
-      <Challenge />
-      <Costs />
-      <Story />
-      <Introducing />
-      <Demo />
-      <Included />
+      <FeatureBullets />
+      <PlatformsStrip />
+      {/* PROOF FIRST: original → clone demo, then real cloned videos */}
+      <CloneShowcase />
       <Gallery />
-      <ProStudio />
-      <Export />
-      <Audiences />
-      <Earning />
+      {/* EASE: 3 steps anyone can do */}
+      <HowItWorks />
+      {/* SOCIAL PROOF: quotes + numbers */}
+      <Testimonials />
+      <StatsBand />
+      {/* PROBLEM → AGITATION: dying creatives, rigged alternatives, the math */}
+      <ProblemStory />
+      <PainSection />
+      <RealCosts />
+      <Comparison />
+      {/* STORY: 2013 window → 2026 window */}
+      <SuccessStories />
+      {/* SOLUTION: the Clone Engine mechanism */}
+      <Introducing />
+      <WatchDemo />
+      {/* VALUE STACK: everything included + the freakiest feature */}
+      <EverythingIncluded />
+      <DragToClone />
+      <License />
+      <ExportTools />
+      {/* IDENTIFICATION: who it's for, which path */}
+      <WhoBenefits />
+      <EarningPotential />
+      {/* BONUSES → PRICE (anchored) → RISK REVERSAL → SCARCITY → CLOSE */}
       <Bonuses />
-      <Stats title={<>Tons of Social Ads Freak Users <b>Can't Be Wrong</b></>} />
-      <Pricing />
+      <PricingBox />
       <Guarantee />
       <Warning />
-      <OneClick />
+      <OneClickAway />
       <FAQ />
-      <Stories />
-      <Stats />
+      <PsClose />
       <Footer />
-      <StickyCta />
+      {/* URGENCY: sticky bottom bar with the launch countdown */}
+      <UrgencyBar />
     </>
   );
 }
