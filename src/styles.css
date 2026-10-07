@@ -2235,20 +2235,31 @@ body { padding-bottom: 64px; }
 .dd-sparkle-b path { fill: #ff9ee3; }
 .dd-sparkle-c { width: 22px; bottom: 22%; left: 12%; animation: sparkle-spin 10s linear infinite; }
 
-/* retro perspective grid floor that scrolls toward the viewer */
+/* retro perspective grid floor that scrolls toward the viewer.
+   The grid is 3D-transformed; the fade lives on a flat wrapper so the
+   horizon edge is masked in screen space (a mask on the transformed
+   element let a bright line flash at the far edge once per loop). */
+.dd-floor-wrap {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 150px;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to top, #000 0, #000 18%, transparent 62%);
+  mask-image: linear-gradient(to top, #000 0, #000 18%, transparent 62%);
+}
 .dd-floor {
   position: absolute;
   left: -30%; right: -30%;
   bottom: -2px;
-  height: 42%;
+  height: 640px;
   background-image:
     linear-gradient(rgba(183, 139, 255, 0.5) 1.5px, transparent 1.5px),
     linear-gradient(90deg, rgba(183, 139, 255, 0.5) 1.5px, transparent 1.5px);
   background-size: 64px 64px;
   transform: perspective(360px) rotateX(64deg);
   transform-origin: 50% 100%;
-  -webkit-mask-image: linear-gradient(to top, #000 10%, transparent 85%);
-  mask-image: linear-gradient(to top, #000 10%, transparent 85%);
+  backface-visibility: hidden;
   animation: floor-scroll 2.6s linear infinite;
   opacity: 0.7;
 }
@@ -2362,7 +2373,7 @@ body { padding-bottom: 64px; }
   .clone-showcase .hero-showcase::before { display: none; }
   .pf-chip-a { left: -10px; }
   .pf-chip-b { right: -6px; }
-  .dd-floor { height: 30%; }
+  .dd-floor-wrap { height: 110px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .dd-star, .dd-sparkle, .dd-floor, .glow-frame, .glow-frame::after, .scan-line,
