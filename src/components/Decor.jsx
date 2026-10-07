@@ -70,7 +70,7 @@ export function DarkDecor({ floor = false }) {
       <Star className="dd-sparkle dd-sparkle-a" />
       <Star className="dd-sparkle dd-sparkle-b" />
       <Star className="dd-sparkle dd-sparkle-c" />
-      {floor && <div className="dd-floor" />}
+      {floor && <div className="dd-floor-wrap"><div className="dd-floor" /></div>}
     </div>
   );
 }
