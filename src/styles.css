@@ -124,7 +124,6 @@ section { padding: 72px 0; }
   color: #fff;
   text-align: center;
   padding: 80px 0 88px;
-  border-radius: 0 0 32px 32px;
 }
 .hero h1 { color: #fff; font-size: clamp(1.8rem, 4vw, 2.9rem); max-width: 980px; margin: 0 auto 14px; }
 .hero-sub { font-size: 1.35rem; font-weight: 800; margin-bottom: 6px; }
@@ -174,7 +173,7 @@ section { padding: 72px 0; }
 }
 
 /* ---- how it works ---- */
-.how-it-works { background: var(--grad-soft); border-radius: 32px; }
+.how-it-works { background: var(--grad-soft); }
 .steps { display: grid; gap: 40px; max-width: 880px; margin: 0 auto; }
 .step {
   display: grid;
@@ -264,7 +263,7 @@ section { padding: 72px 0; }
 .right-ads p { margin-bottom: 14px; }
 
 /* ---- introducing ---- */
-.introducing { background: var(--grad-soft); border-radius: 32px; }
+.introducing { background: var(--grad-soft); }
 .intro-kicker { text-transform: uppercase; letter-spacing: 0.14em; font-weight: 800; color: var(--text-light); }
 .intro-name { font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 900; margin: 4px 0 8px; }
 .intro-sub { font-size: 1.2rem; margin-bottom: 32px; }
@@ -275,7 +274,14 @@ section { padding: 72px 0; }
 .intro-nsn { margin-top: 26px; color: var(--text-light); }
 
 /* ---- watch demo / dark bands ---- */
-.watch-demo, .guarantee, .one-click { background: var(--navy); border-radius: 32px; }
+.one-click { background: var(--navy); }
+.watch-demo, .guarantee {
+  background: var(--navy);
+  border-radius: 32px;
+  /* boxed cards: same width and side gutters as .container */
+  width: min(1140px, 100% - 32px);
+  margin-inline: auto;
+}
 .watch-demo h2 { margin-bottom: 6px; }
 .demo-sub { color: #aab0dd !important; margin-bottom: 30px; }
 .watch-demo .media-placeholder { max-width: 720px; margin: 0 auto; }
@@ -308,7 +314,7 @@ section { padding: 72px 0; }
   width: min(1140px, 100% - 32px);
   margin-inline: auto;
 }
-@media (max-width: 860px) { .license { border-radius: 20px; } }
+@media (max-width: 860px) { .license, .watch-demo, .guarantee { border-radius: 20px; } }
 .license h2 { margin-bottom: 30px; }
 .license-badge {
   width: 170px; height: 170px;
@@ -2164,7 +2170,6 @@ section { scroll-margin-top: 0; }
     radial-gradient(700px 360px at 15% 0%, rgba(139, 61, 255, 0.35), transparent 65%),
     radial-gradient(700px 360px at 90% 100%, rgba(240, 67, 193, 0.25), transparent 65%),
     var(--navy);
-  border-radius: 32px;
   margin: 10px 0;
 }
 .clone-showcase .section-title h2 { color: #fff; }
