@@ -21,6 +21,7 @@ const Rocket = (p) => <I d={['M4.5 16.5c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2 0-
 const Gem = (p) => <I d={['M6 3h12l4 6-10 13L2 9z', 'M11 3 8 9l4 13 4-13-3-6', 'M2 9h20']} {...p} />;
 const Star = (p) => <I d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" fill="currentColor" {...p} />;
 const Chevron = (p) => <I d="m6 9 6 6 6-6" {...p} />;
+const Globe = (p) => <I d={['M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z', 'M2 12h20', 'M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z']} {...p} />;
 const Zap = (p) => <I d="M13 2 3 14h9l-1 8 10-12h-9z" {...p} />;
 const Wand = (p) => <I d={['m15 4 5 5', 'M3 21 14.5 9.5', 'M9 3v3', 'M7.5 4.5h3', 'M19 11v3', 'M17.5 12.5h3']} {...p} />;
 const Lock = (p) => <I d={['M5 11h14v10H5z', 'M8 11V7a4 4 0 0 1 8 0v4']} {...p} />;
@@ -99,34 +100,47 @@ function Accordion({ items }) {
   );
 }
 
-function ReasonVisual({ i }) {
-  switch (i) {
-    case 0: return (
+function ReasonVisual({ kind }) {
+  switch (kind) {
+    case 'credits': return (
       <div className="mock-card credits">
         <div className="mc-head"><Zap size={18} /> Credit balance</div>
         <div className="meter"><div className="std"><span>Standard</span><b>47,000</b></div><div className="mx"><span>MAX</span><b>94,000</b></div></div>
         <p>≈ 427 viral ads · 2× your plan</p>
       </div>);
-    case 1: return (
+    case 'variants': return (
       <div className="mock-card variants">
         <div className="mc-head"><Wand size={18} /> Variant Factory · viral score</div>
         {VARIANTS.map(([t, sc]) => <div key={t} className="vrow"><span>{t}</span><b style={{ '--sc': sc }}>{sc}</b></div>)}
       </div>);
-    case 2: return <BeforeAfter before="/images/reference-ad.jpg" after="/images/recreated-ad.jpg" labels={['Winning ad', 'Deep clone']} />;
-    case 3: return <div className="shot"><img src="/images/included-trendradar-poster.jpg" alt="Trend Radar" loading="lazy" /></div>;
-    case 4: return (
+    case 'clone': return <BeforeAfter before="/images/reference-ad.jpg" after="/images/recreated-ad.jpg" labels={['Winning ad', 'Deep clone']} />;
+    case 'trend': return <div className="shot"><img src="/images/included-trendradar-poster.jpg" alt="Trend Radar" loading="lazy" /></div>;
+    case 'avatars': return (
+      <div className="mock-card avatar">
+        <div className="mc-head"><Wand size={18} /> Create your own avatar</div>
+        <div className="arow"><span className="aico">📷</span><div><b>Upload a photo</b><small>MAX turns it into a presenter</small></div></div>
+        <div className="aor">or</div>
+        <div className="arow"><span className="aico">✍️</span><div><b>Describe it</b><small>"woman in her 30s, gym outfit, warm smile"</small></div></div>
+        <div className="meter"><div className="std"><span>Standard</span><b>100+</b></div><div className="mx"><span>MAX · 2×</span><b>200+ &amp; yours</b></div></div>
+      </div>);
+    case 'languages': return (
+      <div className="mock-card langs">
+        <div className="mc-head"><Globe size={18} /> Languages &amp; captions</div>
+        <div className="meter"><div className="std"><span>Standard</span><b>30+</b></div><div className="mx"><span>MAX</span><b>60+</b></div></div>
+        <div className="qrow"><span>Captions · Standard</span><b>English only</b></div>
+        <div className="qrow max"><span>Captions · MAX</span><b>Any language</b></div>
+      </div>);
+    case 'ugc': return (
+      <div className="shot ugc">
+        <img src="/images/included-ugc-poster.jpg" alt="UGC video formats" loading="lazy" />
+        <span className="x2-tag">2× UGC videos</span>
+      </div>);
+    case 'queue': return (
       <div className="mock-card queue">
         <div className="mc-head"><Rocket size={18} /> Render queue</div>
         <div className="qrow max"><span>MAX · your 10 variants</span><b>rendering now</b></div>
         <div className="qrow"><span>Standard</span><b>in queue</b></div>
         <div className="qrow"><span>Standard</span><b>in queue</b></div>
-      </div>);
-    case 5: return (
-      <div className="mock-card invoice">
-        <div className="mc-head"><Gem size={18} /> Client invoice</div>
-        <div className="irow"><span>5 × UGC video ads</span><b>$1,500</b></div>
-        <div className="irow"><span>3 × localized variants</span><b>$600</b></div>
-        <div className="irow total"><span>Keep 100%</span><b>$2,100</b></div>
       </div>);
     default: return <div className="shot"><img src="/images/included-avatars.jpg" alt="New avatars" loading="lazy" /></div>;
   }
@@ -202,8 +216,9 @@ export default function MaxPage() {
           <p className="hero-lead">
             You just unlocked Social Ads Freak. <b>MAX is for the freaks who actually plan to scale.</b> Double the credits,
             the <b>Variant Factory</b> A/B engine and deep ad-clone analysis — working across both quick viral ads and full
-            Pro Studio stories — daily <b>Trend Radar</b>, priority rendering, a <b>full commercial license</b> to sell ads
-            to clients, and first dibs on every new avatar and template — added to the account you just created.
+            Pro Studio stories — daily <b>Trend Radar</b>, <b>200+ avatars</b> plus <b>your own custom avatar</b> from a
+            photo or a description, <b>60+ languages</b> with captions in any of them, double the UGC videos, priority
+            rendering, and first dibs on every new avatar and template — added to the account you just created.
           </p>
 
           <div className="chips">{CHIPS.map((c) => <span key={c}>{c}</span>)}</div>
@@ -401,7 +416,7 @@ export default function MaxPage() {
       <section className="white">
         <div className="wrap center">
           <p className="kicker">What MAX unlocks</p>
-          <h2>Here Are 7 Reasons To <span className="violet">Upgrade To MAX</span></h2>
+          <h2>Here Are {FEATURES.length} Reasons To <span className="violet">Upgrade To MAX</span></h2>
         </div>
         <div className="wrap reasons">
           {FEATURES.map((f, i) => (
@@ -411,7 +426,7 @@ export default function MaxPage() {
                 <h3><span className="femoji sm" aria-hidden="true">{f.icon}</span> {f.title}</h3>
                 <p>{f.text}</p>
               </div>
-              <div className="rvisual"><ReasonVisual i={i} /></div>
+              <div className="rvisual"><ReasonVisual kind={f.visual} /></div>
             </article>
           ))}
         </div>
@@ -424,7 +439,7 @@ export default function MaxPage() {
             <div className="dark-card bonus">
               <p className="kicker light outline"><Sparkle size={14} /> Exclusive extras</p>
               <h2>I Haven't Even Told You About The <em className="accent">Bonuses</em> Yet!</h2>
-              <p className="sub small">These are included <b>FREE</b> with your MAX upgrade — on top of the credits, the Variant Factory and the commercial license.</p>
+              <p className="sub small">These are included <b>FREE</b> with your MAX upgrade — on top of the credits, the Variant Factory and the doubled avatars and languages.</p>
               <div className="bgrid">
                 {[
                   { icon: '🚀', title: 'Priority Render Queue', text: 'Your generations jump the line. When you\'re testing 10 variations before launch, MAX users render first.', visual: <div className="bimg"><img src="/images/step-generated-poster.jpg" alt="" loading="lazy" /></div> },
@@ -456,7 +471,7 @@ export default function MaxPage() {
             <div className="lead left">
               <p>Here's your <b>ONE CHANCE</b> to upgrade to <b>MAX</b> at a fraction of what it's really worth.</p>
               <p>And you get <b><u>free updates</u></b> and <b><u>support</u></b>, included.</p>
-              <p>Double the credits, batch-scored variants and a commercial license are powerful — and rightly so, not everyone should get them. At least not at this price.</p>
+              <p>Double the credits, batch-scored variants and your own custom avatar are powerful — and rightly so, not everyone should get them. At least not at this price.</p>
               <p>If you're serious about scaling your ads, this should be an easy decision to go ahead and click the button.</p>
             </div>
           </div>
@@ -477,7 +492,7 @@ export default function MaxPage() {
             <span className="ribbon">🔥 MAX UPGRADE</span>
             <div className="pc-head">
               <div className="pc-name"><span className="gem"><Gem size={18} /></span><h3>Social Ads Freak MAX</h3></div>
-              <div className="pc-price"><s>${totalValue} value</s><b>${price}</b><small>One-Time Payment</small></div>
+              <div className="pc-price"><s>${totalValue.toLocaleString('en-US')} value</s><b>${price}</b><small>One-Time Payment</small></div>
             </div>
             <div className="pc-body">
               <p className="pc-sub">Everything You Unlock Today</p>
@@ -485,7 +500,7 @@ export default function MaxPage() {
                 {VALUE_LIST.map(([label, v, bonus]) => (
                   <li key={label}><Check size={16} className="green" /><span>{label}</span>{bonus && <em className="bonus-tag">Bonus</em>}<b>${v}</b></li>
                 ))}
-                <li className="total"><span>Total Value</span><b className="violet">${totalValue}</b></li>
+                <li className="total"><span>Total Value</span><b className="violet">${totalValue.toLocaleString('en-US')}</b></li>
               </ul>
               <p className="pc-today">One-Time Upgrade — <b>No Monthly Fees</b></p>
               <p className="pc-big">Today: Just ${price}</p>
@@ -535,8 +550,9 @@ export default function MaxPage() {
         <div className="wrap narrow center">
           <h2>Add <span className="violet">MAX</span> To Your Account?</h2>
           <p className="lead">
-            Double the credits — 400+ viral ads. Batch scored variants on ads and full stories. Daily trend intel. Priority
-            rendering. A commercial license to sell what you make. First access to everything new.<br />
+            Double the credits — 400+ viral ads. Batch scored variants on ads and full stories. Daily trend intel. 200+ avatars — or
+            your own. 60+ languages, captions in any of them. Double the UGC videos. Priority rendering. First access to
+            everything new.<br />
             <b>One time. Just ${price}.</b>
           </p>
           <a className="btn btn-primary btn-xl" href={upgradeUrl}><Sparkle size={18} /> Yes! Upgrade Me To MAX — ${price} <Arrow size={18} /></a>
