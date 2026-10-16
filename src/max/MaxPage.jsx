@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import {
-  SETTINGS, CHIPS, CAROUSEL, COMPARE, COMPARE_NOTE, FEATURES, VALUE_LIST,
-  STANDARD_LIST, MAX_LIST, REVIEWS, FAQ, DOWNSELL, PAY_LOGOS, GRID, VARIANTS,
+  SETTINGS, CAROUSEL, COMPARE, FEATURES, PLAN_LIST, STANDARD_LIST, MAX_LIST,
+  REVIEWS, DOWNSELL, PAY_LOGOS, GRID, BONUSES, VARIANTS,
 } from './data.js';
 
 /* ---------- tiny inline icon set (lucide-style strokes) ---------- */
@@ -26,6 +26,10 @@ const Zap = (p) => <I d="M13 2 3 14h9l-1 8 10-12h-9z" {...p} />;
 const Wand = (p) => <I d={['m15 4 5 5', 'M3 21 14.5 9.5', 'M9 3v3', 'M7.5 4.5h3', 'M19 11v3', 'M17.5 12.5h3']} {...p} />;
 const Lock = (p) => <I d={['M5 11h14v10H5z', 'M8 11V7a4 4 0 0 1 8 0v4']} {...p} />;
 const Layers = (p) => <I d={['m12 2 10 5-10 5L2 7z', 'm2 12 10 5 10-5', 'm2 17 10 5 10-5']} {...p} />;
+const Camera = (p) => <I d={['M3 8a2 2 0 0 1 2-2h2l2-2h6l2 2h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z', 'M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z']} {...p} />;
+const Instagram = (p) => <I d={['M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z', 'M12 16a4 4 0 1 0 0-8 4 4 0 0 0 0 8z', 'M17.5 6.5h.01']} {...p} />;
+const Facebook = (p) => <I d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" {...p} />;
+const XIcon = (p) => <I d={['M4 4l16 16', 'M20 4 4 20']} {...p} />;
 
 const fmtTime = (s) => `${String(Math.floor(s / 60)).padStart(2, '0')}:${String(s % 60).padStart(2, '0')}`;
 const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -43,16 +47,42 @@ function PayLogos({ small = false, note }) {
   );
 }
 
-/* draggable before/after comparison, like the reference's BeforeAfterSlider */
-function BeforeAfter({ before, after, labels = ['Original', 'Clone'] }) {
-  const [pos, setPos] = useState(50);
+/* floating decorative icons + pulsing particle dots (hero and bonus panel) */
+function Decor({ dim = false }) {
   return (
-    <div className="ba" style={{ '--pos': `${pos}%` }}>
+    <>
+      <div className="dots" aria-hidden="true">{[...Array(8)].map((_, i) => <i key={i} />)}</div>
+      <div className={`float-icons ${dim ? 'dim' : ''}`} aria-hidden="true">
+        <Lock className="f1" size={46} /><Wand className="f2" size={40} /><Sparkle className="f3" size={32} />
+        <Crown className="f4" size={40} /><Camera className="f5" size={36} /><Star className="f6" size={28} />
+      </div>
+    </>
+  );
+}
+
+/* before/after comparison: auto-sweeps between 20% and 80% until the user drags, like the reference */
+function BeforeAfter({ before, after, labels = ['Original', 'Clone'], compact = false }) {
+  const [pos, setPos] = useState(50);
+  const touched = useRef(false);
+  useEffect(() => {
+    if (touched.current) return undefined;
+    let dir = 1; let last = 0; let raf;
+    const tick = (t) => {
+      if (touched.current) return;
+      const dt = last ? (t - last) / 1000 : 0; last = t;
+      setPos((p) => { let n = p + dir * 16.5 * dt; if (n >= 80) { n = 80; dir = -1; } else if (n <= 20) { n = 20; dir = 1; } return n; });
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+  return (
+    <div className={`ba ${compact ? 'compact' : ''}`} style={{ '--pos': `${pos}%` }}>
       <img className="ba-after" src={after} alt="" loading="lazy" />
       <img className="ba-before" src={before} alt="" loading="lazy" />
       <span className="ba-line"><b /></span>
       <span className="ba-lbl l">{labels[0]}</span><span className="ba-lbl r">{labels[1]}</span>
-      <input type="range" min="0" max="100" value={pos} onChange={(e) => setPos(+e.target.value)} aria-label="Compare before and after" />
+      <input type="range" min="0" max="100" value={pos} onPointerDown={() => { touched.current = true; }} onChange={(e) => { touched.current = true; setPos(+e.target.value); }} aria-label="Compare before and after" />
     </div>
   );
 }
@@ -67,13 +97,14 @@ function Stepbar() {
   );
 }
 
+/* image showcase carousel: fixed height, width from each image's aspect ratio */
 function Carousel() {
   const items = [...CAROUSEL, ...CAROUSEL];
   return (
     <div className="carousel" aria-hidden="true">
       <div className="carousel-track">
         {items.map((it, i) => (
-          <figure key={i} className="carousel-card">
+          <figure key={i} className="carousel-card" style={{ aspectRatio: it.aspect || 1 }}>
             <img src={it.src} alt="" loading={i < CAROUSEL.length ? 'eager' : 'lazy'} />
             <figcaption>{it.label}</figcaption>
           </figure>
@@ -84,19 +115,16 @@ function Carousel() {
   );
 }
 
-function Accordion({ items }) {
-  const [open, setOpen] = useState(0);
+function Review({ r, photo = false }) {
   return (
-    <div className="faq-list">
-      {items.map(([q, a], i) => (
-        <div key={q} className={`faq-item ${open === i ? 'open' : ''}`}>
-          <button type="button" onClick={() => setOpen(open === i ? -1 : i)} aria-expanded={open === i}>
-            <span>{q}</span><Chevron />
-          </button>
-          <div className="faq-a"><p>{a}</p></div>
-        </div>
-      ))}
-    </div>
+    <figure className="review">
+      <div className="who">
+        {photo ? <img className="ini" src={r.img} alt="" loading="lazy" /> : <span className="ini">{r.initials}</span>}
+        <div><b>{r.name}</b><small>{r.role}</small></div>
+      </div>
+      <div className="stars">{[...Array(5)].map((_, i) => <Star key={i} size={15} />)}</div>
+      <blockquote>"{r.text}"</blockquote>
+    </figure>
   );
 }
 
@@ -135,13 +163,6 @@ function ReasonVisual({ kind }) {
         <img src="/images/included-ugc-poster.jpg" alt="UGC video formats" loading="lazy" />
         <span className="x2-tag">2× UGC videos</span>
       </div>);
-    case 'queue': return (
-      <div className="mock-card queue">
-        <div className="mc-head"><Rocket size={18} /> Render queue</div>
-        <div className="qrow max"><span>MAX · your 10 variants</span><b>rendering now</b></div>
-        <div className="qrow"><span>Standard</span><b>in queue</b></div>
-        <div className="qrow"><span>Standard</span><b>in queue</b></div>
-      </div>);
     default: return <div className="shot"><img src="/images/included-avatars.jpg" alt="New avatars" loading="lazy" /></div>;
   }
 }
@@ -152,7 +173,7 @@ export default function MaxPage() {
   // scarcity counter: starts at 11, drifts down to 5 at random 8–20s intervals
   const [spots, setSpots] = useState(SETTINGS.spotsStart);
   useEffect(() => {
-    if (spots <= SETTINGS.spotsFloor) return;
+    if (spots <= SETTINGS.spotsFloor) return undefined;
     const t = setTimeout(() => setSpots((s) => s - 1), 8000 + Math.random() * 12000);
     return () => clearTimeout(t);
   }, [spots]);
@@ -167,7 +188,7 @@ export default function MaxPage() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
   useEffect(() => {
-    if (!sticky) return;
+    if (!sticky) return undefined;
     const id = setInterval(() => setLeft((v) => (v <= 1 ? 0 : v - 1)), 1000);
     return () => clearInterval(id);
   }, [sticky]);
@@ -178,7 +199,7 @@ export default function MaxPage() {
   const [popup, setPopup] = useState(false);
   const [popLeft, setPopLeft] = useState(DOWNSELL.minutes * 60);
   useEffect(() => {
-    if (!popup) return;
+    if (!popup) return undefined;
     document.body.style.overflow = 'hidden';
     const id = setInterval(() => setPopLeft((v) => (v <= 1 ? 0 : v - 1)), 1000);
     return () => { clearInterval(id); document.body.style.overflow = ''; };
@@ -186,54 +207,56 @@ export default function MaxPage() {
 
   return (
     <div className="max">
-      {/* top notice */}
-      <div className="notice">✦ WAIT — your order isn't finished yet. <b>Don't close this page.</b></div>
+      {/* ============ STICKY LIMITED TIME BANNER ============ */}
+      <div className={`sticky ${sticky && left > 0 ? 'in' : ''}`} role="status">
+        <span className="st-lbl"><Clock size={16} /> Limited Time Offer</span>
+        <span className="st-time">{fmtTime(left)}</span>
+        <button type="button" className="st-btn" onClick={() => scrollTo('pricing')}>Claim Your Discount <Arrow size={14} /></button>
+      </div>
+
+      {/* ============ STEP INDICATOR BAR (desktop) ============ */}
       <Stepbar />
 
       {/* ============ HERO ============ */}
       <section className="hero">
-        <div className="dots" aria-hidden="true">{[...Array(8)].map((_, i) => <i key={i} />)}</div>
-        <div className="float-icons" aria-hidden="true">
-          <Lock className="f1" size={46} /><Wand className="f2" size={40} /><Sparkle className="f3" size={32} />
-          <Crown className="f4" size={40} /><Layers className="f5" size={36} /><Star className="f6" size={28} />
-        </div>
+        <Decor />
         <div className="wrap center">
+          {/* step indicator (mobile) */}
           <div className="step-mobile" aria-hidden="true">
             <div className="circles"><span className="ok"><Check size={14} /></span><span className="cur">2</span><span>3</span></div>
             <small>Customize Your Order</small>
           </div>
+
+          {/* logo */}
           <div className="hero-logo"><Logo /></div>
+
+          {/* thank you */}
           <p className="thanks">Thank you</p>
           <p className="thanks-sub">for your purchase!</p>
-          <p className="step-label">Step 2 of 3 · One-Time Upgrade</p>
 
+          {/* big headline */}
           <h1>
-            Give Your Social Ads Freak <span className="pill">MAX</span> Superpowers —{' '}
-            <br /><em className="cyan">Double The Credits</em> — 400+ Viral Ads,{' '}
-            <br />Nothing Holding You Back.
+            Get <span className="violet">DOUBLE</span> The Credits, Avatars &amp; Languages —<br />
+            <span className="violet">2× EVERYTHING</span> You Just Unlocked When You Upgrade To{' '}
+            <span className="pill">MAX</span>
           </h1>
 
-          <p className="hero-lead">
-            You just unlocked Social Ads Freak. <b>MAX is for the freaks who actually plan to scale.</b> Double the credits,
-            the <b>Variant Factory</b> A/B engine and deep ad-clone analysis — working across both quick viral ads and full
-            Pro Studio stories — daily <b>Trend Radar</b>, <b>200+ avatars</b> plus <b>your own custom avatar</b> from a
-            photo or a description, <b>60+ languages</b> with captions in any of them, double the UGC videos, priority
-            rendering, and first dibs on every new avatar and template — added to the account you just created.
-          </p>
+          {/* urgency line */}
+          <div className="urgency-wrap">
+            <p className="urgency">
+              🔥 Special Offer: <b className="red">{discount} Discount!</b> ⏳ Offer Available For The First
+              <span className="count">{spots}</span> Customers
+            </p>
+          </div>
 
-          <div className="chips">{CHIPS.map((c) => <span key={c}>{c}</span>)}</div>
-
-          <p className="urgency">
-            🔥 Special Offer: <b className="red">{discount} Discount!</b> ⏳ Offer Available For The First
-            <span className="count">{spots}</span> Customers
-          </p>
-
-          <a className="btn btn-primary btn-xl" href={upgradeUrl}>Yes! Upgrade Me To MAX — Just ${price} Once</a>
-          <p className="btn-note">🔒 One-time payment · No monthly fees · 30-day money-back guarantee</p>
+          {/* CTA */}
+          <span className="btn btn-primary btn-xl static">See How Below 👇</span>
         </div>
 
+        {/* image showcase carousel */}
         <Carousel />
 
+        {/* scarcity text */}
         <div className="wrap center scarcity">
           <p className="strong">If you leave this page, you won't see this <u>offer</u> ever again!</p>
           <p className="muted"><i>You get this special offer because you've purchased the STANDARD version!</i></p>
@@ -241,22 +264,13 @@ export default function MaxPage() {
         </div>
       </section>
 
-      <div className="trustbar">
-        <span><Shield size={16} /> 30-Day Money Back Guarantee</span>
-        <span><Lock size={16} /> Secure 256-bit SSL Checkout</span>
-        <span><Check size={16} /> One-Time — No Subscription</span>
-      </div>
-
-      {/* ============ COMPARISON ============ */}
-      <section id="compare" className="white glow">
+      {/* ============ SECTION 2 — FEATURE COMPARISON TABLE ============ */}
+      <section id="features-comparison" className="white glow">
         <div className="wrap narrow center">
-          <p className="kicker">Here's the freaky truth</p>
-          <h2>Your Standard Credits Are A Head Start —<br /><span className="violet">Not A Finish Line.</span></h2>
-          <p className="lead">
-            47,000 credits feels like plenty… until you find a winner. Then you want 10 variations of it. In 5 languages.
-            With 3 different avatars. The whole point of Social Ads Freak is <i>creative velocity</i>. MAX makes sure your
-            credit balance is never the thing that slows you down.
-          </p>
+          <h2 className="quote">
+            "People Think I Hired A Video Crew. <span className="violet">NOPE!</span><br />
+            <span className="violet">I Just Use Social Ads Freak!"</span>
+          </h2>
           <div className="simply">
             <span className="lbl">Simply:</span>
             <span className="s1">Clone</span><Arrow size={18} /><span className="s2">Multiply</span><Arrow size={18} /><span className="s3">Launch</span>
@@ -264,30 +278,28 @@ export default function MaxPage() {
         </div>
 
         <div className="wrap narrow">
-          <p className="kicker center">Standard vs MAX · Here's exactly what changes</p>
           <div className="table">
             <div className="thead">
               <div />
               <div className="col-max">MAX 👑</div>
               <div className="col-std">STANDARD</div>
             </div>
-            {COMPARE.map((r, i) => (
-              <div key={r.feature} className={`trow ${i % 2 ? '' : 'alt'}`}>
-                <div className="tfeat"><span className="dot" />{r.feature}</div>
-                <div className="col-max"><Check size={16} /><span>{r.max}</span>{r.badge && <b className="x2">{r.badge}</b>}</div>
-                <div className="col-std"><span>{r.standard}</span></div>
+            {COMPARE.map((feature, i) => (
+              <div key={feature} className={`trow ${i % 2 ? '' : 'alt'}`}>
+                <div className="tfeat"><span className="dot" />{feature}</div>
+                <div className="col-max"><Check size={18} /></div>
+                <div className="col-std"><Cross size={18} className="red" /></div>
               </div>
             ))}
           </div>
-          <p className="footnote">{COMPARE_NOTE}</p>
-          <div className="center">
+          <div className="center cta-after">
             <a className="btn btn-primary btn-lg" href={upgradeUrl}><Sparkle size={18} /> Yes! Upgrade My License To MAX</a>
             <p className="small muted">*This is an upgrade for Social Ads Freak. You need an active Standard license before you can upgrade.</p>
           </div>
         </div>
       </section>
 
-      {/* ============ WELCOME ============ */}
+      {/* ============ TEAM WELCOME ============ */}
       <section className="white welcome">
         <div className="wrap split">
           <div className="photo"><img src="/images/founders.jpg" alt="Ali G and Marcus Lim, Social Ads Freak founders" loading="lazy" /></div>
@@ -303,7 +315,7 @@ export default function MaxPage() {
         </div>
       </section>
 
-      {/* ============ 3-COLUMN STORY ============ */}
+      {/* ============ 3-CARD UPGRADE STORY ============ */}
       <section className="white story">
         <div className="wrap">
           <div className="cols3">
@@ -340,13 +352,13 @@ export default function MaxPage() {
         </div>
       </section>
 
-      {/* ============ INTRODUCING ============ */}
+      {/* ============ INTRODUCING MAX ============ */}
       <section className="white">
         <div className="wrap">
           <div className="dark-card intro">
             <div className="grid-ov" />
             <h2>Do you want to put <em className="accent">Social Ads Freak</em><br />on <u className="steroids">STEROIDS?</u></h2>
-            <p className="sub">Social Ads Freak MAX is packed with features<br />designed to take things to the <b><u>NEXT LEVEL!</u></b></p>
+            <p className="sub">Social Ads Freak MAX Is Packed With Features<br />Designed To Take Things To The <b><u>NEXT LEVEL!</u></b></p>
             <div className="remaining">Only <span className="count light">{spots}</span> MAX Upgrades Remaining</div>
             <div className="bar"><div style={{ width: `${progress}%` }} /></div>
             <img className="intro-img" src="/images/included-trendradar-poster.jpg" alt="Social Ads Freak MAX dashboard" loading="lazy" />
@@ -357,27 +369,19 @@ export default function MaxPage() {
       {/* ============ TESTIMONIALS ============ */}
       <section className="white glow">
         <div className="wrap center">
-          <p className="kicker">Success stories</p>
-          <h2>What Freaks <span className="violet">Are Saying</span></h2>
-          <p className="lead">Real members, cloning winners every day.</p>
-          <div className="reviews">
-            {REVIEWS.map((r) => (
-              <figure key={r.name} className="review">
-                <div className="who"><span className="ini">{r.initials}</span><div><b>{r.name}</b><small>{r.role}</small></div></div>
-                <div className="stars">{[...Array(5)].map((_, i) => <Star key={i} size={15} />)}</div>
-                <blockquote>"{r.text}"</blockquote>
-              </figure>
-            ))}
-          </div>
+          <p className="kicker">Success Stories</p>
+          <h2>What MAX Users <span className="violet">Are Saying</span></h2>
+          <p className="lead">Join the brands and agencies already cloning winners with Social Ads Freak.</p>
+          <div className="reviews">{REVIEWS.map((r) => <Review key={r.name} r={r} />)}</div>
         </div>
       </section>
 
-      {/* ============ IMAGE GRID ============ */}
+      {/* ============ MAX FEATURES GRID ============ */}
       <section className="white">
         <div className="wrap">
           <div className="dark-card features">
             <div className="grid-ov" />
-            <p className="kicker light">Unlock the full engine</p>
+            <p className="kicker light">Unlock The Full Engine</p>
             <h2>Check out what you can create with <span className="accent">Social Ads Freak MAX</span></h2>
             <div className="igrid">
               {GRID.map((g) => (
@@ -412,18 +416,19 @@ export default function MaxPage() {
         </div>
       </section>
 
-      {/* ============ REASONS (detailed features) ============ */}
+      {/* ============ DETAILED FEATURES (7 Reasons to Upgrade) ============ */}
       <section className="white">
         <div className="wrap center">
-          <p className="kicker">What MAX unlocks</p>
+          <p className="kicker">Do You Want To Put Social Ads Freak On STEROIDS?</p>
           <h2>Here Are {FEATURES.length} Reasons To <span className="violet">Upgrade To MAX</span></h2>
         </div>
         <div className="wrap reasons">
           {FEATURES.map((f, i) => (
             <article key={f.title} className={`reason ${i % 2 ? 'flip' : ''}`}>
               <div className="rtext">
-                <div className="rbadges"><span className="rnum">Reason {i + 1}</span><span className="worth">Worth ${f.worth}</span></div>
+                <span className="rnum">Reason {i + 1}</span>
                 <h3><span className="femoji sm" aria-hidden="true">{f.icon}</span> {f.title}</h3>
+                <p><b>{f.lead}</b></p>
                 <p>{f.text}</p>
               </div>
               <div className="rvisual"><ReasonVisual kind={f.visual} /></div>
@@ -433,22 +438,18 @@ export default function MaxPage() {
       </section>
 
       {/* ============ BONUS ============ */}
-      <section className="white">
-        <div className="wrap">
+      <section className="white bonus-sec">
+        <div className="wrap wide">
           <div className="spark-wrap">
             <div className="dark-card bonus">
-              <p className="kicker light outline"><Sparkle size={14} /> Exclusive extras</p>
-              <h2>I Haven't Even Told You About The <em className="accent">Bonuses</em> Yet!</h2>
-              <p className="sub small">These are included <b>FREE</b> with your MAX upgrade — on top of the credits, the Variant Factory and the doubled avatars and languages.</p>
+              <Decor dim />
+              <p className="kicker light outline"><Sparkle size={14} /> Exclusive Extras</p>
+              <h2>I Haven't Even Told You About The <em className="accent">Bonus</em> Yet!</h2>
+              <p className="sub small">These powerful tools are included <b>FREE</b> with your MAX upgrade — designed to give you complete control over every ad you clone.</p>
               <div className="bgrid">
-                {[
-                  { icon: '🚀', title: 'Priority Render Queue', text: 'Your generations jump the line. When you\'re testing 10 variations before launch, MAX users render first.', visual: <div className="bimg"><img src="/images/step-generated-poster.jpg" alt="" loading="lazy" /></div> },
-                  { icon: '🔓', title: 'Early Access To New Avatars & Templates', text: 'Every new AI avatar and proven template lands in your account first, while everyone else waits.', visual: <div className="bimg"><img src="/images/included-avatars.jpg" alt="" loading="lazy" /></div> },
-                  { icon: '📚', title: 'Unlimited Template Library', text: 'Every winning format you dissect is saved to your own library, ready to redeploy for any product.', visual: <div className="bimg"><img src="/images/included-templates.jpg" alt="" loading="lazy" /></div> },
-                  { icon: '🎬', title: 'Pro Studio Recreate Flow', text: 'The deep breakdown rebuilds a winning ad scene by scene — hook, pacing and CTA intact.', visual: <BeforeAfter before="/images/reference-ad.jpg" after="/images/recreated-ad.jpg" labels={['Original', 'Recreated']} /> },
-                ].map((b) => (
+                {BONUSES.map((b) => (
                   <div key={b.title} className="bcard">
-                    <div className="bvis">{b.visual}</div>
+                    <div className="bvis"><BeforeAfter before={b.before} after={b.after} labels={b.labels} compact /></div>
                     <div className="bbody">
                       <div className="bhead"><span className="bemoji" aria-hidden="true">{b.icon}</span><h3>{b.title}</h3></div>
                       <p>{b.text}</p>
@@ -462,7 +463,7 @@ export default function MaxPage() {
         </div>
       </section>
 
-      {/* ============ NO BRAINER ============ */}
+      {/* ============ NO BRAINER DEAL ============ */}
       <section className="white">
         <div className="wrap narrow">
           <h2 className="center">This is a <span className="caps-h">Complete No Brainer Deal</span></h2>
@@ -471,18 +472,17 @@ export default function MaxPage() {
             <div className="lead left">
               <p>Here's your <b>ONE CHANCE</b> to upgrade to <b>MAX</b> at a fraction of what it's really worth.</p>
               <p>And you get <b><u>free updates</u></b> and <b><u>support</u></b>, included.</p>
-              <p>Double the credits, batch-scored variants and your own custom avatar are powerful — and rightly so, not everyone should get them. At least not at this price.</p>
+              <p>This upgrade is powerful, and rightly so, not everyone should be granted access. At least not at this price.</p>
               <p>If you're serious about scaling your ads, this should be an easy decision to go ahead and click the button.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ============ PRICING ============ */}
+      {/* ============ MAX PRICING ============ */}
       <section id="pricing" className="white pricing">
         <div className="grid-mask" />
         <div className="wrap narrow center">
-          <p className="kicker">The upgrade</p>
           <h2>Upgrade Your License <span className="underline-wavy">RIGHT NOW!</span></h2>
           <h3 className="risk">TRY IT 100% RISK-FREE!</h3>
           <p className="urgency plain">🔥 <b className="violet">{discount} Discount!</b> Offer Available For The First <span className="count dark">{spots}</span> Customers ⏳</p>
@@ -491,20 +491,16 @@ export default function MaxPage() {
           <div className="price-card">
             <span className="ribbon">🔥 MAX UPGRADE</span>
             <div className="pc-head">
-              <div className="pc-name"><span className="gem"><Gem size={18} /></span><h3>Social Ads Freak MAX</h3></div>
+              <div className="pc-name"><span className="gem"><Gem size={18} /></span><h3>MAX</h3></div>
               <div className="pc-price"><s>${totalValue.toLocaleString('en-US')} value</s><b>${price}</b><small>One-Time Payment</small></div>
             </div>
             <div className="pc-body">
-              <p className="pc-sub">Everything You Unlock Today</p>
+              <p className="pc-sub">Everything In Standard, Plus:</p>
               <ul>
-                {VALUE_LIST.map(([label, v, bonus]) => (
-                  <li key={label}><Check size={16} className="green" /><span>{label}</span>{bonus && <em className="bonus-tag">Bonus</em>}<b>${v}</b></li>
+                {PLAN_LIST.map(([label, bonus]) => (
+                  <li key={label}><Check size={16} className="green" /><span>{label}</span>{bonus && <em className="bonus-tag">Bonus</em>}</li>
                 ))}
-                <li className="total"><span>Total Value</span><b className="violet">${totalValue.toLocaleString('en-US')}</b></li>
               </ul>
-              <p className="pc-today">One-Time Upgrade — <b>No Monthly Fees</b></p>
-              <p className="pc-big">Today: Just ${price}</p>
-              <p className="small muted">(added to the account you just created)</p>
               <a className="btn btn-primary btn-block" href={upgradeUrl}><Rocket size={18} /> Upgrade to MAX — ${price} <Arrow size={18} /></a>
               <p className="pc-note violet">✓ Lifetime access | One Time Payment</p>
               <PayLogos small />
@@ -516,58 +512,54 @@ export default function MaxPage() {
         </div>
       </section>
 
+      {/* ============ ADDITIONAL TESTIMONIALS ============ */}
+      <section className="white glow">
+        <div className="wrap center">
+          <p className="kicker">Real Results</p>
+          <h2>Freaks Are <span className="violet">Crushing It</span></h2>
+          <p className="lead">See why brands and agencies trust Social Ads Freak for their video ads.</p>
+          <div className="reviews">{REVIEWS.map((r) => <Review key={r.name} r={r} photo />)}</div>
+        </div>
+      </section>
+
       {/* ============ GUARANTEE ============ */}
       <section className="white">
         <div className="wrap narrow center">
           <span className="badge-soft"><Shield size={16} /> Full 30-Day Money Back Guarantee</span>
-          <h2>Upgrade With <span className="violet">Total Confidence.</span></h2>
+          <h2>You're Protected By Our <span className="violet">No Risk Guarantee.</span></h2>
         </div>
         <div className="wrap narrow">
           <div className="dark-card guarantee">
             <div className="grid-ov" />
             <div>
-              <h3>Give MAX a try with <span className="accent">NO risk</span></h3>
-              <p><Check size={16} className="green" /><span>Add MAX, use the extra credits, the Variant Factory and Trend Radar for 30 days. If it doesn't make you faster, just reach out — we'll <b>refund the upgrade in full</b>.</span></p>
+              <h3>Give the MAX version a try with <span className="accent">NO risk</span></h3>
+              <p><Check size={16} className="green" /><span>If it doesn't make you money… just let us know and we'll <b>refund 100%</b> of your purchase, no hassle.</span></p>
               <p><Check size={16} className="green" /><span>This upgrade is <b>only available right now</b> and expires if you leave the page.</span></p>
-              <span className="zero"><Shield size={18} /> No hoops. No friction. No risk.</span>
+              <span className="zero"><Shield size={18} /> You have ZERO risk here!</span>
             </div>
             <div className="seal"><span>30 DAYS</span><b>MONEY</b><b className="big">BACK</b><span>GUARANTEED</span></div>
           </div>
         </div>
       </section>
 
-      {/* ============ FAQ ============ */}
-      <section className="white faq">
-        <div className="wrap narrow center">
-          <p className="kicker">Quick questions</p>
-          <h2>Before You Upgrade</h2>
-          <Accordion items={FAQ} />
-        </div>
-      </section>
-
       {/* ============ FINAL CTA ============ */}
       <section className="white final">
         <div className="wrap narrow center">
-          <h2>Add <span className="violet">MAX</span> To Your Account?</h2>
-          <p className="lead">
-            Double the credits — 400+ viral ads. Batch scored variants on ads and full stories. Daily trend intel. 200+ avatars — or
-            your own. 60+ languages, captions in any of them. Double the UGC videos. Priority rendering. First access to
-            everything new.<br />
-            <b>One time. Just ${price}.</b>
-          </p>
-          <a className="btn btn-primary btn-xl" href={upgradeUrl}><Sparkle size={18} /> Yes! Upgrade Me To MAX — ${price} <Arrow size={18} /></a>
+          <h2>Ready to Go <span className="violet">MAX</span>?</h2>
+          <p className="lead">Don't miss this exclusive one-time offer. Upgrade now and unlock the full power of Social Ads Freak.</p>
+          <a className="btn btn-primary btn-xl" href={upgradeUrl}><Sparkle size={18} /> Yes! Upgrade to MAX — ${price} <Arrow size={18} /></a>
           <p className="small muted">✓ 30-day money-back guarantee • One-time payment • Lifetime access</p>
 
           <div className="or"><span>OR</span></div>
-          <p className="no-thanks">No thanks — I don't need double the credits, batch testing or daily trend intel.</p>
+          <p className="no-thanks">No thanks, I'll just use the standard features and<br />miss out on the special discount</p>
           <button type="button" className="btn btn-ghost" onClick={() => setPopup(true)}>Click Here To Be Redirected To The Members Area</button>
-          <p className="small muted">Important: once this page is closed, we reserve the right to sell this upgrade at a higher price.</p>
+          <p className="small muted">Important: "Once this page is closed, we reserve the right to sell you this upgrade at a higher price point."</p>
 
           <div className="proof-band">OUR MEMBERS Clone <span className="accent">10× More Variations</span> And Launch <span className="accent">Faster</span> After Upgrading To MAX</div>
         </div>
       </section>
 
-      {/* ============ DOWNSELL POPUP ============ */}
+      {/* ============ DISCOUNT POPUP ============ */}
       {popup && (
         <div className="modal" role="dialog" aria-modal="true" aria-labelledby="ds-title">
           <div className="modal-card">
@@ -593,36 +585,40 @@ export default function MaxPage() {
           <div className="fcols">
             <div>
               <Logo className="small" />
-              <p>Clone winning video ads with your product, face and voice.</p>
+              <p>Clone winning video ads with your product, face and voice — in minutes.</p>
             </div>
             <div>
               <h4>Product</h4>
-              <a href="/">Social Ads Freak</a>
+              <a href="/">Features</a>
+              <a href="/#buy">Pricing</a>
+              <a href="/#examples">Examples</a>
               <a href="#pricing">MAX Upgrade</a>
             </div>
             <div>
-              <h4>Account</h4>
+              <h4>Company</h4>
+              <a href="/#story">About</a>
               <a href={membersUrl}>Members Area</a>
-              <a href={upgradeUrl}>Upgrade To MAX</a>
+              <a href="/#faq">FAQ</a>
+              <a href="mailto:support@socialadsfreak.com">Contact</a>
             </div>
             <div>
               <h4>Legal</h4>
-              <a href="/terms.html">Terms of Service</a>
               <a href="/privacy.html">Privacy Policy</a>
+              <a href="/terms.html">Terms of Service</a>
+              <a href="/disclaimer.html">Refund Policy</a>
               <a href="/disclaimer.html">Disclaimer</a>
             </div>
           </div>
-          <p className="disclaimer"><b>Earnings &amp; Results Disclaimer:</b> The results and credit-to-output figures shown on this page are illustrative and are not a promise or guarantee of income or specific outcomes. Actual output depends on the video length and type you generate and results will vary.</p>
-          <div className="foot-row"><span>© 2026 Social Ads Freak. All rights reserved.</span></div>
+          <div className="foot-row">
+            <span>© 2026 Social Ads Freak. All rights reserved.</span>
+            <span className="socials">
+              <a href="#" aria-label="Instagram"><Instagram size={18} /></a>
+              <a href="#" aria-label="Facebook"><Facebook size={18} /></a>
+              <a href="#" aria-label="X"><XIcon size={18} /></a>
+            </span>
+          </div>
         </div>
       </footer>
-
-      {/* ============ STICKY BANNER ============ */}
-      <div className={`sticky ${sticky && left > 0 ? 'in' : ''}`} role="status">
-        <span className="st-lbl"><Clock size={16} /> Limited Time Offer</span>
-        <span className="st-time">{fmtTime(left)}</span>
-        <button type="button" className="st-btn" onClick={() => scrollTo('pricing')}>Claim Your Discount <Arrow size={14} /></button>
-      </div>
     </div>
   );
 }
