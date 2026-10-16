@@ -123,3 +123,40 @@ export const FAQ = [
   ['Can I upgrade later instead?',
    'You can, but not at this price. This page is the only place the $67 one-time offer appears. Once you leave, the upgrade is only available at full price.'],
 ];
+
+// ---- parity with the reference page ----
+export const DOWNSELL = {
+  price: 47,                       // one-time discounted price shown in the exit popup
+  url: '#upgrade-47',              // checkout link for the discounted upgrade
+  minutes: 5,                      // popup countdown
+};
+
+export const PAY_LOGOS = [
+  ['/images/pay/paypal.avif', 'PayPal'],
+  ['/images/pay/visa.avif', 'Visa'],
+  ['/images/pay/american-express.avif', 'American Express'],
+  ['/images/pay/mastercard.avif', 'Mastercard'],
+  ['/images/pay/discover.avif', 'Discover'],
+];
+
+// "Check out what you can create" image grid
+export const GRID = [
+  { src: '/images/included-ugc-poster.jpg', title: 'Viral UGC Ads' },
+  { src: '/images/recreated-ad.jpg', title: 'Cloned Ads' },
+  { src: '/images/step-generated-poster.jpg', title: 'A/B Variants' },
+  { src: '/images/included-prostudio-poster.jpg', title: 'Pro Studio Stories' },
+  { src: '/images/included-avatars.jpg', title: '100+ Avatars' },
+  { src: '/images/included-languages.jpg', title: '30+ Languages' },
+  { src: '/images/included-trendradar-poster.jpg', title: 'Trend Concepts' },
+  { src: '/images/included-templates.jpg', title: 'Template Library' },
+  { src: '/images/included-export.jpg', title: 'Client-Ready Exports' },
+];
+
+// Variant Factory mock widget rows (hooks + viral score)
+export const VARIANTS = [
+  ['"Stop scrolling if your ads die in 3 days…"', 92],
+  ['"I replaced my $500 videographer with this"', 88],
+  ['"POV: your competitor out-tests you 50 to 1"', 85],
+  ['"Nobody can tell this isn\'t me"', 81],
+  ['"The $47 ad that beat our agency"', 77],
+];

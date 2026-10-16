@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   SETTINGS, CHIPS, CAROUSEL, COMPARE, COMPARE_NOTE, FEATURES, VALUE_LIST,
-  STANDARD_LIST, MAX_LIST, REVIEWS, FAQ,
+  STANDARD_LIST, MAX_LIST, REVIEWS, FAQ, DOWNSELL, PAY_LOGOS, GRID, VARIANTS,
 } from './data.js';
 
 /* ---------- tiny inline icon set (lucide-style strokes) ---------- */
@@ -31,6 +31,29 @@ const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior:
 
 function Logo({ className = '' }) {
   return <span className={`logo ${className}`}><em>Social Ads</em> <b>FREAK</b></span>;
+}
+
+function PayLogos({ small = false, note }) {
+  return (
+    <div className={`pay ${small ? 'small' : ''}`}>
+      {PAY_LOGOS.map(([src, alt]) => <img key={alt} src={src} alt={alt} loading="lazy" />)}
+      {note && <><i>|</i><small>{note}</small></>}
+    </div>
+  );
+}
+
+/* draggable before/after comparison, like the reference's BeforeAfterSlider */
+function BeforeAfter({ before, after, labels = ['Original', 'Clone'] }) {
+  const [pos, setPos] = useState(50);
+  return (
+    <div className="ba" style={{ '--pos': `${pos}%` }}>
+      <img className="ba-after" src={after} alt="" loading="lazy" />
+      <img className="ba-before" src={before} alt="" loading="lazy" />
+      <span className="ba-line"><b /></span>
+      <span className="ba-lbl l">{labels[0]}</span><span className="ba-lbl r">{labels[1]}</span>
+      <input type="range" min="0" max="100" value={pos} onChange={(e) => setPos(+e.target.value)} aria-label="Compare before and after" />
+    </div>
+  );
 }
 
 function Stepbar() {
@@ -76,6 +99,39 @@ function Accordion({ items }) {
   );
 }
 
+function ReasonVisual({ i }) {
+  switch (i) {
+    case 0: return (
+      <div className="mock-card credits">
+        <div className="mc-head"><Zap size={18} /> Credit balance</div>
+        <div className="meter"><div className="std"><span>Standard</span><b>47,000</b></div><div className="mx"><span>MAX</span><b>94,000</b></div></div>
+        <p>≈ 427 viral ads · 2× your plan</p>
+      </div>);
+    case 1: return (
+      <div className="mock-card variants">
+        <div className="mc-head"><Wand size={18} /> Variant Factory · viral score</div>
+        {VARIANTS.map(([t, sc]) => <div key={t} className="vrow"><span>{t}</span><b style={{ '--sc': sc }}>{sc}</b></div>)}
+      </div>);
+    case 2: return <BeforeAfter before="/images/reference-ad.jpg" after="/images/recreated-ad.jpg" labels={['Winning ad', 'Deep clone']} />;
+    case 3: return <div className="shot"><img src="/images/included-trendradar-poster.jpg" alt="Trend Radar" loading="lazy" /></div>;
+    case 4: return (
+      <div className="mock-card queue">
+        <div className="mc-head"><Rocket size={18} /> Render queue</div>
+        <div className="qrow max"><span>MAX · your 10 variants</span><b>rendering now</b></div>
+        <div className="qrow"><span>Standard</span><b>in queue</b></div>
+        <div className="qrow"><span>Standard</span><b>in queue</b></div>
+      </div>);
+    case 5: return (
+      <div className="mock-card invoice">
+        <div className="mc-head"><Gem size={18} /> Client invoice</div>
+        <div className="irow"><span>5 × UGC video ads</span><b>$1,500</b></div>
+        <div className="irow"><span>3 × localized variants</span><b>$600</b></div>
+        <div className="irow total"><span>Keep 100%</span><b>$2,100</b></div>
+      </div>);
+    default: return <div className="shot"><img src="/images/included-avatars.jpg" alt="New avatars" loading="lazy" /></div>;
+  }
+}
+
 export default function MaxPage() {
   const { price, totalValue, discount, upgradeUrl, membersUrl } = SETTINGS;
 
@@ -104,6 +160,16 @@ export default function MaxPage() {
 
   const progress = ((SETTINGS.spotsStart - spots) / SETTINGS.spotsStart) * 100;
 
+  // exit downsell popup: opens from "No thanks", 5-minute countdown, cannot be dismissed by clicking outside
+  const [popup, setPopup] = useState(false);
+  const [popLeft, setPopLeft] = useState(DOWNSELL.minutes * 60);
+  useEffect(() => {
+    if (!popup) return;
+    document.body.style.overflow = 'hidden';
+    const id = setInterval(() => setPopLeft((v) => (v <= 1 ? 0 : v - 1)), 1000);
+    return () => { clearInterval(id); document.body.style.overflow = ''; };
+  }, [popup]);
+
   return (
     <div className="max">
       {/* top notice */}
@@ -118,6 +184,10 @@ export default function MaxPage() {
           <Crown className="f4" size={40} /><Layers className="f5" size={36} /><Star className="f6" size={28} />
         </div>
         <div className="wrap center">
+          <div className="step-mobile" aria-hidden="true">
+            <div className="circles"><span className="ok"><Check size={14} /></span><span className="cur">2</span><span>3</span></div>
+            <small>Customize Your Order</small>
+          </div>
           <div className="hero-logo"><Logo /></div>
           <p className="thanks">Thank you</p>
           <p className="thanks-sub">for your purchase!</p>
@@ -249,10 +319,7 @@ export default function MaxPage() {
             <h3 className="ital-h">But if you plan to get the very best out of Social Ads Freak…</h3>
             <p className="lead">Click the button below and profit from this amazing offer right now!</p>
             <a className="btn btn-grad btn-xl" href={upgradeUrl}>Yes! Upgrade My License To MAX! &nbsp;→</a>
-            <div className="pay">
-              <span>PayPal</span><span>Visa</span><span>Amex</span><span>Mastercard</span><span>Discover</span>
-              <i>|</i><small>30 Day Money Back Guarantee</small>
-            </div>
+            <PayLogos note="30 Day Money Back Guarantee" />
             <p className="small"><b className="red">PLEASE NOTE:</b> This upgrade is <b>100% optional</b> and it's not for everybody, and we reserve the right to remove this page at any time.</p>
           </div>
         </div>
@@ -290,21 +357,19 @@ export default function MaxPage() {
         </div>
       </section>
 
-      {/* ============ FEATURES ============ */}
+      {/* ============ IMAGE GRID ============ */}
       <section className="white">
         <div className="wrap">
           <div className="dark-card features">
             <div className="grid-ov" />
-            <p className="kicker light">What MAX unlocks</p>
-            <h2>Everything You Get When You <span className="accent">Upgrade</span></h2>
-            <div className="fgrid">
-              {FEATURES.map((f) => (
-                <article key={f.title} className="fcard">
-                  <span className="worth">Worth ${f.worth}</span>
-                  <span className="femoji" aria-hidden="true">{f.icon}</span>
-                  <h3>{f.title}</h3>
-                  <p>{f.text}</p>
-                </article>
+            <p className="kicker light">Unlock the full engine</p>
+            <h2>Check out what you can create with <span className="accent">Social Ads Freak MAX</span></h2>
+            <div className="igrid">
+              {GRID.map((g) => (
+                <figure key={g.title} className="itile">
+                  <div className="ith"><img src={g.src} alt={g.title} loading="lazy" /></div>
+                  <figcaption>{g.title}</figcaption>
+                </figure>
               ))}
             </div>
           </div>
@@ -332,6 +397,26 @@ export default function MaxPage() {
         </div>
       </section>
 
+      {/* ============ REASONS (detailed features) ============ */}
+      <section className="white">
+        <div className="wrap center">
+          <p className="kicker">What MAX unlocks</p>
+          <h2>Here Are 7 Reasons To <span className="violet">Upgrade To MAX</span></h2>
+        </div>
+        <div className="wrap reasons">
+          {FEATURES.map((f, i) => (
+            <article key={f.title} className={`reason ${i % 2 ? 'flip' : ''}`}>
+              <div className="rtext">
+                <div className="rbadges"><span className="rnum">Reason {i + 1}</span><span className="worth">Worth ${f.worth}</span></div>
+                <h3><span className="femoji sm" aria-hidden="true">{f.icon}</span> {f.title}</h3>
+                <p>{f.text}</p>
+              </div>
+              <div className="rvisual"><ReasonVisual i={i} /></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
       {/* ============ BONUS ============ */}
       <section className="white">
         <div className="wrap">
@@ -341,14 +426,18 @@ export default function MaxPage() {
               <h2>I Haven't Even Told You About The <em className="accent">Bonuses</em> Yet!</h2>
               <p className="sub small">These are included <b>FREE</b> with your MAX upgrade — on top of the credits, the Variant Factory and the commercial license.</p>
               <div className="bgrid">
-                {FEATURES.filter((f) => f.bonus).concat([
-                  { icon: '📚', title: 'Unlimited Template Library', text: 'Every winning format you dissect is saved to your own library, ready to redeploy for any product.' },
-                  { icon: '🎬', title: 'Pro Studio Recreate Flow', text: 'The deep breakdown rebuilds a winning ad scene by scene inside Pro Studio — hook, pacing and CTA intact.' },
-                ]).map((b) => (
+                {[
+                  { icon: '🚀', title: 'Priority Render Queue', text: 'Your generations jump the line. When you\'re testing 10 variations before launch, MAX users render first.', visual: <div className="bimg"><img src="/images/step-generated-poster.jpg" alt="" loading="lazy" /></div> },
+                  { icon: '🔓', title: 'Early Access To New Avatars & Templates', text: 'Every new AI avatar and proven template lands in your account first, while everyone else waits.', visual: <div className="bimg"><img src="/images/included-avatars.jpg" alt="" loading="lazy" /></div> },
+                  { icon: '📚', title: 'Unlimited Template Library', text: 'Every winning format you dissect is saved to your own library, ready to redeploy for any product.', visual: <div className="bimg"><img src="/images/included-templates.jpg" alt="" loading="lazy" /></div> },
+                  { icon: '🎬', title: 'Pro Studio Recreate Flow', text: 'The deep breakdown rebuilds a winning ad scene by scene — hook, pacing and CTA intact.', visual: <BeforeAfter before="/images/reference-ad.jpg" after="/images/recreated-ad.jpg" labels={['Original', 'Recreated']} /> },
+                ].map((b) => (
                   <div key={b.title} className="bcard">
-                    <span className="bemoji" aria-hidden="true">{b.icon}</span>
-                    <h3>{b.title}</h3>
-                    <p>{b.text}</p>
+                    <div className="bvis">{b.visual}</div>
+                    <div className="bbody">
+                      <div className="bhead"><span className="bemoji" aria-hidden="true">{b.icon}</span><h3>{b.title}</h3></div>
+                      <p>{b.text}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -403,7 +492,7 @@ export default function MaxPage() {
               <p className="small muted">(added to the account you just created)</p>
               <a className="btn btn-primary btn-block" href={upgradeUrl}><Rocket size={18} /> Upgrade to MAX — ${price} <Arrow size={18} /></a>
               <p className="pc-note violet">✓ Lifetime access | One Time Payment</p>
-              <div className="pay small"><span>Visa</span><span>Mastercard</span><span>Amex</span><span>Discover</span><span>PayPal</span></div>
+              <PayLogos small />
               <p className="small muted"><Shield size={14} className="green" /> Secure Checkout • SSL Encrypted</p>
               <p className="small muted">✓ 30-day money-back guarantee</p>
             </div>
@@ -455,22 +544,60 @@ export default function MaxPage() {
 
           <div className="or"><span>OR</span></div>
           <p className="no-thanks">No thanks — I don't need double the credits, batch testing or daily trend intel.</p>
-          <a className="btn btn-ghost" href={membersUrl}>Log me into my Standard account and take me in</a>
+          <button type="button" className="btn btn-ghost" onClick={() => setPopup(true)}>Click Here To Be Redirected To The Members Area</button>
           <p className="small muted">Important: once this page is closed, we reserve the right to sell this upgrade at a higher price.</p>
 
           <div className="proof-band">OUR MEMBERS Clone <span className="accent">10× More Variations</span> And Launch <span className="accent">Faster</span> After Upgrading To MAX</div>
         </div>
       </section>
 
+      {/* ============ DOWNSELL POPUP ============ */}
+      {popup && (
+        <div className="modal" role="dialog" aria-modal="true" aria-labelledby="ds-title">
+          <div className="modal-card">
+            <div className="modal-timer">
+              <p>⏰ LIMITED TIME OFFER EXPIRES IN</p>
+              <b>{fmtTime(popLeft)}</b>
+            </div>
+            <div className="modal-body">
+              <h3 id="ds-title">WAIT! Don't Leave Yet!</h3>
+              <p className="lead">We have a special one-time discount just for you…</p>
+              <div className="ds-price"><s>${price}</s><b>${DOWNSELL.price}</b></div>
+              <p className="save">You save ${price - DOWNSELL.price}!</p>
+              <a className="btn btn-primary btn-block btn-lg" href={DOWNSELL.url}><Sparkle size={20} /> Claim My ${DOWNSELL.price} MAX Upgrade</a>
+              <a className="ds-no" href={membersUrl}>No thanks, take me to the members area</a>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* ============ FOOTER ============ */}
       <footer>
         <div className="wrap">
-          <p className="disclaimer"><b>Earnings &amp; Results Disclaimer:</b> The results and credit-to-output figures shown on this page are illustrative and are not a promise or guarantee of income or specific outcomes. Actual output depends on the video length and type you generate and results will vary.</p>
-          <div className="foot-row">
-            <Logo className="small" />
-            <span>© 2026 Social Ads Freak</span>
-            <nav><a href="/terms.html">Terms</a><a href="/privacy.html">Privacy</a><a href="/disclaimer.html">Disclaimer</a></nav>
+          <div className="fcols">
+            <div>
+              <Logo className="small" />
+              <p>Clone winning video ads with your product, face and voice.</p>
+            </div>
+            <div>
+              <h4>Product</h4>
+              <a href="/">Social Ads Freak</a>
+              <a href="#pricing">MAX Upgrade</a>
+            </div>
+            <div>
+              <h4>Account</h4>
+              <a href={membersUrl}>Members Area</a>
+              <a href={upgradeUrl}>Upgrade To MAX</a>
+            </div>
+            <div>
+              <h4>Legal</h4>
+              <a href="/terms.html">Terms of Service</a>
+              <a href="/privacy.html">Privacy Policy</a>
+              <a href="/disclaimer.html">Disclaimer</a>
+            </div>
           </div>
+          <p className="disclaimer"><b>Earnings &amp; Results Disclaimer:</b> The results and credit-to-output figures shown on this page are illustrative and are not a promise or guarantee of income or specific outcomes. Actual output depends on the video length and type you generate and results will vary.</p>
+          <div className="foot-row"><span>© 2026 Social Ads Freak. All rights reserved.</span></div>
         </div>
       </footer>
 
