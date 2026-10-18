@@ -48,15 +48,32 @@ function PayLogos({ small = false, note }) {
 }
 
 /* floating decorative icons + pulsing particle dots (hero and bonus panel) */
-function Decor({ dim = false }) {
+const Spark = ({ className }) => (
+  <svg className={`spark ${className}`} viewBox="0 0 40 40" aria-hidden="true">
+    <path d="M20 2 C21.5 12 24 16 38 20 C24 24 21.5 28 20 38 C18.5 28 16 24 2 20 C16 16 18.5 12 20 2 Z" />
+  </svg>
+);
+function Decor({ dim = false, floor = false }) {
   return (
     <>
-      <div className="dots" aria-hidden="true">{[...Array(8)].map((_, i) => <i key={i} />)}</div>
+      <div className="dots" aria-hidden="true">{[...Array(14)].map((_, i) => <i key={i} />)}</div>
       <div className={`float-icons ${dim ? 'dim' : ''}`} aria-hidden="true">
         <Lock className="f1" size={46} /><Wand className="f2" size={40} /><Sparkle className="f3" size={32} />
         <Crown className="f4" size={40} /><Camera className="f5" size={36} /><Star className="f6" size={28} />
+        <Spark className="sp-a" /><Spark className="sp-b" /><Spark className="sp-c" />
       </div>
+      {floor && <div className="floor-wrap" aria-hidden="true"><div className="floor" /></div>}
     </>
+  );
+}
+/* doodles on light sections: marker sparkles, pixel squares, a squiggle */
+function Doodles() {
+  return (
+    <div className="doodles" aria-hidden="true">
+      <Spark className="dd-a" /><Spark className="dd-b" />
+      <svg className="dd-sq" viewBox="0 0 60 60"><rect x="4" y="26" width="16" height="16" rx="2" /><rect x="26" y="8" width="12" height="12" rx="2" opacity="0.55" /><rect x="36" y="34" width="20" height="20" rx="3" opacity="0.35" /></svg>
+      <svg className="dd-wave" viewBox="0 0 120 24"><path d="M3 18 C15 4 25 4 37 16 C49 28 59 6 71 10 C83 14 93 22 117 6" fill="none" strokeWidth="4" strokeLinecap="round" /></svg>
+    </div>
   );
 }
 
@@ -219,7 +236,7 @@ export default function MaxPage() {
 
       {/* ============ HERO ============ */}
       <section className="hero">
-        <Decor />
+        <Decor floor />
         <div className="wrap center">
           {/* step indicator (mobile) */}
           <div className="step-mobile" aria-hidden="true">
@@ -237,7 +254,7 @@ export default function MaxPage() {
           {/* big headline */}
           <h1>
             Get <span className="violet">DOUBLE</span> The Credits, Avatars &amp; Languages —<br />
-            <span className="violet">2× EVERYTHING</span> You Just Unlocked When You Upgrade To{' '}
+            {' '}<span className="violet">2× EVERYTHING</span> You Just Unlocked When You Upgrade To{' '}
             <span className="pill">MAX</span>
           </h1>
 
@@ -266,6 +283,7 @@ export default function MaxPage() {
 
       {/* ============ SECTION 2 — FEATURE COMPARISON TABLE ============ */}
       <section id="features-comparison" className="white glow">
+        <Doodles />
         <div className="wrap narrow center">
           <h2 className="quote">
             "People Think I Hired A Video Crew. <span className="violet">NOPE!</span><br />
@@ -368,6 +386,7 @@ export default function MaxPage() {
 
       {/* ============ TESTIMONIALS ============ */}
       <section className="white glow">
+        <Doodles />
         <div className="wrap center">
           <p className="kicker">Success Stories</p>
           <h2>What MAX Users <span className="violet">Are Saying</span></h2>
@@ -397,6 +416,7 @@ export default function MaxPage() {
 
       {/* ============ STANDARD VS MAX ============ */}
       <section className="white glow">
+        <Doodles />
         <div className="wrap narrow center">
           <h2>Standard <i>vs</i> <span className="violet">Social Ads Freak MAX</span></h2>
           <p className="lead">Stop pausing campaigns because you ran out of credits —<br /><b>test ten angles tonight and keep the winners coming.</b></p>
@@ -482,6 +502,7 @@ export default function MaxPage() {
       {/* ============ MAX PRICING ============ */}
       <section id="pricing" className="white pricing">
         <div className="grid-mask" />
+        <Doodles />
         <div className="wrap narrow center">
           <h2>Upgrade Your License <span className="underline-wavy">RIGHT NOW!</span></h2>
           <h3 className="risk">TRY IT 100% RISK-FREE!</h3>
@@ -514,6 +535,7 @@ export default function MaxPage() {
 
       {/* ============ ADDITIONAL TESTIMONIALS ============ */}
       <section className="white glow">
+        <Doodles />
         <div className="wrap center">
           <p className="kicker">Real Results</p>
           <h2>Freaks Are <span className="violet">Crushing It</span></h2>
