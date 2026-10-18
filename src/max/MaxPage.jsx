@@ -611,14 +611,14 @@ export default function MaxPage() {
             </div>
             <div>
               <h4>Product</h4>
-              <a href="/">Features</a>
+              <a href="/#how-it-works">Features</a>
               <a href="/#buy">Pricing</a>
-              <a href="/#examples">Examples</a>
+              <a href="/#samples">Examples</a>
               <a href="#pricing">MAX Upgrade</a>
             </div>
             <div>
               <h4>Company</h4>
-              <a href="/#story">About</a>
+              <a href="/#introducing">About</a>
               <a href={membersUrl}>Members Area</a>
               <a href="/#faq">FAQ</a>
               <a href="mailto:support@socialadsfreak.com">Contact</a>
