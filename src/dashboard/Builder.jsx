@@ -292,7 +292,6 @@ export default function Builder({ c }) {
   return (
     <div className="builder">
       <div className="intro">
-        {c.modeSwitch}
         <div>
           <p className="eyebrow"><Icon name="zap" size={13} /> Viral ad · about 2 minutes</p>
           <h1>What are we making today, <span className="grad-text">{c.user.first}</span>?</h1>

@@ -72,23 +72,12 @@ function DemoSwitch({ c, className = '' }) {
   );
 }
 
-/* Viral ad / Pro Studio switch (top bar on desktop, top of the page on phones) */
-function ModeSwitch({ c, className = '' }) {
-  return (
-    <div className={`seg mode-switch ${className}`} role="radiogroup" aria-label="Ad type">
-      <button type="button" role="radio" aria-checked="true" className="on"><Icon name="zap" size={15} /> Viral ad</button>
-      <button type="button" role="radio" aria-checked="false" onClick={() => c.notify('Pro Studio builds multi-scene stories: Pitch → Scenario → Storyboard → Editor.')}><Icon name="layers" size={15} /> Pro Studio</button>
-    </div>
-  );
-}
-
 /* ---------- Top bar ---------- */
 function Topbar({ c }) {
   return (
     <header className="topbar">
       <button type="button" className="icon-btn menu-btn" aria-label="Open menu" onClick={() => c.setDrawer(true)}><Icon name="menu" size={20} /></button>
       <span className="top-logo"><LogoMark size={30} /></span>
-      <ModeSwitch c={c} className="in-top" />
       <button type="button" className="search" onClick={() => c.setPalette(true)}>
         <Icon name="search" size={16} />
         <span>Search templates, tools, ads…</span>
@@ -318,7 +307,6 @@ export default function App() {
     upgrade: () => { setPlan('max'); setUpsellOpen(false); notify('MAX unlocked. Every feature on this screen is open now.'); },
     setPalette, drawer, setDrawer, stageOpen, setStageOpen, notify,
   };
-  c.modeSwitch = <ModeSwitch c={c} className="in-page" />;
 
   return (
     <div className="app">

@@ -234,9 +234,8 @@ h1, h2, h3, h4, p { margin: 0; }
 
 /* ---------- top bar ---------- */
 .topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; display: flex; align-items: center; gap: 14px; height: 68px; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); background: color-mix(in srgb, var(--bg) 80%, transparent); backdrop-filter: blur(18px) saturate(1.4); -webkit-backdrop-filter: blur(18px) saturate(1.4); border-bottom: 1px solid var(--line); }
-.menu-btn, .top-logo, .mode-switch.in-page { display: none; }
+.menu-btn, .top-logo { display: none; }
 .top-logo { flex: none; }
-.mode-switch button.on { background: var(--grad); color: #fff; box-shadow: 0 6px 16px -6px var(--a-glow); }
 .search { flex: 1; max-width: 420px; min-width: 0; display: flex; align-items: center; gap: 10px; height: 40px; padding: 0 7px 0 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel); color: var(--text-3); font-weight: 600; font-size: 13.5px; text-align: left; }
 .search:hover { border-color: var(--line-2); }
 .search span { flex: 1; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
@@ -752,8 +751,7 @@ textarea:focus { outline: none; border-color: var(--a1); box-shadow: 0 0 0 4px v
 }
 @media (max-width: 760px) {
   .topbar { gap: 8px; height: 60px; padding-left: max(12px, env(safe-area-inset-left, 0px)); padding-right: max(12px, env(safe-area-inset-right, 0px)); }
-  .search, .get, .me-copy, .me .ic, .top-right .icon-btn[aria-label="Clone your voice"], .top-right .has-dot, .mode-switch.in-top { display: none; }
-  .mode-switch.in-page { display: inline-flex; margin-bottom: 14px; }
+  .search, .get, .me-copy, .me .ic, .top-right .icon-btn[aria-label="Clone your voice"], .top-right .has-dot { display: none; }
   .tokens { margin-right: 0; padding-right: 10px; }
   .me { padding: 2px; margin-left: 2px; }
   .workspace { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-top: 18px; }
@@ -778,7 +776,6 @@ textarea:focus { outline: none; border-color: var(--a1); box-shadow: 0 0 0 4px v
   .up-art { margin: 0 -18px 16px; }
 }
 @media (max-width: 420px) {
-  .mode-switch button .ic { display: none; }
   .tokens b { font-size: 13px; }
   .mb-preview span { display: none; }
 }
