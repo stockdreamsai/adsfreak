@@ -12,3 +12,8 @@ npm run build                # dist/
 - `src/sections/*.jsx` — one small component per block
 - `src/ui.jsx` — shared pieces + launch settings (`CHECKOUT_URL`, `VSL_EMBED_URL`, `PRICE`)
 - `src/styles.css` — the whole stylesheet (~330 lines)
+
+### Create Ad dashboard demo (2026 redesign)
+
+- `dashboard.html` + `src/dashboard/*` — the app's Create Ad screen, redesigned (open `/dashboard.html` in dev)
+- `npm run build:demo` → `demo/create-ad-demo.html`, a single self-contained file to send around (see `demo/README.md`)
