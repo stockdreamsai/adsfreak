@@ -3,7 +3,7 @@
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 
-const [dist = "dist-demo", out = "demo/create-ad-demo.html"] = process.argv.slice(2);
+const [dist = "dist/demo", out = "demo/create-ad-demo.html"] = process.argv.slice(2);
 let html = readFileSync(join(dist, "dashboard.html"), "utf8");
 const scripts = [];
 

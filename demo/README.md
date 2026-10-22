@@ -3,11 +3,13 @@
 **Open `create-ad-demo.html`** (double-click, works offline). It is one self-contained
 file: send it to anyone as is.
 
-Source lives in `src/dashboard/` and runs with the rest of the site:
+Source lives in `src/dashboard/`. It only adds new files; nothing in the existing site
+was changed, so the landing page builds exactly as before.
 
 ```bash
 npm install && npm run dev        # http://localhost:5173/dashboard.html
-npm run build:demo                # rebuilds demo/create-ad-demo.html
+npx vite build --config vite.demo.config.js && node scripts/inline-demo.mjs
+                                  # rebuilds demo/create-ad-demo.html
 ```
 
 ## What changed vs. the current screen
